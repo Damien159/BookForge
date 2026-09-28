@@ -9,11 +9,44 @@
 
   <body>
     <header>
+      <div class="top-bar">
+        <div class="top-bar-left">
+          <a href="#">Buchhandlungen</a>
+          <a href="#">Veranstaltungen</a>
+        </div>
+        <div class="top-bar-center">
+          <span><strong>Kostenloser Versand</strong> ab EUR 20,00*</span>
+        </div>
+        <div class="top-bar-right">
+          <a href="#">Telefonische Buchberatung</a>
+        </div>
+      </div>
+
+      <div class="main-header">
+        <a href="#" class="logo">BookForge</a>
+
+        <div class="search-container">
+          <select class="category-select">
+            <option>Alle Produkte</option>
+            <option>Bücher</option>
+            <option>E-Books</option>
+            <option>Spiele</option>
+          </select>
+          <input type="text" placeholder="Titel, Autor, ISBN..." />
+          <button type="submit" class="search-button">suchen</button>
+        </div>
+
+        <nav class="user-navigation">
+          <ul>
+            <li><a href="#">Merkliste</a></li>
+            <li><a href="#">Warenkorb</a></li>
+            <li><a href="#">Mein Konto</a></li>
+          </ul>
+        </nav>
+      </div>
 
       <nav class="dropdown-navigation">
-        <a href="#" class="logo">BookForge</a>
-        <div class="nav-link">
-          <ul>
+        <ul class="nav-link">
           <li class="dropdown">
             <a href="#">Bücher</a>
             <div class="dropdown-content">
@@ -27,7 +60,7 @@
           </li>
 
           <li class="dropdown">
-            <a href="#">Spiel</a>
+            <a href="#">Spiele</a>
             <div class="dropdown-content">
               <a href="#">Brettspiele</a>
               <a href="#">Kartenspiele</a>
@@ -43,32 +76,24 @@
               <a href="#">Englisch</a>
             </div>
           </li>
+
           <li class="dropdown">
-            <a href="#">Hörbuch</a>
+            <a href="#">Hörbücher</a>
             <div class="dropdown-content">
               <a href="#">Hörbuch 1</a>
               <a href="#">Hörbuch 2</a>
-              <a href="#">Hörbuch 3</a>
             </div>
           </li>
+
           <li class="dropdown">
             <a href="#">E-Books</a>
             <div class="dropdown-content">
               <a href="#">E-Book 1</a>
               <a href="#">E-Book 2</a>
-              <a href="#">E-Book 3</a>
             </div>
           </li>
-        </ul>
-        </div>
-      </nav>
 
-      <input type="text" placeholder="Titel, Autor, ISBN..." />
-      <nav class="user-navigation">
-        <ul>
-          <li><a href="#">Mein Konto</a></li>
-          <li><a href="#">Favoriten</a></li>
-          <li><a href="#">Warenkorb</a></li>
+          <li><a href="#" class="sale-link">SALE %</a></li>
         </ul>
       </nav>
     </header>
