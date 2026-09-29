@@ -192,21 +192,10 @@ header {
   display: flex;
 }
 
-
-
-
-
-
-
-
-
-
-
-
 img {
-  padding: 50px;
-  margin: auto;
-
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 .homepage img{
   width: 100%;
