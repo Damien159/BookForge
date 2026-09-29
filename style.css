@@ -102,6 +102,95 @@ header {
   background-color: var(--primary);
 }
 
+/* User Navigation */
+.user-navigation ul {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+.user-navigation a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.user-navigation a:hover {
+  color: var(--accent);
+}
+
+.user-navigation .icon {
+  font-size: 18px;
+  margin-bottom: 2px;
+}
+
+/* 3. Dropdown Navigation */
+.dropdown-navigation {
+  border-top: 1px solid rgba(92, 64, 51, 0.15);
+  border-bottom: 1px solid rgba(92, 64, 51, 0.15);
+  padding: 0 40px;
+  background-color: var(--background);
+}
+
+.dropdown-navigation ul {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown > a {
+  display: block;
+  padding: 12px 0;
+  text-decoration: none;
+  color: var(--primary);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.dropdown > a:hover {
+  color: var(--accent);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #ffffff;
+  min-width: 180px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  flex-direction: column;
+  z-index: 100;
+}
+
+.dropdown-content a {
+  color: var(--text);
+  padding: 8px 16px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.dropdown-content a:hover {
+  background-color: var(--background);
+  color: var(--accent);
+}
+
+.dropdown:hover .dropdown-content {
+  display: flex;
+}
 
 
 
