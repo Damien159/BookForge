@@ -192,33 +192,51 @@ header {
   display: flex;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-.homepage img{
-  width: 100%;
-  height: auto;
-}
-#unsere-buecher {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  border: 1px solid black;
 
+/*Kategorien design */
+.categories {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  max-width: 1200px;
+  margin: 0 auto 40px auto;
+  padding: 0 10px;
 }
- .categories{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    border: 1px solid black;
+
+.category-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background); /* Helle Creme-Farbe */
+  border-radius: 12px;
+  padding: 15px 10px;
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 13px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
- body{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 150px;
-} 
+
+.category-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.category-card .icon {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+/* gezielt den sale button in accent damit er herausticht */
+.category-card.sale {
+  background-color: var(--accent);
+  color: #ffffff;
+}
+
+.category-card.sale .icon {
+  font-size: 28px;
+  font-weight: 800;
+}
