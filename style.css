@@ -192,13 +192,6 @@ header {
 .dropdown:hover .dropdown-content {
   display: flex;
 }
-
-
-
-
-
-
-
 /* 1. Haupt-Container für den restlichen Seiteninhalt */
 main {
   width: 100%;
@@ -216,7 +209,7 @@ main {
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-  margin-top: 140px; 
+  margin-top: 160px; /* Anmerkung für später: falls mir das nicht passt img höhe zum header anpassen*/
   margin-bottom: 40px;
   overflow: hidden;
 }
@@ -245,17 +238,24 @@ main {
   flex-shrink: 0;
   scroll-snap-align: start;
 }
+/* 5. Pfeile sauber auf dem Banner platziert */
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ccc;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
 
-
-
-
-
-
-
-
-
-
-
+.slider-arrow.prev { left: 20px; }
+.slider-arrow.next { right: 20px; }
 
 /*Kategorien design */
 .categories {
