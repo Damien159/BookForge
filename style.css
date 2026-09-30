@@ -42,7 +42,7 @@ header {
 /*hier wird der mainheader design sprich namenslogo*/
 .main-header {
   display: flex;
-  justify-content: space-between;
+  justify-content:space-around;
   align-items: center;
   padding: 15px 40px;
   background-color: var(--background);
@@ -144,6 +144,7 @@ header {
   gap: 30px;
   margin: 0;
   padding: 0;
+  justify-content: center;
 }
 
 .dropdown {
@@ -191,7 +192,6 @@ header {
 .dropdown:hover .dropdown-content {
   display: flex;
 }
-
 
 /*Kategorien design */
 .categories {
