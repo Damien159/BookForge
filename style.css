@@ -193,6 +193,70 @@ header {
   display: flex;
 }
 
+
+
+
+
+
+
+/* 1. Haupt-Container für den restlichen Seiteninhalt */
+main {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* 2. Banner auf vollem Bildschirm von ganz links bis ganz rechts */
+.homepage {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-top: 140px; 
+  margin-bottom: 40px;
+  overflow: hidden;
+}
+
+/* 3. Slider-Reihe */
+.homepage .img {
+  display: flex;
+  width: 100vw;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
+.homepage .img::-webkit-scrollbar {
+  display: none;
+}
+
+/* 4. Das Bild: HÖHER & VOLL SICHTBAR */
+.homepage .img img {
+  width: 100vw;
+  min-width: 100vw;
+  max-width: 100vw;
+  height: 500px; 
+  object-fit: cover;
+  object-position: center;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 /*Kategorien design */
 .categories {
   display: flex;
