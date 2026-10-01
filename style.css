@@ -354,3 +354,13 @@ main {
   color: #666;
   margin: 2px 0;
 }
+
+/*Preise hervorheben*/
+.buecher-card p:nth-of-type(2){
+  font-weight:bold;
+  font-size: 1.1rem;
+  color: var(--accent);
+  margin-top:auto;  
+  padding-top:10px;
+}
+
