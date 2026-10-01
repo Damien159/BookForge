@@ -7,6 +7,10 @@
   --accent: #B85C38;
   --text: #292522;
 }
+html, body {
+  overflow-x: hidden;
+  margin: 0;
+}
 /*Header Bereich, Top-bar, suchbar und dropdown*/
 header {
   position: fixed;
@@ -232,7 +236,7 @@ main {
   width: 100vw;
   min-width: 100vw;
   max-width: 100vw;
-  height: 500px; 
+  height: 600px; 
   object-fit: cover;
   object-position: center;
   flex-shrink: 0;
@@ -389,4 +393,12 @@ main {
 
 .buecher-card button:nth-of-type(2):hover {
   background-color: var(--background);
+}
+.buecher-card .button-group {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+.buecher-card .button-group button {
+  flex: 1; /* Beide Buttons teilen sich gleichmäßig den Platz */
 }
