@@ -1,47 +1,34 @@
-// Funktion zum Abrufen von Büchern aus der Open Library API
-async function loadBooksFromOpenLibrary(query = "bestseller") {
-  const container = document.getElementById("unsere-buecher");
-  if (!container) return;
+// 1. Universelle Funktion für einen einzelnen Buch-Abschnitt
+async function fetchAndRenderBooks(section, customQuery = null) {
+  // Nimmt entweder die Sucheingabe oder das data-query aus dem HTML
+  const query = customQuery || section.getAttribute("data-query");
+  const grid = section.querySelector(".buecher-grid") || section;
 
-  // Ladeanzeige
-  container.innerHTML = "<h2>Unsere Bücher</h2><p>Bücher werden geladen...</p>";
+  if (!query) return;
+
+  grid.innerHTML = "<p>Bücher werden geladen...</p>";
 
   try {
-    // API Abruf (auf 8 Ergebnisse begrenzt)
-    const response = await fetch(
-      `https://openlibrary.org/search.json?q=${encodeURIComponent(query)}&limit=8`,
-    );
+    const response = await fetch(`https://openlibrary.org/search.json?q=${encodeURIComponent(query)}&limit=8`);
     const data = await response.json();
 
-    // Überschrift zurücksetzen
-    container.innerHTML = "<h2>Unsere Bücher</h2>";
+    grid.innerHTML = ""; // Ladeanzeige leeren
 
     if (!data.docs || data.docs.length === 0) {
-      container.innerHTML += "<p>Keine Bücher gefunden.</p>";
+      grid.innerHTML = "<p>Keine Bücher gefunden.</p>";
       return;
     }
 
-    data.docs.forEach((book) => {
-      // Titel & Autor extrahieren
+    data.docs.forEach(book => {
       const title = book.title || "Unbekannter Titel";
-      const author = book.author_name
-        ? book.author_name[0]
-        : "Unbekannter Autor";
-
-      // Cover-Bild über die cover_i ID laden (falls vorhanden)
-      const cover = book.cover_i
+      const author = book.author_name ? book.author_name[0] : "Unbekannter Autor";
+      const cover = book.cover_i 
         ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
         : "https://via.placeholder.com/180x220?text=Kein+Cover";
 
-      // Da Open Library ein Archiv und kein Shop ist, simulieren wir Preise
-      // Basierend auf dem ersten Erscheinungsjahr oder Random
-      const price =
-        (12.99 + (book.first_publish_year ? book.first_publish_year % 10 : 3))
-          .toFixed(2)
-          .replace(".", ",") + " €";
+      const price = (12.99 + (book.first_publish_year ? (book.first_publish_year % 10) : 3)).toFixed(2).replace('.', ',') + " €";
 
-      // Genau deine vorhandene .buecher-card Struktur beibehalten!
-      const cardHTML = `
+      grid.innerHTML += `
         <div class="buecher-card">
           <img src="${cover}" alt="${title}">
           <h3>${title}</h3>
@@ -53,38 +40,39 @@ async function loadBooksFromOpenLibrary(query = "bestseller") {
           </div>
         </div>
       `;
-
-      container.innerHTML += cardHTML;
     });
   } catch (error) {
-    console.error("Fehler beim Laden der Open Library API:", error);
-    container.innerHTML =
-      "<h2>Unsere Bücher</h2><p>Fehler beim Laden der Buchdaten.</p>";
+    console.error("Fehler beim Laden:", error);
+    grid.innerHTML = "<p>Fehler beim Laden der Buchdaten.</p>";
   }
 }
 
-// 3. Verknüpfung mit der Suchleiste und dem Seitenstart
+// 2. Initialisierung beim Laden der Seite
 document.addEventListener("DOMContentLoaded", () => {
-  // Initiales Laden beim Seitenaufruf
-  loadBooksFromOpenLibrary("fantasy");
+  const sections = document.querySelectorAll(".buecher-sektion");
+  
+  // Alle Kategorien aus dem HTML automatisch befüllen
+  sections.forEach(section => fetchAndRenderBooks(section));
 
-  // Suchleiste verknüpfen
+  // 3. Suchleiste verknüpfen (befüllt den ersten Abschnitt "Unsere Bücher")
   const searchInput = document.querySelector(".search-container input");
   const searchButton = document.querySelector(".search-button");
 
-  if (searchButton && searchInput) {
-    // Klick auf Lupe/Such-Button
-    searchButton.addEventListener("click", () => {
-      const query = searchInput.value.trim();
-      if (query) loadBooksFromOpenLibrary(query);
-    });
+  const handleSearch = () => {
+    const query = searchInput.value.trim();
+    if (query && sections.length > 0) {
+      // Lädt die Suchergebnisse in den ersten Bereich (Unsere Bücher)
+      const mainSection = sections[0];
+      const heading = mainSection.querySelector("h2");
+      if (heading) heading.textContent = `Suchergebnisse für: "${query}"`;
+      fetchAndRenderBooks(mainSection, query);
+    }
+  };
 
-    // Enter-Taste im Suchfeld
+  if (searchButton && searchInput) {
+    searchButton.addEventListener("click", handleSearch);
     searchInput.addEventListener("keypress", (e) => {
-      if (e.key === "Enter") {
-        const query = searchInput.value.trim();
-        if (query) loadBooksFromOpenLibrary(query);
-      }
+      if (e.key === "Enter") handleSearch();
     });
   }
 });
