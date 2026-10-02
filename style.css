@@ -422,3 +422,28 @@ footer{
   border-bottom: 2px solid var(--secondary);
   padding-bottom: 4px;
 }
+.footer-links .sub-heading {
+  margin-top: 20px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  color: #e0e0e0;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: var(--background);
+  text-decoration: underline;
+}
