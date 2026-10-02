@@ -408,3 +408,10 @@ footer{
   padding: 50px 20px 20px 20px;
   margin-top: 60px;
 }
+.footer-container{
+  max-width: 1200px;
+  margin: 0 auto;
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap:30px;
+}
