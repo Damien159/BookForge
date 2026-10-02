@@ -402,3 +402,9 @@ main {
 .buecher-card .button-group button {
   flex: 1; /* Beide Buttons teilen sich gleichmäßig den Platz */
 }
+footer{
+  background-color: var(--primary);
+  color: #fff;
+  padding: 50px 20px 20px 20px;
+  margin-top: 60px;
+}
