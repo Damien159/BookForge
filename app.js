@@ -61,7 +61,44 @@ async function fetchAndRenderBooks(section, customQuery = null) {
 /* Automatischer Banner-Slider (Scrollt alle 20 Sekunden)*/
 function initBannerAutoSlider() {
   const slider = document.querySelector(".homepage .img");
+  const prevBtn = document.querySelector(".slider-arrow.prev");
+  const nextBtn = document.querySelector(".slider-arrow.next");
   if (!slider) return;
+
+// Funktion zum Weiter-Scrollen (nach rechts)
+  function nextSlide() {
+    // Wenn am Ende angekommen, wieder zum ersten Bild springen
+    if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 10) {
+      slider.scrollTo({ left: 0, behavior: "smooth" });
+    } else {
+      slider.scrollBy({ left: slider.clientWidth, behavior: "smooth" });
+    }
+  }
+
+  // Funktion zum Zurück-Scrollen (nach links)
+  function prevSlide() {
+    // Wenn ganz am Anfang, zum letzten Bild springen
+    if (slider.scrollLeft <= 10) {
+      slider.scrollTo({ left: slider.scrollWidth, behavior: "smooth" });
+    } else {
+      slider.scrollBy({ left: -slider.clientWidth, behavior: "smooth" });
+    }
+  }
+
+  // Event Listener für die Pfeil-Klicks
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      nextSlide();
+      resetTimer(); // Timer zurücksetzen, damit er nach Manuell-Klick nicht direkt springt
+    });
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      prevSlide();
+      resetTimer();
+    });
+  }
 
   setInterval(() => {
     // Wenn am Ende angekommen, wieder an den Anfang scrollen
