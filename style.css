@@ -10,6 +10,9 @@
 html, body {
   overflow-x: hidden;
   margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--background);
+  color: var(--text);
 }
 /*Header Bereich, Top-bar, suchbar und dropdown*/
 header {
