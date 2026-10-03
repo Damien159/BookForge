@@ -353,6 +353,40 @@ main {
   transform: translateY(-4px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
+.fav-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(247, 241, 227, 0.85);
+  backdrop-filter: blur(4px);
+  border: 1px solid var(--secondary);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 5;
+  padding: 0;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.fav-btn:hover {
+  transform: scale(1.1);
+  background-color: #ffffff;
+}
+
+/* SVG-Skalierung für Herz (Braun gefärbt) */
+.fav-btn img,
+.fav-btn .svg-icon {
+  width: 20px !important;
+  height: 20px !important;
+  max-width: 20px !important;
+  max-height: 20px !important;
+  object-fit: contain;
+  filter: invert(24%) sepia(21%) saturate(1048%) hue-rotate(346deg) brightness(93%) contrast(89%);
+}
 /*bücher img */
 .buecher-card img {
   width: 150px;
