@@ -284,7 +284,7 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: var(--background); /* Helle Creme-Farbe */
+  background-color: #ffffff; 
   border-radius: 12px;
   padding: 15px 10px;
   text-decoration: none;
