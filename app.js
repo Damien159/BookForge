@@ -35,19 +35,23 @@ async function fetchAndRenderBooks(section, customQuery = null) {
           .toFixed(2)
           .replace(".", ",") + " €";
 
-      grid.innerHTML += `
+      const cardHTML = `
         <div class="buecher-card">
-        <button class="fav-btn" title="Favorit hinzufügen">🤍</button>
+          <button class="fav-btn" title="Zu Favoriten hinzufügen">
+            <img src="svg/Heart.svg" alt="Favorit" class="svg-icon">
+          </button>
           <img src="${cover}" alt="${title}">
           <h3>${title}</h3>
           <p>${author}</p>
-          <p>${price}</p>
+          <p class="price">${price}</p>
           <div class="button-group">
-            <button>In den Warenkorb</button>
-            <button>Meine Liste</button>
+            <button class="cart-btn">
+              <img src="svg/Buy-Cart.svg" alt="Warenkorb" class="svg-icon">
+            </button>
           </div>
         </div>
       `;
+      grid.innerHTML += cardHTML;
     });
   } catch (error) {
     console.error("Fehler beim Laden:", error);
@@ -66,7 +70,7 @@ function initBannerAutoSlider() {
     } else {
       slider.scrollBy({ left: slider.clientWidth, behavior: "smooth" });
     }
-  }, 20000); // 10.000 ms = 10 Sekunden
+  }, 20000); // 20.000 ms = 20 Sekunden
 }
 
 // Initialisierung beim Laden der Seite
