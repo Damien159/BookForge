@@ -72,14 +72,19 @@ header {
 }
 
 .category-select {
-  background: transparent;
+  background: var(--background);
   border: none;
   padding: 10px 15px;
   font-size: 14px;
   color: var(--text);
+  font-weight: 600;
   outline: none;
   cursor: pointer;
   border-right: 1px solid rgba(139, 111, 71, 0.3);
+  transition: background-color 0.2s ease;
+}
+.category-select:hover {
+  background-color: rgba(139, 111, 71, 0.1);
 }
 
 .search-container input {
