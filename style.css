@@ -10,7 +10,7 @@
 html, body {
   overflow-x: hidden;
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: Playfair Display, Source Sans 3;
   background-color: var(--background);
   color: var(--text);
 }
@@ -83,7 +83,7 @@ header {
   font-weight: 600;
   outline: none;
   cursor: pointer;
-  border-right: 1px solid rgba(139, 111, 71, 0.3);
+  border-right: 1px solid rgba(139, 111, 71, 0.1);
   transition: background-color 0.2s ease;
 }
 
@@ -185,6 +185,7 @@ header {
   padding: 10px 0;
   flex-direction: column;
   z-index: 100;
+  border-radius: 0 0 8px 8px
 }
 
 .dropdown-content a {
