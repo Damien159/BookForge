@@ -34,24 +34,28 @@ async function fetchAndRenderBooks(section, customQuery = null) {
         (12.99 + (book.first_publish_year ? book.first_publish_year % 10 : 3))
           .toFixed(2)
           .replace(".", ",") + " €";
-          
+
       const rawKey = book.key || "";
       const cleanKey = rawKey.replace("/works/", "");
       const cardHTML = `
-        <div class="buecher-card">
-          <button class="fav-btn" title="Zu Favoriten hinzufügen">
-            <img src="svg/Heart.svg" alt="Favorit" class="svg-icon">
-          </button>
+      <div class="buecher-card">
+        <button class="fav-btn" title="Zu Favoriten hinzufügen">
+          <img src="svg/Heart.svg" alt="Favorit" class="svg-icon">
+        </button>
+
+        <a href="buch-details.html?key=${cleanKey}" class="book-card-link">
           <img src="${cover}" alt="${title}">
           <h3>${title}</h3>
           <p>${author}</p>
-          <p class="price">${price}</p>
-          <div class="button-group">
-            <button class="cart-btn">
-              <img src="svg/Buy-Cart.svg" alt="Warenkorb" class="svg-icon">
-            </button>
-          </div>
+        </a>
+
+        <p class="price">${price}</p>
+        <div class="button-group">
+          <button class="cart-btn">
+            <img src="svg/Buy-Cart.svg" alt="Warenkorb" class="svg-icon">
+          </button>
         </div>
+      </div>
       `;
       grid.innerHTML += cardHTML;
     });
@@ -141,4 +145,58 @@ document.addEventListener("DOMContentLoaded", () => {
       if (e.key === "Enter") handleSearch();
     });
   }
+});
+async function initDetailPage() {
+  const detailTitle = document.getElementById("detail-title");
+  if (!detailTitle) return;
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const workKey = urlParams.get("key");
+
+  if (!workKey) {
+    detailTitle.textContent = "Kein Buch ausgewählt.";
+    return;
+  }
+
+  try {
+    const response = await fetch(
+      `https://openlibrary.org/works/${workKey}.json`,
+    );
+    if (!response.ok) throw new Error("Buch nicht gefunden");
+    const bookData = await response.json();
+
+    detailTitle.textContent = bookData.title || "Unbekannter Titel";
+
+    const descEl = document.getElementById("detail-description");
+    if (descEl) {
+      if (typeof bookData.description === "string") {
+        descEl.textContent = bookData.description;
+      } else if (bookData.description && bookData.description.value) {
+        descEl.textContent = bookData.description.value;
+      } else {
+        descEl.textContent = "Keine Beschreibung verfügbar.";
+      }
+    }
+
+    const coverEl = document.getElementById("detail-cover");
+    if (coverEl && bookData.covers && bookData.covers.length > 0) {
+      coverEl.src = `https://covers.openlibrary.org/b/id/${bookData.covers[0]}-L.jpg`;
+      coverEl.alt = bookData.title;
+    }
+
+    const authorEl = document.getElementById("detail-author");
+    if (authorEl && bookData.authors && bookData.authors.length > 0) {
+      const authorKey = bookData.authors[0].author.key;
+      const authorRes = await fetch(`https://openlibrary.org${authorKey}.json`);
+      const authorData = await authorRes.json();
+      authorEl.textContent = authorData.name || "Unbekannter Autor";
+    }
+  } catch (error) {
+    console.error("Fehler beim Laden der Produktdetails:", error);
+    detailTitle.textContent = "Fehler beim Laden des Buches.";
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  initDetailPage();
 });
