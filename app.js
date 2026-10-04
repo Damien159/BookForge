@@ -34,7 +34,9 @@ async function fetchAndRenderBooks(section, customQuery = null) {
         (12.99 + (book.first_publish_year ? book.first_publish_year % 10 : 3))
           .toFixed(2)
           .replace(".", ",") + " €";
-
+          
+      const rawKey = book.key || "";
+      const cleanKey = rawKey.replace("/works/", "");
       const cardHTML = `
         <div class="buecher-card">
           <button class="fav-btn" title="Zu Favoriten hinzufügen">
@@ -65,7 +67,7 @@ function initBannerAutoSlider() {
   const nextBtn = document.querySelector(".slider-arrow.next");
   if (!slider) return;
 
-// Funktion zum Weiter-Scrollen (nach rechts)
+  // Funktion zum Weiter-Scrollen (nach rechts)
   function nextSlide() {
     // Wenn am Ende angekommen, wieder zum ersten Bild springen
     if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 10) {
