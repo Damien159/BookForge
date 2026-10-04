@@ -462,6 +462,14 @@ main {
 }
 
 /* SVG-Skalierung für Warenkorb (Braun, bei Hover Weiß) */
+.svg-icon {
+  width: 22px !important;
+  height: 22px !important;
+  max-width: 22px !important;
+  max-height: 22px !important;
+  object-fit: contain;
+  display: inline-block;
+}
 .cart-btn img,
 .cart-btn .svg-icon {
   width: 22px !important;
@@ -538,8 +546,173 @@ footer .copyright {
   font-size: 0.8rem;
   color: #cccccc;
 }
+/*Hiermit verhindern wir, dass die Buchkarten-Links standardmäßig unterstrichen sind.*/
 .book-card-link {
   text-decoration: none;
   color: inherit;
   display: block;
+}
+/* WICHTIG: Genug margin-top für den Detail-Container, damit er UNTER dem Header anfängt */
+.product-detail-container {
+  flex: 1 0 auto; /* Schiebt den Footer nach unten */
+  max-width: 1050px;
+  width: 100%;
+  margin: 180px auto 60px auto !important; /* 180px schiebt das Cover sauber unter die Menüleiste */
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+footer {
+  margin-top: auto !important; /* Garantiert, dass der Footer ganz unten bleibt */
+  background-color: var(--primary);
+  color: #fff;
+  padding: 50px 20px 20px 20px;
+}
+
+
+/* ==========================================
+   2. DETAILSEITEN LAYOUT & BUTTON FIX
+   ========================================== */
+
+/* 2-Spalten Layout: Cover links, Text rechts */
+.product-main-info {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start;
+  gap: 50px;
+  margin-bottom: 40px;
+}
+
+/* Linke Spalte (Cover) */
+.product-cover-container {
+  flex: 0 0 260px;
+  width: 260px;
+}
+
+.product-cover-container img,
+#detail-cover {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 260px !important;
+  border-radius: 6px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  display: block;
+}
+
+/* Rechte Spalte (Infos) */
+.product-info-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.detail-author {
+  font-size: 0.95rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.detail-title {
+  font-size: 2.2rem;
+  font-family: Georgia, serif;
+  color: #1a1a1a;
+  margin: 0 0 16px 0;
+  line-height: 1.25;
+}
+
+.detail-price-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 24px;
+}
+
+.detail-price {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.stock-status {
+  color: #2e7d32;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Actions & Buttons */
+.detail-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+/* Spezifische Regel für den Detailseiten-Button (überschreibt das runde Startseiten-Styling) */
+.detail-actions .cart-btn {
+  width: auto !important;
+  height: auto !important;
+  min-height: 48px;
+  border-radius: 6px !important;
+  padding: 12px 28px !important;
+  background-color: var(--primary) !important;
+  color: #ffffff !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  white-space: nowrap !important; /* Verhindert das Brechen des Textes */
+  display: inline-flex !important;
+  align-items: center;
+  gap: 10px;
+}
+
+.detail-actions .cart-btn:hover {
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+
+/* Das Warenkorb-Icon im Detailseiten-Button weiß färben */
+.detail-actions .cart-btn img,
+.detail-actions .cart-btn .svg-icon {
+  filter: brightness(0) invert(1) !important;
+  width: 20px !important;
+  height: 20px !important;
+}
+
+.detail-actions .fav-btn {
+  position: relative !important;
+  top: auto !important;
+  right: auto !important;
+  width: 48px !important;
+  height: 48px !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f0eb;
+  border: 1px solid var(--secondary);
+  border-radius: 6px !important;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Beschreibungstext */
+.product-description-section {
+  border-top: 1px solid #e5dfd8;
+  padding-top: 30px;
+  text-align: left;
+}
+
+.product-description-section h2 {
+  font-size: 1.4rem;
+  color: #222;
+  margin-bottom: 12px;
+}
+
+.description-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #444;
+  max-width: 850px;
 }
