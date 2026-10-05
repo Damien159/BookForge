@@ -368,9 +368,9 @@ main {
 }
 
 
-.buecher-card:hover{
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+.buecher-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
 }
 .fav-btn {
   position: absolute;
@@ -418,10 +418,17 @@ main {
 
 /* 3. Titel, Autor & Preis */
 .buecher-card h3 {
+  font-family: Georgia, serif;
   font-size: 1.05rem;
-  margin: 0 0 4px 0;
+  margin: 0 0 6px 0;
   color: var(--text);
   line-height: 1.3;
+  /* Max. 2 Zeilen, danach dreipünktchen */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 2.6em; 
 }
 
 .buecher-card p {
@@ -429,14 +436,15 @@ main {
   color: #666;
   margin: 2px 0;
 }
-/*Preise hervorheben*/
+
+/* 5. Preis & Buttons immer auf gleicher Höhe unten ausrichten */
 .buecher-card p.price,
 .buecher-card p:nth-of-type(2) {
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   color: var(--accent);
-  margin-top: auto;
-  padding-top: 8px;
+  margin-top: auto; /* Schiebt Preis & Button nach unten */
+  padding-top: 12px;
 }
 .buecher-card .button-group {
   display: flex;
