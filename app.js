@@ -218,3 +218,77 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+// Beim Laden der Seite Merkliste initialisieren & Zähler aktualisieren
+document.addEventListener('DOMContentLoaded', () => {
+  updateWishlistCounter();
+  highlightActiveFavorites();
+  setupFavoriteButtons();
+});
+
+// 1. Hilfsfunktion: Merkliste aus LocalStorage abrufen
+function getWishlist() {
+  const wishlist = localStorage.getItem('bookforge_wishlist');
+  return wishlist ? JSON.parse(wishlist) : [];
+}
+
+// 2. Zähler im Header aktualisieren
+function updateWishlistCounter() {
+  const wishlist = getWishlist();
+  const counterElement = document.getElementById('wishlist-counter');
+  if (counterElement) {
+    counterElement.textContent = wishlist.length;
+  }
+}
+
+// 3. Event-Listener für alle Herz-Buttons setzen
+function setupFavoriteButtons() {
+  document.body.addEventListener('click', (event) => {
+    // Prüfen, ob ein Fav-Button geklickt wurde (oder das SVG darin)
+    const favBtn = event.target.closest('.fav-btn');
+    if (!favBtn) return;
+
+    event.preventDefault();
+
+    // ID oder eindeutigen Name des Buches ermitteln (z.B. data-id am Button oder Buchtitel)
+    const bookCard = favBtn.closest('.buecher-card') || favBtn.closest('.product-detail-container');
+    const bookTitle = favBtn.dataset.id || bookCard?.querySelector('h3, .detail-title')?.textContent?.trim();
+
+    if (!bookTitle) return;
+
+    toggleWishlist(bookTitle, favBtn);
+  });
+}
+
+// 4. Buch hinzufügen oder entfernen
+function toggleWishlist(bookId, button) {
+  let wishlist = getWishlist();
+
+  if (wishlist.includes(bookId)) {
+    // Entfernen, wenn bereits vorhanden
+    wishlist = wishlist.filter(id => id !== bookId);
+    button.classList.remove('active');
+  } else {
+    // Hinzufügen
+    wishlist.push(bookId);
+    button.classList.add('active');
+  }
+
+  // Im LocalStorage speichern & Header-Zähler updaten
+  localStorage.setItem('bookforge_wishlist', JSON.stringify(wishlist));
+  updateWishlistCounter();
+}
+
+// 5. Bereits gemerkte Bücher beim Seitenaufruf markieren
+function highlightActiveFavorites() {
+  const wishlist = getWishlist();
+  const favButtons = document.querySelectorAll('.fav-btn');
+
+  favButtons.forEach(btn => {
+    const bookCard = btn.closest('.buecher-card') || btn.closest('.product-detail-container');
+    const bookTitle = btn.dataset.id || bookCard?.querySelector('h3, .detail-title')?.textContent?.trim();
+
+    if (bookTitle && wishlist.includes(bookTitle)) {
+      btn.classList.add('active');
+    }
+  });
+}
