@@ -314,3 +314,167 @@ function setupClickEvents() {
     updateWishlistUI();
   });
 }
+// ==========================================
+// LIVE WARENKORB & MERKLISTEN LOGIK
+// ==========================================
+
+document.addEventListener('DOMContentLoaded', () => {
+  initApp();
+});
+
+// Reagiert live bei Änderungen in anderen Tabs
+window.addEventListener('storage', (e) => {
+  if (e.key === 'bookforge_wishlist' || e.key === 'bookforge_cart') {
+    updateAllUI();
+  }
+});
+
+function initApp() {
+  updateAllUI();
+  setupGlobalClickEvents();
+}
+
+// Globales UI Update
+function updateAllUI() {
+  updateWishlistUI();
+  updateCartUI();
+}
+
+/* ------------------------------------------
+   WARENKORB HELPER & UI
+------------------------------------------ */
+function getCart() {
+  try {
+    return JSON.parse(localStorage.getItem('bookforge_cart')) || [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function updateCartUI() {
+  const cart = getCart();
+
+  // 1. Anzahl der Artikel berechnen
+  const totalCount = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+  const counterEl = document.getElementById('cart-counter');
+  if (counterEl) counterEl.textContent = totalCount;
+
+  // 2. Gesamtsumme berechnen
+  const totalPrice = cart.reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0);
+  const priceEl = document.getElementById('cart-total');
+  if (priceEl) {
+    priceEl.textContent = totalPrice.toLocaleString('de-DE', {
+      style: 'currency',
+      currency: 'EUR'
+    });
+  }
+}
+
+// Hilfsfunktion: Buch-Daten (Titel & Preis) von der Karte auslesen
+function getBookData(element) {
+  const card = element.closest('.buecher-card, .product-detail-container, .book-card-link');
+  if (!card) return null;
+
+  // Titel ermitteln
+  const titleEl = card.querySelector('h3, .detail-title, h2');
+  const title = element.dataset.id || (titleEl ? titleEl.textContent.trim() : null);
+
+  // Preis ermitteln & in eine Zahl umwandeln (z.B. "14,99 €" -> 14.99)
+  const priceEl = card.querySelector('.price, .detail-price, p.price');
+  let price = 0;
+  if (priceEl) {
+    const priceText = priceEl.textContent.replace('€', '').replace(',', '.').trim();
+    price = parseFloat(priceText) || 0;
+  }
+
+  if (!title) return null;
+  return { title, price };
+}
+
+/* ------------------------------------------
+   GLOBALER EVENT DELEGATION LISTENER
+------------------------------------------ */
+function setupGlobalClickEvents() {
+  document.body.addEventListener('click', (event) => {
+    
+    // 1. Klick auf Merklisten-Button (Herz)
+    const favBtn = event.target.closest('.fav-btn');
+    if (favBtn) {
+      event.preventDefault();
+      event.stopPropagation();
+      const bookData = getBookData(favBtn);
+      if (bookData) toggleWishlist(bookData.title, favBtn);
+      return;
+    }
+
+    // 2. Klick auf Warenkorb-Button
+    const cartBtn = event.target.closest('.cart-btn');
+    if (cartBtn) {
+      event.preventDefault();
+      event.stopPropagation();
+      const bookData = getBookData(cartBtn);
+      if (bookData) addToCart(bookData, cartBtn);
+      return;
+    }
+  });
+}
+
+// Warenkorb Logik: Artikel hinzufügen
+function addToCart(bookData, button) {
+  let cart = getCart();
+  const existingIndex = cart.findIndex(item => item.title === bookData.title);
+
+  if (existingIndex > -1) {
+    cart[existingIndex].quantity = (cart[existingIndex].quantity || 1) + 1;
+  } else {
+    cart.push({
+      title: bookData.title,
+      price: bookData.price,
+      quantity: 1
+    });
+  }
+
+  localStorage.setItem('bookforge_cart', JSON.stringify(cart));
+  updateCartUI();
+
+  // Kurzzeitiges visuelles Feedback am Button
+  button.classList.add('added');
+  setTimeout(() => button.classList.remove('added'), 800);
+}
+
+/* ------------------------------------------
+   MERKLISTEN LOGIK
+------------------------------------------ */
+function getWishlist() {
+  try {
+    return JSON.parse(localStorage.getItem('bookforge_wishlist')) || [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function updateWishlistUI() {
+  const wishlist = getWishlist();
+  const counterEl = document.getElementById('wishlist-counter');
+  if (counterEl) counterEl.textContent = wishlist.length;
+
+  document.querySelectorAll('.fav-btn').forEach(btn => {
+    const bookData = getBookData(btn);
+    if (bookData && wishlist.includes(bookData.title)) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+}
+
+function toggleWishlist(bookTitle, button) {
+  let wishlist = getWishlist();
+  if (wishlist.includes(bookTitle)) {
+    wishlist = wishlist.filter(id => id !== bookTitle);
+  } else {
+    wishlist.push(bookTitle);
+  }
+  localStorage.setItem('bookforge_wishlist', JSON.stringify(wishlist));
+  updateWishlistUI();
+}
