@@ -225,70 +225,92 @@ document.addEventListener('DOMContentLoaded', () => {
   setupFavoriteButtons();
 });
 
-// 1. Hilfsfunktion: Merkliste aus LocalStorage abrufen
-function getWishlist() {
-  const wishlist = localStorage.getItem('bookforge_wishlist');
-  return wishlist ? JSON.parse(wishlist) : [];
+// ==========================================
+// LIVE MERKLISTEN-LOGIK (Echtzeit + Dynamisch)
+// ==========================================
+
+// 1. Zähler & Buttons sofort nach DOM-Load & bei Storage-Änderung updaten
+document.addEventListener('DOMContentLoaded', () => {
+  initWishlist();
+});
+
+// Reagiert live, wenn sich der LocalStorage ändert (z. B. in einem anderen Tab)
+window.addEventListener('storage', (e) => {
+  if (e.key === 'bookforge_wishlist') {
+    updateWishlistUI();
+  }
+});
+
+function initWishlist() {
+  updateWishlistUI();
+  setupClickEvents();
 }
 
-// 2. Zähler im Header aktualisieren
-function updateWishlistCounter() {
+// 2. Hilfsfunktion: Merkliste lesen
+function getWishlist() {
+  try {
+    return JSON.parse(localStorage.getItem('bookforge_wishlist')) || [];
+  } catch (e) {
+    return [];
+  }
+}
+
+// 3. UI synchronisieren (Header-Zähler + Herz-Farben auf allen Karten)
+function updateWishlistUI() {
   const wishlist = getWishlist();
+
+  // Zähler im Header live updaten
   const counterElement = document.getElementById('wishlist-counter');
   if (counterElement) {
     counterElement.textContent = wishlist.length;
   }
-}
 
-// 3. Event-Listener für alle Herz-Buttons setzen
-function setupFavoriteButtons() {
-  document.body.addEventListener('click', (event) => {
-    // Prüfen, ob ein Fav-Button geklickt wurde (oder das SVG darin)
-    const favBtn = event.target.closest('.fav-btn');
-    if (!favBtn) return;
-
-    event.preventDefault();
-
-    // ID oder eindeutigen Name des Buches ermitteln (z.B. data-id am Button oder Buchtitel)
-    const bookCard = favBtn.closest('.buecher-card') || favBtn.closest('.product-detail-container');
-    const bookTitle = favBtn.dataset.id || bookCard?.querySelector('h3, .detail-title')?.textContent?.trim();
-
-    if (!bookTitle) return;
-
-    toggleWishlist(bookTitle, favBtn);
+  // Alle Herz-Buttons prüfen und entsprechend einfärben
+  const favButtons = document.querySelectorAll('.fav-btn');
+  favButtons.forEach(btn => {
+    const bookId = getBookIdentifier(btn);
+    if (bookId && wishlist.includes(bookId)) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
   });
 }
 
-// 4. Buch hinzufügen oder entfernen
-function toggleWishlist(bookId, button) {
-  let wishlist = getWishlist();
+// 4. Eindeutigen Buch-Bezeichner ermitteln
+function getBookIdentifier(btnElement) {
+  // 1. Priorität: Attribut data-id direkt am Button
+  if (btnElement.dataset.id) return btnElement.dataset.id;
 
-  if (wishlist.includes(bookId)) {
-    // Entfernen, wenn bereits vorhanden
-    wishlist = wishlist.filter(id => id !== bookId);
-    button.classList.remove('active');
-  } else {
-    // Hinzufügen
-    wishlist.push(bookId);
-    button.classList.add('active');
+  // 2. Priorität: Titel aus der Karte oder Detailseite auslesen
+  const card = btnElement.closest('.buecher-card, .product-detail-container, .book-card-link');
+  if (card) {
+    const titleEl = card.querySelector('h3, .detail-title, h2');
+    if (titleEl) return titleEl.textContent.trim();
   }
-
-  // Im LocalStorage speichern & Header-Zähler updaten
-  localStorage.setItem('bookforge_wishlist', JSON.stringify(wishlist));
-  updateWishlistCounter();
+  return null;
 }
 
-// 5. Bereits gemerkte Bücher beim Seitenaufruf markieren
-function highlightActiveFavorites() {
-  const wishlist = getWishlist();
-  const favButtons = document.querySelectorAll('.fav-btn');
+function setupClickEvents() {
+  document.body.addEventListener('click', (event) => {
+    const favBtn = event.target.closest('.fav-btn');
+    if (!favBtn) return; 
 
-  favButtons.forEach(btn => {
-    const bookCard = btn.closest('.buecher-card') || btn.closest('.product-detail-container');
-    const bookTitle = btn.dataset.id || bookCard?.querySelector('h3, .detail-title')?.textContent?.trim();
+    event.preventDefault();
+    event.stopPropagation();
 
-    if (bookTitle && wishlist.includes(bookTitle)) {
-      btn.classList.add('active');
+    const bookId = getBookIdentifier(favBtn);
+    if (!bookId) return;
+
+    let wishlist = getWishlist();
+
+    if (wishlist.includes(bookId)) {
+      wishlist = wishlist.filter(id => id !== bookId);
+    } else {
+      wishlist.push(bookId);
     }
+
+    localStorage.setItem('bookforge_wishlist', JSON.stringify(wishlist));
+    updateWishlistUI();
   });
 }
