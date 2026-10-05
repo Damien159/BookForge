@@ -333,17 +333,18 @@ main {
 }
 
 /*Card design*/
-#unsere-buecher{
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 25px;
-  margin: 30px 0;
+#unsere-buecher {
+  display: block; /* Verhindert Konflikte mit .buecher-grid */
+  margin: 40px 0;
 }
-#unsere-buecher h2{
-  grid-column: 1 /-1;
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-  color: #2c2c2c;
+
+#unsere-buecher h2 {
+  font-family: Georgia, serif;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: var(--primary);
+  border-bottom: 2px solid rgba(139, 111, 71, 0.2);
+  padding-bottom: 8px;
 }
 /* Die einzelne Buch-Karte*/
 .buecher-grid {
