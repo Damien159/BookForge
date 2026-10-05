@@ -155,6 +155,30 @@ header {
   /* Wechselt beim Hover sanft zu deinem Accent-Farbton */
   filter: invert(36%) sepia(51%) saturate(1280%) hue-rotate(334deg) brightness(92%) contrast(88%);
 }
+/* Zähler Badge in der Header-Navigation */
+.nav-counter {
+  background-color: var(--accent);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 10px;
+  margin-left: 4px;
+  display: inline-block;
+  min-width: 12px;
+  text-align: center;
+}
+
+/* Aktiver Zustand für den Herz-Button auf den Buchkarten */
+.fav-btn.active {
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+
+.fav-btn.active img,
+.fav-btn.active .svg-icon {
+  filter: brightness(0) invert(1) !important; /* Macht das SVG weiß */
+}
 
 /* 3. Dropdown Navigation */
 .dropdown-navigation {
