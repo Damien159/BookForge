@@ -179,6 +179,20 @@ header {
 .fav-btn.active .svg-icon {
   filter: brightness(0) invert(1) !important; /* Macht das SVG weiß */
 }
+/* Styling für den Warenkorb-Preis & Badge im Header */
+.nav-price {
+  font-weight: 700;
+  color: var(--accent);
+  margin-left: 4px;
+  font-size: 12px;
+}
+
+/* Visuelles Feedback, wenn ein Buch in den Warenkorb gelegt wird */
+.cart-btn.added {
+  background-color: #2e7d32 !important;
+  border-color: #2e7d32 !important;
+  color: #ffffff !important;
+}
 
 /* 3. Dropdown Navigation */
 .dropdown-navigation {
