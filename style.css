@@ -824,4 +824,18 @@ footer {
       margin-top: 4px;
     }
 
+    .cart-item-controls {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .quantity-control {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--secondary);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
     
