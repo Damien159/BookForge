@@ -792,4 +792,21 @@ footer {
       gap: 15px;
     }
 
+    .cart-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #ffffff;
+      padding: 18px 20px;
+      border-radius: 10px;
+      border: 1px solid rgba(139, 111, 71, 0.15);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .cart-item-info {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
     
