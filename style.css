@@ -809,4 +809,19 @@ footer {
       gap: 20px;
     }
 
+    .cart-item-title {
+      font-family: Georgia, serif;
+      font-weight: 700;
+      color: var(--text);
+      font-size: 1.1rem;
+      margin: 0;
+    }
+
+    .cart-item-price {
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 1rem;
+      margin-top: 4px;
+    }
+
     
