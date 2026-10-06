@@ -838,4 +838,25 @@ footer {
       overflow: hidden;
     }
 
+    .quantity-btn {
+      background: var(--background);
+      border: none;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-weight: bold;
+      color: var(--primary);
+      transition: background 0.2s;
+    }
+
+    .quantity-btn:hover {
+      background: rgba(139, 111, 71, 0.2);
+    }
+
+    .quantity-value {
+      padding: 6px 12px;
+      font-weight: 600;
+      min-width: 20px;
+      text-align: center;
+    }
+
     
