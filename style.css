@@ -909,4 +909,42 @@ footer {
       margin-top: 16px;
     }
 
-    
+    .checkout-btn {
+      width: 100%;
+      background: var(--accent);
+      color: #ffffff;
+      border: none;
+      padding: 14px;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background 0.2s;
+    }
+
+    .checkout-btn:hover {
+      background: var(--primary);
+    }
+
+    .empty-message {
+      text-align: center;
+      padding: 50px 0;
+      color: #777;
+    }
+
+    .empty-message a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      .cart-layout {
+        flex-direction: column;
+      }
+      .cart-summary {
+        width: 100%;
+        box-sizing: border-border-box;
+      }
+    }
