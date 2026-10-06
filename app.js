@@ -442,9 +442,7 @@ function addToCart(bookData, button) {
   setTimeout(() => button.classList.remove('added'), 800);
 }
 
-/* ------------------------------------------
-   MERKLISTEN LOGIK
------------------------------------------- */
+/*MERKLISTEN LOGIK*/
 function getWishlist() {
   try {
     return JSON.parse(localStorage.getItem('bookforge_wishlist')) || [];
@@ -478,3 +476,68 @@ function toggleWishlist(bookTitle, button) {
   localStorage.setItem('bookforge_wishlist', JSON.stringify(wishlist));
   updateWishlistUI();
 }
+
+/*Waremkorb Logik*/
+// Rendern der Warenkorb-Seite
+    function renderCartPage() {
+      const cartContent = document.getElementById('cart-content');
+      const cart = getCart();
+
+      if (!cart || cart.length === 0) {
+        cartContent.innerHTML = `
+          <div class="empty-message" style="width: 100%;">
+            <h2>Dein Warenkorb ist leer.</h2>
+            <p>Stöbere in unserem Sortiment und füge deine Lieblingsbücher hinzu!</p>
+            <a href="index.html">Zurück zur Startseite</a>
+          </div>`;
+        return;
+      }
+
+      let itemsHTML = '<div class="cart-items-list">';
+      let totalSum = 0;
+
+      cart.forEach((item, index) => {
+        const itemTotal = item.price * (item.quantity || 1);
+        totalSum += itemTotal;
+
+        itemsHTML += `
+          <div class="cart-item">
+            <div class="cart-item-info">
+              <div>
+                <h3 class="cart-item-title">${item.title}</h3>
+                <div class="cart-item-price">${item.price.toFixed(2).replace('.', ',')} €</div>
+              </div>
+            </div>
+            <div class="cart-item-controls">
+              <div class="quantity-control">
+                <button class="quantity-btn" onclick="changeQuantity(${index}, -1)">-</button>
+                <span class="quantity-value">${item.quantity || 1}</span>
+                <button class="quantity-btn" onclick="changeQuantity(${index}, 1)">+</button>
+              </div>
+              <button class="remove-btn" onclick="removeItem(${index})" title="Entfernen">&times;</button>
+            </div>
+          </div>`;
+      });
+      itemsHTML += '</div>';
+
+      const summaryHTML = `
+        <div class="cart-summary">
+          <h3>Zusammenfassung</h3>
+          <div class="summary-row">
+            <span>Zwischensumme</span>
+            <span>${totalSum.toFixed(2).replace('.', ',')} €</span>
+          </div>
+          <div class="summary-row">
+            <span>Versandkosten</span>
+            <span>Kostenlos</span>
+          </div>
+          <div class="summary-row total">
+            <span>Gesamtsumme</span>
+            <span>${totalSum.toFixed(2).replace('.', ',')} €</span>
+          </div>
+          <button class="checkout-btn">Zur Kasse gehen</button>
+        </div>`;
+
+      cartContent.innerHTML = itemsHTML + summaryHTML;
+    }
+
