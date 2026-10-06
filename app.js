@@ -541,3 +541,28 @@ function toggleWishlist(bookTitle, button) {
       cartContent.innerHTML = itemsHTML + summaryHTML;
     }
 
+    function changeQuantity(index, delta) {
+      let cart = getCart();
+      if (!cart[index]) return;
+
+      cart[index].quantity = (cart[index].quantity || 1) + delta;
+      if (cart[index].quantity <= 0) {
+        cart.splice(index, 1);
+      }
+
+      localStorage.setItem('bookforge_cart', JSON.stringify(cart));
+      updateAllUI();
+      renderCartPage();
+    }
+
+    function removeItem(index) {
+      let cart = getCart();
+      cart.splice(index, 1);
+      localStorage.setItem('bookforge_cart', JSON.stringify(cart));
+      updateAllUI();
+      renderCartPage();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCartPage();
+    });
