@@ -1,63 +1,74 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Warenkorb | BookForge</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <!-- FIXED HEADER -->
-  <header>
-    <div class="top-bar">
-      <span>Willkommen bei BookForge</span>
-      <div>
-        <a href="#">Hilfe</a>
-        <a href="#">Kontakt</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Warenkorb | BookForge</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- FIXED HEADER -->
+    <header>
+      <div class="top-bar">
+        <span>Willkommen bei BookForge</span>
+        <div>
+          <a href="#">Hilfe</a>
+          <a href="#">Kontakt</a>
+        </div>
       </div>
-    </div>
-    <div class="main-header">
-      <a href="index.html" class="logo">BookForge</a>
-      <div class="search-container">
-        <select class="category-select">
-          <option>Alle Kategorien</option>
-        </select>
-        <input type="text" placeholder="Titel, Autor oder ISBN suchen...">
-        <button class="search-button">Suchen</button>
+      <div class="main-header">
+        <a href="index.html" class="logo">BookForge</a>
+        <div class="search-container">
+          <select class="category-select">
+            <option>Alle Kategorien</option>
+          </select>
+          <input type="text" placeholder="Titel, Autor oder ISBN suchen..." />
+          <button class="search-button">Suchen</button>
+        </div>
+        <nav class="user-navigation">
+          <ul>
+            <li>
+              <a href="merkliste.html">
+                <img
+                  src="svg/Heart.svg"
+                  alt="Merkliste"
+                  class="header-svg-icon"
+                />
+                <span
+                  >Merkliste
+                  <span id="wishlist-counter" class="nav-counter">0</span></span
+                >
+              </a>
+            </li>
+            <li>
+              <a href="warenkorb.html">
+                <img
+                  src="svg/Buy-Cart.svg"
+                  alt="Warenkorb"
+                  class="header-svg-icon"
+                />
+                <span>
+                  Warenkorb
+                  <span id="cart-counter" class="nav-counter">0</span>
+                  <span id="cart-total" class="nav-price">0,00 €</span>
+                </span>
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
-      <nav class="user-navigation">
-        <ul>
-          <li>
-            <a href="merkliste.html">
-              <img src="svg/Heart.svg" alt="Merkliste" class="header-svg-icon" />
-              <span>Merkliste <span id="wishlist-counter" class="nav-counter">0</span></span>
-            </a>
-          </li>
-          <li>
-            <a href="warenkorb.html">
-              <img src="svg/Buy-Cart.svg" alt="Warenkorb" class="header-svg-icon" />
-              <span>
-                Warenkorb
-                <span id="cart-counter" class="nav-counter">0</span>
-                <span id="cart-total" class="nav-price">0,00 €</span>
-              </span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+    </header>
 
-  <!-- HAUPTINHALT -->
-  <main class="cart-page-container">
-    <h1 class="cart-page-title">Dein Warenkorb</h1>
+    <!-- HAUPTINHALT -->
+    <main class="cart-page-container">
+      <h1 class="cart-page-title">Dein Warenkorb</h1>
 
-    <div id="cart-content" class="cart-layout">
-      <!-- Wird dynamisch befüllt -->
-    </div>
-  </main>
+      <div id="cart-content" class="cart-layout">
+        <!-- Wird dynamisch befüllt -->
+      </div>
+    </main>
 
-  <footer>
+    <footer>
       <div class="footer-container">
         <div class="footer-links">
           <h4>Services & Hilfe</h4>
@@ -107,6 +118,6 @@
       <p class="copyright">&copy; 2026 BookForge. Alle Rechte vorbehalten.</p>
     </footer>
 
-  <script src="app.js"></script>
-</body>
+    <script src="app.js"></script>
+  </body>
 </html>

@@ -10,7 +10,7 @@ async function fetchAndRenderBooks(section, customQuery = null) {
 
   try {
     const response = await fetch(
-      `https://openlibrary.org/search.json?q=${encodeURIComponent(query)}&limit=8`
+      `https://openlibrary.org/search.json?q=${encodeURIComponent(query)}&limit=8`,
     );
     const data = await response.json();
 
@@ -133,7 +133,7 @@ async function initDetailPage() {
 
   try {
     const response = await fetch(
-      `https://openlibrary.org/works/${workKey}.json`
+      `https://openlibrary.org/works/${workKey}.json`,
     );
     if (!response.ok) throw new Error("Buch nicht gefunden");
     const bookData = await response.json();
@@ -156,7 +156,11 @@ async function initDetailPage() {
     // 3. Cover setzen (mit Fallback, falls kein Bild vorhanden ist)
     const coverEl = document.getElementById("detail-cover");
     if (coverEl) {
-      if (bookData.covers && bookData.covers.length > 0 && bookData.covers[0] > 0) {
+      if (
+        bookData.covers &&
+        bookData.covers.length > 0 &&
+        bookData.covers[0] > 0
+      ) {
         coverEl.src = `https://covers.openlibrary.org/b/id/${bookData.covers[0]}-L.jpg`;
         coverEl.alt = bookData.title || "Buchcover";
       } else {
@@ -219,7 +223,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 // Beim Laden der Seite Merkliste initialisieren & Zähler aktualisieren
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   updateWishlistCounter();
   highlightActiveFavorites();
   setupFavoriteButtons();
@@ -230,13 +234,13 @@ document.addEventListener('DOMContentLoaded', () => {
 // ==========================================
 
 // 1. Zähler & Buttons sofort nach DOM-Load & bei Storage-Änderung updaten
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   initWishlist();
 });
 
 // Reagiert live, wenn sich der LocalStorage ändert (z. B. in einem anderen Tab)
-window.addEventListener('storage', (e) => {
-  if (e.key === 'bookforge_wishlist') {
+window.addEventListener("storage", (e) => {
+  if (e.key === "bookforge_wishlist") {
     updateWishlistUI();
   }
 });
@@ -249,7 +253,7 @@ function initWishlist() {
 // 2. Hilfsfunktion: Merkliste lesen
 function getWishlist() {
   try {
-    return JSON.parse(localStorage.getItem('bookforge_wishlist')) || [];
+    return JSON.parse(localStorage.getItem("bookforge_wishlist")) || [];
   } catch (e) {
     return [];
   }
@@ -260,19 +264,19 @@ function updateWishlistUI() {
   const wishlist = getWishlist();
 
   // Zähler im Header live updaten
-  const counterElement = document.getElementById('wishlist-counter');
+  const counterElement = document.getElementById("wishlist-counter");
   if (counterElement) {
     counterElement.textContent = wishlist.length;
   }
 
   // Alle Herz-Buttons prüfen und entsprechend einfärben
-  const favButtons = document.querySelectorAll('.fav-btn');
-  favButtons.forEach(btn => {
+  const favButtons = document.querySelectorAll(".fav-btn");
+  favButtons.forEach((btn) => {
     const bookId = getBookIdentifier(btn);
     if (bookId && wishlist.includes(bookId)) {
-      btn.classList.add('active');
+      btn.classList.add("active");
     } else {
-      btn.classList.remove('active');
+      btn.classList.remove("active");
     }
   });
 }
@@ -283,18 +287,20 @@ function getBookIdentifier(btnElement) {
   if (btnElement.dataset.id) return btnElement.dataset.id;
 
   // 2. Priorität: Titel aus der Karte oder Detailseite auslesen
-  const card = btnElement.closest('.buecher-card, .product-detail-container, .book-card-link');
+  const card = btnElement.closest(
+    ".buecher-card, .product-detail-container, .book-card-link",
+  );
   if (card) {
-    const titleEl = card.querySelector('h3, .detail-title, h2');
+    const titleEl = card.querySelector("h3, .detail-title, h2");
     if (titleEl) return titleEl.textContent.trim();
   }
   return null;
 }
 
 function setupClickEvents() {
-  document.body.addEventListener('click', (event) => {
-    const favBtn = event.target.closest('.fav-btn');
-    if (!favBtn) return; 
+  document.body.addEventListener("click", (event) => {
+    const favBtn = event.target.closest(".fav-btn");
+    if (!favBtn) return;
 
     event.preventDefault();
     event.stopPropagation();
@@ -305,12 +311,12 @@ function setupClickEvents() {
     let wishlist = getWishlist();
 
     if (wishlist.includes(bookId)) {
-      wishlist = wishlist.filter(id => id !== bookId);
+      wishlist = wishlist.filter((id) => id !== bookId);
     } else {
       wishlist.push(bookId);
     }
 
-    localStorage.setItem('bookforge_wishlist', JSON.stringify(wishlist));
+    localStorage.setItem("bookforge_wishlist", JSON.stringify(wishlist));
     updateWishlistUI();
   });
 }
@@ -318,13 +324,13 @@ function setupClickEvents() {
 // LIVE WARENKORB & MERKLISTEN LOGIK
 // ==========================================
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   initApp();
 });
 
 // Reagiert live bei Änderungen in anderen Tabs
-window.addEventListener('storage', (e) => {
-  if (e.key === 'bookforge_wishlist' || e.key === 'bookforge_cart') {
+window.addEventListener("storage", (e) => {
+  if (e.key === "bookforge_wishlist" || e.key === "bookforge_cart") {
     updateAllUI();
   }
 });
@@ -345,7 +351,7 @@ function updateAllUI() {
 ------------------------------------------ */
 function getCart() {
   try {
-    return JSON.parse(localStorage.getItem('bookforge_cart')) || [];
+    return JSON.parse(localStorage.getItem("bookforge_cart")) || [];
   } catch (e) {
     return [];
   }
@@ -356,34 +362,43 @@ function updateCartUI() {
 
   // 1. Anzahl der Artikel berechnen
   const totalCount = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
-  const counterEl = document.getElementById('cart-counter');
+  const counterEl = document.getElementById("cart-counter");
   if (counterEl) counterEl.textContent = totalCount;
 
   // 2. Gesamtsumme berechnen
-  const totalPrice = cart.reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0);
-  const priceEl = document.getElementById('cart-total');
+  const totalPrice = cart.reduce(
+    (sum, item) => sum + item.price * (item.quantity || 1),
+    0,
+  );
+  const priceEl = document.getElementById("cart-total");
   if (priceEl) {
-    priceEl.textContent = totalPrice.toLocaleString('de-DE', {
-      style: 'currency',
-      currency: 'EUR'
+    priceEl.textContent = totalPrice.toLocaleString("de-DE", {
+      style: "currency",
+      currency: "EUR",
     });
   }
 }
 
 // Hilfsfunktion: Buch-Daten (Titel & Preis) von der Karte auslesen
 function getBookData(element) {
-  const card = element.closest('.buecher-card, .product-detail-container, .book-card-link');
+  const card = element.closest(
+    ".buecher-card, .product-detail-container, .book-card-link",
+  );
   if (!card) return null;
 
   // Titel ermitteln
-  const titleEl = card.querySelector('h3, .detail-title, h2');
-  const title = element.dataset.id || (titleEl ? titleEl.textContent.trim() : null);
+  const titleEl = card.querySelector("h3, .detail-title, h2");
+  const title =
+    element.dataset.id || (titleEl ? titleEl.textContent.trim() : null);
 
   // Preis ermitteln & in eine Zahl umwandeln (z.B. "14,99 €" -> 14.99)
-  const priceEl = card.querySelector('.price, .detail-price, p.price');
+  const priceEl = card.querySelector(".price, .detail-price, p.price");
   let price = 0;
   if (priceEl) {
-    const priceText = priceEl.textContent.replace('€', '').replace(',', '.').trim();
+    const priceText = priceEl.textContent
+      .replace("€", "")
+      .replace(",", ".")
+      .trim();
     price = parseFloat(priceText) || 0;
   }
 
@@ -395,10 +410,9 @@ function getBookData(element) {
    GLOBALER EVENT DELEGATION LISTENER
 ------------------------------------------ */
 function setupGlobalClickEvents() {
-  document.body.addEventListener('click', (event) => {
-    
+  document.body.addEventListener("click", (event) => {
     // 1. Klick auf Merklisten-Button (Herz)
-    const favBtn = event.target.closest('.fav-btn');
+    const favBtn = event.target.closest(".fav-btn");
     if (favBtn) {
       event.preventDefault();
       event.stopPropagation();
@@ -408,7 +422,7 @@ function setupGlobalClickEvents() {
     }
 
     // 2. Klick auf Warenkorb-Button
-    const cartBtn = event.target.closest('.cart-btn');
+    const cartBtn = event.target.closest(".cart-btn");
     if (cartBtn) {
       event.preventDefault();
       event.stopPropagation();
@@ -422,7 +436,7 @@ function setupGlobalClickEvents() {
 // Warenkorb Logik: Artikel hinzufügen
 function addToCart(bookData, button) {
   let cart = getCart();
-  const existingIndex = cart.findIndex(item => item.title === bookData.title);
+  const existingIndex = cart.findIndex((item) => item.title === bookData.title);
 
   if (existingIndex > -1) {
     cart[existingIndex].quantity = (cart[existingIndex].quantity || 1) + 1;
@@ -430,22 +444,22 @@ function addToCart(bookData, button) {
     cart.push({
       title: bookData.title,
       price: bookData.price,
-      quantity: 1
+      quantity: 1,
     });
   }
 
-  localStorage.setItem('bookforge_cart', JSON.stringify(cart));
+  localStorage.setItem("bookforge_cart", JSON.stringify(cart));
   updateCartUI();
 
   // Kurzzeitiges visuelles Feedback am Button
-  button.classList.add('added');
-  setTimeout(() => button.classList.remove('added'), 800);
+  button.classList.add("added");
+  setTimeout(() => button.classList.remove("added"), 800);
 }
 
 /*MERKLISTEN LOGIK*/
 function getWishlist() {
   try {
-    return JSON.parse(localStorage.getItem('bookforge_wishlist')) || [];
+    return JSON.parse(localStorage.getItem("bookforge_wishlist")) || [];
   } catch (e) {
     return [];
   }
@@ -453,15 +467,15 @@ function getWishlist() {
 
 function updateWishlistUI() {
   const wishlist = getWishlist();
-  const counterEl = document.getElementById('wishlist-counter');
+  const counterEl = document.getElementById("wishlist-counter");
   if (counterEl) counterEl.textContent = wishlist.length;
 
-  document.querySelectorAll('.fav-btn').forEach(btn => {
+  document.querySelectorAll(".fav-btn").forEach((btn) => {
     const bookData = getBookData(btn);
     if (bookData && wishlist.includes(bookData.title)) {
-      btn.classList.add('active');
+      btn.classList.add("active");
     } else {
-      btn.classList.remove('active');
+      btn.classList.remove("active");
     }
   });
 }
@@ -469,43 +483,43 @@ function updateWishlistUI() {
 function toggleWishlist(bookTitle, button) {
   let wishlist = getWishlist();
   if (wishlist.includes(bookTitle)) {
-    wishlist = wishlist.filter(id => id !== bookTitle);
+    wishlist = wishlist.filter((id) => id !== bookTitle);
   } else {
     wishlist.push(bookTitle);
   }
-  localStorage.setItem('bookforge_wishlist', JSON.stringify(wishlist));
+  localStorage.setItem("bookforge_wishlist", JSON.stringify(wishlist));
   updateWishlistUI();
 }
 
 /*Waremkorb Logik*/
 // Rendern der Warenkorb-Seite
-    function renderCartPage() {
-      const cartContent = document.getElementById('cart-content');
-      const cart = getCart();
+function renderCartPage() {
+  const cartContent = document.getElementById("cart-content");
+  const cart = getCart();
 
-      if (!cart || cart.length === 0) {
-        cartContent.innerHTML = `
+  if (!cart || cart.length === 0) {
+    cartContent.innerHTML = `
           <div class="empty-message" style="width: 100%;">
             <h2>Dein Warenkorb ist leer.</h2>
             <p>Stöbere in unserem Sortiment und füge deine Lieblingsbücher hinzu!</p>
             <a href="index.html">Zurück zur Startseite</a>
           </div>`;
-        return;
-      }
+    return;
+  }
 
-      let itemsHTML = '<div class="cart-items-list">';
-      let totalSum = 0;
+  let itemsHTML = '<div class="cart-items-list">';
+  let totalSum = 0;
 
-      cart.forEach((item, index) => {
-        const itemTotal = item.price * (item.quantity || 1);
-        totalSum += itemTotal;
+  cart.forEach((item, index) => {
+    const itemTotal = item.price * (item.quantity || 1);
+    totalSum += itemTotal;
 
-        itemsHTML += `
+    itemsHTML += `
           <div class="cart-item">
             <div class="cart-item-info">
               <div>
                 <h3 class="cart-item-title">${item.title}</h3>
-                <div class="cart-item-price">${item.price.toFixed(2).replace('.', ',')} €</div>
+                <div class="cart-item-price">${item.price.toFixed(2).replace(".", ",")} €</div>
               </div>
             </div>
             <div class="cart-item-controls">
@@ -517,15 +531,15 @@ function toggleWishlist(bookTitle, button) {
               <button class="remove-btn" onclick="removeItem(${index})" title="Entfernen">&times;</button>
             </div>
           </div>`;
-      });
-      itemsHTML += '</div>';
+  });
+  itemsHTML += "</div>";
 
-      const summaryHTML = `
+  const summaryHTML = `
         <div class="cart-summary">
           <h3>Zusammenfassung</h3>
           <div class="summary-row">
             <span>Zwischensumme</span>
-            <span>${totalSum.toFixed(2).replace('.', ',')} €</span>
+            <span>${totalSum.toFixed(2).replace(".", ",")} €</span>
           </div>
           <div class="summary-row">
             <span>Versandkosten</span>
@@ -533,58 +547,58 @@ function toggleWishlist(bookTitle, button) {
           </div>
           <div class="summary-row total">
             <span>Gesamtsumme</span>
-            <span>${totalSum.toFixed(2).replace('.', ',')} €</span>
+            <span>${totalSum.toFixed(2).replace(".", ",")} €</span>
           </div>
           <button class="checkout-btn">Zur Kasse gehen</button>
         </div>`;
 
-      cartContent.innerHTML = itemsHTML + summaryHTML;
-    }
+  cartContent.innerHTML = itemsHTML + summaryHTML;
+}
 
-    function changeQuantity(index, delta) {
-      let cart = getCart();
-      if (!cart[index]) return;
+function changeQuantity(index, delta) {
+  let cart = getCart();
+  if (!cart[index]) return;
 
-      cart[index].quantity = (cart[index].quantity || 1) + delta;
-      if (cart[index].quantity <= 0) {
-        cart.splice(index, 1);
-      }
+  cart[index].quantity = (cart[index].quantity || 1) + delta;
+  if (cart[index].quantity <= 0) {
+    cart.splice(index, 1);
+  }
 
-      localStorage.setItem('bookforge_cart', JSON.stringify(cart));
-      updateAllUI();
-      renderCartPage();
-    }
+  localStorage.setItem("bookforge_cart", JSON.stringify(cart));
+  updateAllUI();
+  renderCartPage();
+}
 
-    function removeItem(index) {
-      let cart = getCart();
-      cart.splice(index, 1);
-      localStorage.setItem('bookforge_cart', JSON.stringify(cart));
-      updateAllUI();
-      renderCartPage();
-    }
+function removeItem(index) {
+  let cart = getCart();
+  cart.splice(index, 1);
+  localStorage.setItem("bookforge_cart", JSON.stringify(cart));
+  updateAllUI();
+  renderCartPage();
+}
 
-    document.addEventListener('DOMContentLoaded', () => {
-      renderCartPage();
-    });
-    /*Merklsite inhalt*/
+document.addEventListener("DOMContentLoaded", () => {
+  renderCartPage();
+});
+/*Merklsite inhalt*/
 
-    function renderWishlistPage() {
-      const grid = document.getElementById('wishlist-grid');
-      const wishlist = getWishlist();
+function renderWishlistPage() {
+  const grid = document.getElementById("wishlist-grid");
+  const wishlist = getWishlist();
 
-      if (!wishlist || wishlist.length === 0) {
-        grid.innerHTML = `
+  if (!wishlist || wishlist.length === 0) {
+    grid.innerHTML = `
           <div class="empty-message">
             <h2>Deine Merkliste ist noch leer.</h2>
             <p>Klicke auf das Herz-Symbol bei Büchern, die dir gefallen, um sie für später zu speichern.</p>
             <a href="index.html">Jetzt Bücher entdecken</a>
           </div>`;
-        return;
-      }
+    return;
+  }
 
-      let gridHTML = '';
-      wishlist.forEach(title => {
-        gridHTML += `
+  let gridHTML = "";
+  wishlist.forEach((title) => {
+    gridHTML += `
           <div class="buecher-card wishlist-card">
             <button class="remove-wish-btn" onclick="removeFromWishlistPage('${title}')" title="Von Merkliste entfernen">&times;</button>
             <h3>${title}</h3>
@@ -595,19 +609,19 @@ function toggleWishlist(bookTitle, button) {
               </button>
             </div>
           </div>`;
-      });
+  });
 
-      grid.innerHTML = gridHTML;
-    }
+  grid.innerHTML = gridHTML;
+}
 
-    function removeFromWishlistPage(title) {
-      let wishlist = getWishlist();
-      wishlist = wishlist.filter(t => t !== title);
-      localStorage.setItem('bookforge_wishlist', JSON.stringify(wishlist));
-      updateAllUI();
-      renderWishlistPage();
-    }
+function removeFromWishlistPage(title) {
+  let wishlist = getWishlist();
+  wishlist = wishlist.filter((t) => t !== title);
+  localStorage.setItem("bookforge_wishlist", JSON.stringify(wishlist));
+  updateAllUI();
+  renderWishlistPage();
+}
 
-    document.addEventListener('DOMContentLoaded', () => {
-      renderWishlistPage();
-    });
+document.addEventListener("DOMContentLoaded", () => {
+  renderWishlistPage();
+});
