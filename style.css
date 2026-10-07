@@ -994,3 +994,33 @@ footer {
   position: relative;
 }
 
+.wishlist-card .remove-wish-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--secondary);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: var(--accent);
+  z-index: 10;
+}
+
+.empty-message {
+  text-align: center;
+  padding: 50px 0;
+  color: #777;
+  grid-column: 1 / -1;
+}
+
+.empty-message a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: bold;
+}
