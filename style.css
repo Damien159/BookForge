@@ -984,3 +984,13 @@ footer {
   margin-bottom: 30px;
 }
 
+.wishlist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+.wishlist-card {
+  position: relative;
+}
+
