@@ -600,4 +600,14 @@ function toggleWishlist(bookTitle, button) {
       grid.innerHTML = gridHTML;
     }
 
-    
+    function removeFromWishlistPage(title) {
+      let wishlist = getWishlist();
+      wishlist = wishlist.filter(t => t !== title);
+      localStorage.setItem('bookforge_wishlist', JSON.stringify(wishlist));
+      updateAllUI();
+      renderWishlistPage();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderWishlistPage();
+    });
