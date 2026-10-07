@@ -566,3 +566,38 @@ function toggleWishlist(bookTitle, button) {
     document.addEventListener('DOMContentLoaded', () => {
       renderCartPage();
     });
+    /*Merklsite inhalt*/
+
+    function renderWishlistPage() {
+      const grid = document.getElementById('wishlist-grid');
+      const wishlist = getWishlist();
+
+      if (!wishlist || wishlist.length === 0) {
+        grid.innerHTML = `
+          <div class="empty-message">
+            <h2>Deine Merkliste ist noch leer.</h2>
+            <p>Klicke auf das Herz-Symbol bei Büchern, die dir gefallen, um sie für später zu speichern.</p>
+            <a href="index.html">Jetzt Bücher entdecken</a>
+          </div>`;
+        return;
+      }
+
+      let gridHTML = '';
+      wishlist.forEach(title => {
+        gridHTML += `
+          <div class="buecher-card wishlist-card">
+            <button class="remove-wish-btn" onclick="removeFromWishlistPage('${title}')" title="Von Merkliste entfernen">&times;</button>
+            <h3>${title}</h3>
+            <p class="author">Gemerktes Buch</p>
+            <div class="button-group" style="margin-top: auto; padding-top: 10px;">
+              <button class="cart-btn" data-id="${title}" title="In den Warenkorb">
+                <img src="svg/Buy-Cart.svg" alt="Warenkorb" class="svg-icon">
+              </button>
+            </div>
+          </div>`;
+      });
+
+      grid.innerHTML = gridHTML;
+    }
+
+    
