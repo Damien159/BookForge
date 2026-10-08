@@ -1024,3 +1024,8 @@ footer {
   text-decoration: none;
   font-weight: bold;
 }
+/* USER PROFILE DROPDOWN STYLES*/
+.profile-nav-item {
+  position: relative;
+}
+
