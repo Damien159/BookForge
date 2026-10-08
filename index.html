@@ -65,15 +65,91 @@
                 </span>
               </a>
             </li>
-            <li>
-              <a href="#">
+            <li class="profile-nav-item">
+              <a href="#" id="profile-link">
                 <img
                   src="svg/Profil.svg"
                   alt="Mein Konto"
                   class="header-svg-icon"
                 />
-                <span>Mein Konto</span>
+                <span id="profile-nav-text">Mein Konto</span>
               </a>
+
+              <!-- Hover-Dropdown Formular -->
+              <div class="profile-dropdown" id="profile-dropdown">
+                <!-- 1. FORMULARE FÜR ANMELDUNG & REGISTRIERUNG -->
+                <div id="auth-forms">
+                  <!-- LOGIN FORMULAR -->
+                  <form id="login-form" class="auth-form">
+                    <h4>Anmelden</h4>
+                    <input
+                      type="text"
+                      id="login-username"
+                      placeholder="Benutzername oder E-Mail"
+                      required
+                    />
+                    <input
+                      type="password"
+                      id="login-password"
+                      placeholder="Passwort"
+                      required
+                    />
+                    <button type="submit" class="auth-btn">Einloggen</button>
+                    <p class="auth-toggle-text">
+                      Noch kein Konto?
+                      <a href="#" id="show-register-btn">Jetzt registrieren</a>
+                    </p>
+                  </form>
+
+                  <!-- REGISTRIERUNGS FORMULAR (initial ausgeblendet) -->
+                  <form
+                    id="register-form"
+                    class="auth-form"
+                    style="display: none"
+                  >
+                    <h4>Registrieren</h4>
+                    <input
+                      type="text"
+                      id="reg-username"
+                      placeholder="Benutzername"
+                      required
+                    />
+                    <input
+                      type="email"
+                      id="reg-email"
+                      placeholder="E-Mail"
+                      required
+                    />
+                    <input
+                      type="password"
+                      id="reg-password"
+                      placeholder="Passwort"
+                      required
+                    />
+                    <button type="submit" class="auth-btn">
+                      Konto erstellen
+                    </button>
+                    <p class="auth-toggle-text">
+                      Bereits ein Konto?
+                      <a href="#" id="show-login-btn">Anmelden</a>
+                    </p>
+                  </form>
+                </div>
+
+                <!-- 2. COCKPIT FÜR EINGELOGGTE USER (initial ausgeblendet) -->
+                <div id="user-info-box" style="display: none">
+                  <p class="user-welcome">
+                    Hallo, <strong id="user-display-name">User</strong>!
+                  </p>
+                  <ul class="user-menu-list">
+                    <li><a href="merkliste.html">Meine Merkliste</a></li>
+                    <li><a href="warenkorb.html">Mein Warenkorb</a></li>
+                  </ul>
+                  <button id="logout-btn" class="auth-btn logout">
+                    Abmelden
+                  </button>
+                </div>
+              </div>
             </li>
           </ul>
         </nav>
