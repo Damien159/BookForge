@@ -1049,3 +1049,19 @@ footer {
   transition: all 0.25s ease-in-out;
 }
 
+/* Hover-Effekt: Zeigt das Dropdown sanft an */
+.profile-nav-item:hover .profile-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.profile-dropdown h4 {
+  font-family: Georgia, serif;
+  color: var(--primary);
+  margin: 0 0 15px 0;
+  font-size: 1.1rem;
+  border-bottom: 1px solid rgba(139, 111, 71, 0.15);
+  padding-bottom: 8px;
+}
+
