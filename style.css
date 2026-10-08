@@ -1124,3 +1124,29 @@ footer {
   font-weight: bold;
 }
 
+.user-welcome {
+  font-size: 1rem;
+  color: var(--text);
+  margin: 0 0 15px 0;
+}
+
+.user-menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.user-menu-list li {
+  margin-bottom: 8px;
+}
+
+.user-menu-list a {
+  color: var(--primary);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+.user-menu-list a:hover {
+  color: var(--accent);
+}
