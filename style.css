@@ -1029,3 +1029,23 @@ footer {
   position: relative;
 }
 
+/* Dropdown Container */
+.profile-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 280px;
+  background: #ffffff;
+  border: 1px solid rgba(139, 111, 71, 0.2);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  padding: 20px;
+  z-index: 1000;
+  
+  /* Unsichtbar im Standard-Zustand */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.25s ease-in-out;
+}
+
