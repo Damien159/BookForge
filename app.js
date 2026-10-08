@@ -625,3 +625,11 @@ function removeFromWishlistPage(title) {
 document.addEventListener("DOMContentLoaded", () => {
   renderWishlistPage();
 });
+
+// BENUTZER-VERWALTUNG & USER-STORAGE LOGIK
+
+// Hilfsfunktion: Aktuell eingeloggten User ermitteln
+function getCurrentUser() {
+  return localStorage.getItem('bookforge_logged_in_user') || null;
+}
+
