@@ -811,3 +811,27 @@ function mergeGuestDataToUser(username) {
   }
 }
 
+// Aktualisiert den Zustand der Header-Anzeige
+function updateUserInterface() {
+  const currentUser = getCurrentUser();
+  const authForms = document.getElementById('auth-forms');
+  const userInfoBox = document.getElementById('user-info-box');
+  const profileNavText = document.getElementById('profile-nav-text');
+  const userDisplayName = document.getElementById('user-display-name');
+
+  if (currentUser) {
+    if (authForms) authForms.style.display = 'none';
+    if (userInfoBox) userInfoBox.style.display = 'block';
+    if (profileNavText) profileNavText.textContent = currentUser;
+    if (userDisplayName) userDisplayName.textContent = currentUser;
+  } else {
+    if (authForms) authForms.style.display = 'block';
+    if (userInfoBox) userInfoBox.style.display = 'none';
+    if (profileNavText) profileNavText.textContent = 'Mein Konto';
+  }
+}
+
+// Event-Listener zum Seitenstart
+document.addEventListener('DOMContentLoaded', () => {
+  initAuth();
+});
