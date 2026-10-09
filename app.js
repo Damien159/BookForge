@@ -676,4 +676,103 @@ function initAuth() {
       if (regForm) regForm.style.display = 'flex';
     };
   }
+
+  // Umschalten zum Login
+  if (showLoginBtn) {
+    showLoginBtn.onclick = function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (regForm) regForm.style.display = 'none';
+      if (loginForm) loginForm.style.display = 'flex';
+    };
+  }
+
+  // Registrierung ausführen
+  if (regForm) {
+    regForm.onsubmit = function (e) {
+      e.preventDefault();
+
+      const usernameInput = document.getElementById('reg-username');
+      const emailInput = document.getElementById('reg-email');
+      const passwordInput = document.getElementById('reg-password');
+
+      if (!usernameInput || !emailInput || !passwordInput) return;
+
+      const username = usernameInput.value.trim();
+      const email = emailInput.value.trim();
+      const password = passwordInput.value;
+
+      let users = [];
+      try {
+        users = JSON.parse(localStorage.getItem('bookforge_users')) || [];
+      } catch (err) {
+        users = [];
+      }
+
+      const userExists = users.some(
+        u => u.username.toLowerCase() === username.toLowerCase() || u.email.toLowerCase() === email.toLowerCase()
+      );
+
+      if (userExists) {
+        alert('Benutzername oder E-Mail ist bereits vergeben!');
+        return;
+      }
+
+      users.push({ username, email, password });
+      localStorage.setItem('bookforge_users', JSON.stringify(users));
+
+      alert('Konto erfolgreich erstellt! Du kannst dich jetzt anmelden.');
+      regForm.reset();
+      regForm.style.display = 'none';
+      if (loginForm) loginForm.style.display = 'flex';
+    };
+  }
+
+  // Login ausführen
+  if (loginForm) {
+    loginForm.onsubmit = function (e) {
+      e.preventDefault();
+
+      const userInput = document.getElementById('login-username').value.trim();
+      const password = document.getElementById('login-password').value;
+
+      let users = [];
+      try {
+        users = JSON.parse(localStorage.getItem('bookforge_users')) || [];
+      } catch (err) {
+        users = [];
+      }
+
+      const user = users.find(
+        u => (u.username.toLowerCase() === userInput.toLowerCase() || u.email.toLowerCase() === userInput.toLowerCase()) && u.password === password
+      );
+
+      if (!user) {
+        alert('Ungültige Anmeldedaten!');
+        return;
+      }
+
+      mergeGuestDataToUser(user.username);
+      localStorage.setItem('bookforge_logged_in_user', user.username);
+
+      loginForm.reset();
+      updateUserInterface();
+      if (typeof updateAllUI === 'function') updateAllUI();
+      if (typeof renderCartPage === 'function') renderCartPage();
+      if (typeof renderWishlistPage === 'function') renderWishlistPage();
+    };
+  }
+
+  // Logout ausführen
+  const logoutBtn = document.getElementById('logout-btn');
+  if (logoutBtn) {
+    logoutBtn.onclick = function () {
+      localStorage.removeItem('bookforge_logged_in_user');
+      updateUserInterface();
+      if (typeof updateAllUI === 'function') updateAllUI();
+      if (typeof renderCartPage === 'function') renderCartPage();
+      if (typeof renderWishlistPage === 'function') renderWishlistPage();
+    };
+  }
 }
+
