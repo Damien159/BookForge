@@ -642,3 +642,19 @@ function getWishlistKey() {
   return user ? `bookforge_wishlist_${user}` : 'bookforge_wishlist_guest';
 }
 
+function getCart() {
+  try {
+    return JSON.parse(localStorage.getItem(getCartKey())) || [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function getWishlist() {
+  try {
+    return JSON.parse(localStorage.getItem(getWishlistKey())) || [];
+  } catch (e) {
+    return [];
+  }
+}
+
