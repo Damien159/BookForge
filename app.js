@@ -637,3 +637,8 @@ function getCartKey() {
   return user ? `bookforge_cart_${user}` : 'bookforge_cart_guest';
 }
 
+function getWishlistKey() {
+  const user = getCurrentUser();
+  return user ? `bookforge_wishlist_${user}` : 'bookforge_wishlist_guest';
+}
+
