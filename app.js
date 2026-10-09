@@ -658,3 +658,22 @@ function getWishlist() {
   }
 }
 
+// Umschalten, Anmelden, Registrieren und Abmelden
+function initAuth() {
+  updateUserInterface();
+
+  const showRegBtn = document.getElementById('show-register-btn');
+  const showLoginBtn = document.getElementById('show-login-btn');
+  const loginForm = document.getElementById('login-form');
+  const regForm = document.getElementById('register-form');
+
+  // Umschalten zur Registrierung
+  if (showRegBtn) {
+    showRegBtn.onclick = function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (loginForm) loginForm.style.display = 'none';
+      if (regForm) regForm.style.display = 'flex';
+    };
+  }
+}
