@@ -627,10 +627,13 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // BENUTZER-VERWALTUNG & USER-STORAGE LOGIK
-
-// Hilfsfunktion: Aktuell eingeloggten User ermitteln
+// Hilfsfunktionen für benutzerbezogenen LocalStorage
 function getCurrentUser() {
   return localStorage.getItem('bookforge_logged_in_user') || null;
 }
 
+function getCartKey() {
+  const user = getCurrentUser();
+  return user ? `bookforge_cart_${user}` : 'bookforge_cart_guest';
+}
 
