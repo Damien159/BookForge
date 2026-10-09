@@ -776,3 +776,38 @@ function initAuth() {
   }
 }
 
+// Überträgt die Gast-Artikel ins angemeldete Konto
+function mergeGuestDataToUser(username) {
+  const guestCart = JSON.parse(localStorage.getItem('bookforge_cart_guest')) || [];
+  const guestWishlist = JSON.parse(localStorage.getItem('bookforge_wishlist_guest')) || [];
+
+  if (guestCart.length > 0) {
+    const userCartKey = `bookforge_cart_${username}`;
+    let userCart = JSON.parse(localStorage.getItem(userCartKey)) || [];
+
+    guestCart.forEach(gItem => {
+      const idx = userCart.findIndex(uItem => uItem.title === gItem.title);
+      if (idx > -1) {
+        userCart[idx].quantity = (userCart[idx].quantity || 1) + (gItem.quantity || 1);
+      } else {
+        userCart.push(gItem);
+      }
+    });
+
+    localStorage.setItem(userCartKey, JSON.stringify(userCart));
+    localStorage.removeItem('bookforge_cart_guest');
+  }
+
+  if (guestWishlist.length > 0) {
+    const userWishlistKey = `bookforge_wishlist_${username}`;
+    let userWishlist = JSON.parse(localStorage.getItem(userWishlistKey)) || [];
+
+    guestWishlist.forEach(item => {
+      if (!userWishlist.includes(item)) userWishlist.push(item);
+    });
+
+    localStorage.setItem(userWishlistKey, JSON.stringify(userWishlist));
+    localStorage.removeItem('bookforge_wishlist_guest');
+  }
+}
+
