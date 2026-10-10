@@ -1802,3 +1802,22 @@ footer .copyright {
   background-color: #fafafa;
 }
 
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.order-items-list {
+  margin: 0;
+  padding-left: 20px;
+  color: #555555;
+}
+
+.order-total {
+  text-align: right;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
