@@ -1746,3 +1746,22 @@ footer .copyright {
   border-radius: 8px;
 }
 
+.center-box {
+  text-align: center;
+}
+
+/* Formular-Layout */
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+  margin-top: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
