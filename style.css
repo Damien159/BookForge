@@ -638,7 +638,6 @@ main {
   line-height: 1.3;
   overflow-wrap: anywhere;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
 }
 
 .buecher-card p {
@@ -1725,3 +1724,25 @@ footer .copyright {
     transition-duration: 0.01ms;
   }
 }
+/* PROFIL-SEITEN STYLES*/
+
+.profile-container {
+  max-width: 900px;
+  margin: 100px auto 40px auto; /* 60px Abstand nach oben */
+  padding: 0 20px;
+}
+
+.profile-section {
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  padding: 25px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.profile-box {
+  background: #f8f9fa;
+  padding: 30px;
+  border-radius: 8px;
+}
+
