@@ -774,3 +774,40 @@ function initProfilePage() {
   renderOrderHistory(currentUser);
 }
 
+function renderOrderHistory(username) {
+  const historyList = document.getElementById("order-history-list");
+  if (!historyList) return;
+
+  const ordersKey = `bookforge_orders_${username}`;
+  let orders = [];
+  try {
+    orders = JSON.parse(localStorage.getItem(ordersKey)) || [];
+  } catch (e) {
+    orders = [];
+  }
+
+  if (!orders || orders.length === 0) {
+    historyList.innerHTML = "<p>Du hast bisher noch keine Bestellungen aufgegeben.</p>";
+    return;
+  }
+
+  let html = "";
+  orders.forEach((order, idx) => {
+    html += `
+      <div class="order-card">
+        <div class="order-header">
+          <span>Bestellung #${orders.length - idx}</span>
+          <span>${order.date}</span>
+        </div>
+        <ul class="order-items-list">
+          ${order.items.map(item => `<li>${item.title} (${item.quantity}x) -${(item.price * item.quantity).toFixed(2).replace('.', ',')} €</li>`).join('')}
+        </ul>
+        <div class="order-total">
+          Gesamtsumme: ${order.total.toFixed(2).replace('.', ',')} €
+        </div>
+      </div>
+    `;
+  });
+
+  historyList.innerHTML = html;
+}
