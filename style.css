@@ -1782,3 +1782,23 @@ footer .copyright {
   cursor: not-allowed;
 }
 
+.hint-text {
+  color: #666666;
+  font-size: 0.85rem;
+}
+
+/* Bestellhistorie Cards */
+.order-list-container {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.order-card {
+  border: 1px solid #eeeeee;
+  padding: 15px;
+  border-radius: 6px;
+  background-color: #fafafa;
+}
+
