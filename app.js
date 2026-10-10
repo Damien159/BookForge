@@ -698,3 +698,79 @@ window.addEventListener("storage", () => {
   renderCartPage();
   renderWishlistPage();
 });
+
+// KORRIGIERTE PROFIL-SEITEN LOGIK
+
+function initProfilePage() {
+  const notLoggedInBox = document.getElementById("profile-not-logged-in");
+  const loggedInBox = document.getElementById("profile-logged-in");
+  
+  // Wenn wir nicht auf der Profilseite sind, abbrechen
+  if (!notLoggedInBox || !loggedInBox) return;
+
+  const currentUser = getCurrentUser();
+
+  // STRIKTE TRENNUNG: Entweder angemeldet ODER nicht angemeldet anzeigen
+  if (!currentUser) {
+    notLoggedInBox.style.display = "block";
+    loggedInBox.style.display = "none";
+    return;
+  } else {
+    notLoggedInBox.style.display = "none";
+    loggedInBox.style.display = "block";
+  }
+
+  // Benutzerdaten für Formular laden
+  let users = [];
+  try {
+    users = JSON.parse(localStorage.getItem("bookforge_users")) || [];
+  } catch (e) {
+    users = [];
+  }
+
+  const userAccount = users.find(u => u.username.toLowerCase() === currentUser.toLowerCase());
+
+  if (userAccount) {
+    const usernameInput = document.getElementById("profile-username");
+    const emailInput = document.getElementById("profile-email");
+    
+    if (usernameInput) usernameInput.value = userAccount.username;
+    if (emailInput) emailInput.value = userAccount.email || "";
+  }
+
+  // Profil-Update Event
+  const updateForm = document.getElementById("profile-update-form");
+  if (updateForm) {
+    updateForm.onsubmit = function (e) {
+      e.preventDefault();
+
+      const newEmail = document.getElementById("profile-email").value.trim();
+      const newPassword = document.getElementById("profile-password").value;
+
+      const userIndex = users.findIndex(u => u.username.toLowerCase() === currentUser.toLowerCase());
+      if (userIndex > -1) {
+        users[userIndex].email = newEmail;
+        if (newPassword) {
+          users[userIndex].password = newPassword;
+        }
+
+        localStorage.setItem("bookforge_users", JSON.stringify(users));
+        alert("Deine Profildaten wurden erfolgreich aktualisiert!");
+        document.getElementById("profile-password").value = "";
+      }
+    };
+  }
+
+  // Logout-Button Event
+  const profileLogoutBtn = document.getElementById("profile-logout-btn");
+  if (profileLogoutBtn) {
+    profileLogoutBtn.onclick = function () {
+      localStorage.removeItem("bookforge_logged_in_user");
+      window.location.href = "index.html";
+    };
+  }
+
+  // Bestellhistorie jetzt laden
+  renderOrderHistory(currentUser);
+}
+
