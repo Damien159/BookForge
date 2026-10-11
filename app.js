@@ -894,3 +894,56 @@ function initReviews(workKey) {
   renderReviews(workKey);
 }
 
+function renderReviews(workKey) {
+  const reviewsList = document.getElementById("reviews-list");
+  const avgRatingEl = document.getElementById("avg-rating");
+  const avgStarsEl = document.getElementById("avg-stars");
+  const totalCountEl = document.getElementById("total-reviews-count");
+
+  if (!reviewsList) return;
+
+  const reviewsKey = `bookforge_reviews_${workKey}`;
+  let reviews = [];
+  try {
+    reviews = JSON.parse(localStorage.getItem(reviewsKey)) || [];
+  } catch (e) {
+    reviews = [];
+  }
+
+  // Durchschnitt berechnen
+  if (reviews.length > 0) {
+    const totalSum = reviews.reduce((sum, r) => sum + r.rating, 0);
+    const avg = (totalSum / reviews.length).toFixed(1);
+    
+    if (avgRatingEl) avgRatingEl.textContent = avg;
+    if (totalCountEl) totalCountEl.textContent = `(${reviews.length} ${reviews.length === 1 ? 'Bewertung' : 'Bewertungen'})`;
+    if (avgStarsEl) avgStarsEl.textContent = "★".repeat(Math.round(avg)) + "☆".repeat(5 - Math.round(avg));
+  } else {
+    if (avgRatingEl) avgRatingEl.textContent = "0.0";
+    if (totalCountEl) totalCountEl.textContent = "(0 Bewertungen)";
+    if (avgStarsEl) avgStarsEl.textContent = "☆☆☆☆☆";
+  }
+
+  // Liste rendern
+  if (reviews.length === 0) {
+    reviewsList.innerHTML = "<p>Noch keine Bewertungen vorhanden. Sei der Erste!</p>";
+    return;
+  }
+
+  let html = "";
+  reviews.forEach((r) => {
+    const starStr = "★".repeat(r.rating) + "☆".repeat(5 - r.rating);
+    html += `
+      <div class="review-card">
+        <div class="review-header">
+          <span class="review-user">${r.username}</span>
+          <span class="review-date">${r.date}</span>
+        </div>
+        <div class="review-stars">${starStr}</div>
+        <p class="review-comment">${r.comment}</p>
+      </div>
+    `;
+  });
+
+  reviewsList.innerHTML = html;
+}
