@@ -1947,3 +1947,25 @@ footer .copyright {
   resize: vertical;
 }
 
+.review-form textarea:focus {
+  outline: none;
+  border-color: #3b2314;
+}
+
+/* Button im typischen BookForge-Braunton */
+.reviews-section .btn-primary {
+  background-color: #5c3a21;
+  color: #ffffff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+  align-self: flex-start;
+}
+
+.reviews-section .btn-primary:hover {
+  background-color: #3b2314;
+}
+
