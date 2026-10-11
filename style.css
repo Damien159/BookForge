@@ -1912,3 +1912,16 @@ footer .copyright {
   font-size: 1.2rem;
 }
 
+.star-rating-input {
+  display: flex;
+  gap: 8px;
+  font-size: 2.2rem;
+  cursor: pointer;
+  color: #d1c2b4;
+}
+
+.star-rating-input .star:hover,
+.star-rating-input .star.active {
+  color: #d4a373;
+}
+
