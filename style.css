@@ -1969,3 +1969,22 @@ footer .copyright {
   background-color: #3b2314;
 }
 
+.reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.review-card {
+  border: 1px solid #ebdccb;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
