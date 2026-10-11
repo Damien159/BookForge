@@ -21,7 +21,7 @@
       </div>
 
       <div class="main-header">
-        <a href="#" class="logo">BookForge</a>
+        <a href="index.html" class="logo">BookForge</a>
 
         <div class="search-container">
           <select class="category-select">
@@ -37,7 +37,7 @@
         <nav class="user-navigation">
           <ul>
             <li>
-              <a href="#">
+              <a href="merkliste.html">
                 <img
                   src="svg/Heart.svg"
                   alt="Merkliste"
@@ -47,7 +47,7 @@
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="warenkorb.html">
                 <img
                   src="svg/Buy-Cart.svg"
                   alt="Warenkorb"
@@ -57,7 +57,7 @@
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="profil.html">
                 <img
                   src="svg/Profil.svg"
                   alt="Mein Konto"
@@ -120,6 +120,7 @@
         </ul>
       </nav>
     </header>
+
     <main class="product-detail-container">
       <div class="product-main-info">
         <!-- Linke Spalte: Cover -->
@@ -160,7 +161,56 @@
           Beschreibung wird geladen...
         </p>
       </section>
+
+      <!-- BEWERTUNGS-BEREICH (Neu hinzugefügt) -->
+      <section class="reviews-section">
+        <h3>Kundenbewertungen</h3>
+
+        <!-- Gesamtwertung & Durchschnitt -->
+        <div class="rating-overview">
+          <div class="rating-score">
+            <span id="avg-rating">0.0</span> <span class="stars-display" id="avg-stars">☆☆☆☆☆</span>
+          </div>
+          <p id="total-reviews-count">(0 Bewertungen)</p>
+        </div>
+
+        <!-- Formular für neue Bewertung -->
+        <div id="review-form-container" class="review-form-box">
+          <h4>Bewertung schreiben</h4>
+          
+          <div id="review-not-logged-in" class="hint-box" style="display: none;">
+            <p>Bitte melde dich an, um eine Bewertung abzugeben.</p>
+          </div>
+
+          <form id="add-review-form" class="review-form" style="display: none;">
+            <div class="form-group">
+              <label>Deine Bewertung:</label>
+              <div class="star-rating-input">
+                <span class="star" data-value="1">★</span>
+                <span class="star" data-value="2">★</span>
+                <span class="star" data-value="3">★</span>
+                <span class="star" data-value="4">★</span>
+                <span class="star" data-value="5">★</span>
+              </div>
+              <input type="hidden" id="selected-rating" value="0" required>
+            </div>
+
+            <div class="form-group">
+              <label for="review-text">Dein Kommentar:</label>
+              <textarea id="review-text" rows="4" placeholder="Wie hat dir das Buch gefallen?" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Bewertung abschicken</button>
+          </form>
+        </div>
+
+        <!-- Liste der vorhandenen Bewertungen -->
+        <div id="reviews-list" class="reviews-list">
+          <p>Lade Bewertungen...</p>
+        </div>
+      </section>
     </main>
+
     <footer>
       <div class="footer-container">
         <div class="footer-links">
