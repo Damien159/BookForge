@@ -811,3 +811,86 @@ function renderOrderHistory(username) {
 
   historyList.innerHTML = html;
 }
+
+// BEWERTUNGSSYSTEM LOGIK
+
+function initReviews(workKey) {
+  const reviewsContainer = document.querySelector(".reviews-section");
+  if (!reviewsContainer || !workKey) return;
+
+  const currentUser = getCurrentUser();
+  const notLoggedInBox = document.getElementById("review-not-logged-in");
+  const reviewForm = document.getElementById("add-review-form");
+
+  // Formular-Anzeige je nach Login-Status steuern
+  if (currentUser) {
+    if (notLoggedInBox) notLoggedInBox.style.display = "none";
+    if (reviewForm) reviewForm.style.display = "flex";
+  } else {
+    if (notLoggedInBox) notLoggedInBox.style.display = "block";
+    if (reviewForm) reviewForm.style.display = "none";
+  }
+
+  // Interaktive Sterne-Auswahl
+  const stars = document.querySelectorAll(".star-rating-input .star");
+  const ratingInput = document.getElementById("selected-rating");
+
+  stars.forEach((star) => {
+    star.addEventListener("click", () => {
+      const val = parseInt(star.getAttribute("data-value"));
+      ratingInput.value = val;
+
+      stars.forEach((s) => {
+        const sVal = parseInt(s.getAttribute("data-value"));
+        if (sVal <= val) {
+          s.classList.add("active");
+        } else {
+          s.classList.remove("active");
+        }
+      });
+    });
+  });
+
+  // Formular-Absenden Event
+  if (reviewForm) {
+    reviewForm.onsubmit = function (e) {
+      e.preventDefault();
+
+      const ratingVal = parseInt(ratingInput.value);
+      const commentVal = document.getElementById("review-text").value.trim();
+
+      if (!ratingVal || ratingVal === 0) {
+        alert("Bitte wähle mindestens 1 Stern aus.");
+        return;
+      }
+
+      const reviewsKey = `bookforge_reviews_${workKey}`;
+      let reviews = [];
+      try {
+        reviews = JSON.parse(localStorage.getItem(reviewsKey)) || [];
+      } catch (err) {
+        reviews = [];
+      }
+
+      const newReview = {
+        username: currentUser,
+        rating: ratingVal,
+        comment: commentVal,
+        date: new Date().toLocaleDateString("de-DE")
+      };
+
+      reviews.unshift(newReview);
+      localStorage.setItem(reviewsKey, JSON.stringify(reviews));
+
+      // Zurücksetzen
+      reviewForm.reset();
+      ratingInput.value = "0";
+      stars.forEach((s) => s.classList.remove("active"));
+
+      renderReviews(workKey);
+    };
+  }
+
+  renderReviews(workKey);
+}
+
