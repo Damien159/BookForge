@@ -1887,3 +1887,9 @@ footer .copyright {
   color: #3b2314;
 }
 
+.stars-display {
+  color: #d4a373; /* Sanftes Gold/Braun passend zum Shop */
+  font-size: 1.6rem;
+  letter-spacing: 2px;
+}
+
