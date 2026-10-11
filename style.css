@@ -1893,3 +1893,22 @@ footer .copyright {
   letter-spacing: 2px;
 }
 
+#total-reviews-count {
+  color: #6b5b52;
+  font-size: 0.95rem;
+}
+
+.review-form-box {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 8px;
+  border: 1px solid #ebdccb;
+  margin-bottom: 30px;
+}
+
+.review-form-box h4 {
+  color: #3b2314;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
