@@ -2004,3 +2004,15 @@ footer .copyright {
   font-size: 1.1rem;
 }
 
+.review-comment {
+  color: #4a3f35;
+  line-height: 1.5;
+}
+
+.hint-box {
+  padding: 15px;
+  background: #f3eae1;
+  border-radius: 6px;
+  color: #5c3a21;
+  border-left: 4px solid #5c3a21;
+}
