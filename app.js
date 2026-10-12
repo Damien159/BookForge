@@ -985,3 +985,36 @@ function initCategoryCardsFilter() {
     });
   });
 }
+// ==========================================
+// HEADER-DROPDOWN FILTER & SCROLL
+// ==========================================
+
+function initDropdownNavigation() {
+  const dropdownLinks = document.querySelectorAll(".dropdown-content a");
+  if (dropdownLinks.length === 0) return;
+
+  dropdownLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      const filterQuery = link.getAttribute("data-filter");
+      const targetId = link.getAttribute("href");
+
+      // Wenn es ein interner Anker/Filter ist
+      if (targetId && targetId.startsWith("#")) {
+        const targetSection = document.querySelector(targetId);
+        
+        if (targetSection) {
+          e.preventDefault();
+          
+          // Sektion sanft ansteuern
+          targetSection.scrollIntoView({ behavior: "smooth" });
+
+          // Falls für die Sektion noch keine Bücher geladen wurden, jetzt nachholen
+          const grid = targetSection.querySelector(".buecher-grid");
+          if (grid && grid.children.length === 0 && filterQuery) {
+            fetchAndRenderBooks(targetSection, filterQuery);
+          }
+        }
+      }
+    });
+  });
+}
