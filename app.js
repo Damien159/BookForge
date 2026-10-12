@@ -660,6 +660,9 @@ document.addEventListener("DOMContentLoaded", () => {
   renderCartPage();
   renderWishlistPage();
 
+  // Kategorie-Karten als Filter aktivieren
+  initCategoryCardsFilter();
+
   // Startseiten-Module
   const isDetailPage = document.getElementById("detail-title") !== null;
   if (isDetailPage) {
@@ -946,4 +949,39 @@ function renderReviews(workKey) {
   });
 
   reviewsList.innerHTML = html;
+}
+// ==========================================
+// KATEGORIEN / GENRE-KARTEN INTERAKTIV MACHEN
+// ==========================================
+
+function initCategoryCardsFilter() {
+  const categoryCards = document.querySelectorAll(".category-card");
+  if (categoryCards.length === 0) return;
+
+  categoryCards.forEach((card) => {
+    card.addEventListener("click", (e) => {
+      e.preventDefault(); // Verhindert das "Springen" der Seite durch href="#"
+
+      // Aktive Klasse wechseln (optional für optisches Feedback)
+      categoryCards.forEach((c) => c.classList.remove("active"));
+      card.classList.add("active");
+
+      // Den Suchbegriff (Query) aus dem Attribut auslesen
+      const query = card.getAttribute("data-query");
+      const categoryName = card.querySelector("span").textContent;
+
+      // Die Buch-Sektion auf der Startseite finden und aktualisieren
+      const sections = document.querySelectorAll(".buecher-sektion");
+      if (sections.length > 0) {
+        const mainSection = sections[0];
+        const heading = mainSection.querySelector("h2");
+        if (heading) {
+          heading.textContent = `Kategorie: ${categoryName}`;
+        }
+        
+        // Bücher von der API mit dem neuen Suchbegriff laden
+        fetchAndRenderBooks(mainSection, query);
+      }
+    });
+  });
 }
