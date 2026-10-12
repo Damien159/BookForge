@@ -53,6 +53,7 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--header-spacing);
   overflow-x: clip;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -572,31 +573,27 @@ main {
   border-radius: var(--radius-sm);
   object-fit: cover;
 }
-/* ==========================================
-   VOLLSTÄNDIGE SEKTIONEN / SCROLL-LAYOUT
-   ========================================== */
+
+
+/*KOMPAKTE SEKTIONEN / KEIN LEERER RAUM*/
 
 .buecher-sektion {
-  min-height: 80vh; /* Jede Sektion nimmt fast die volle Bildschirmhöhe ein */
-  padding: 60px 20px;
-  border-bottom: 1px solid #ebdccb; /* Feine Trennlinie zwischen den Kategorien */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  min-height: auto; /* Entfernt die erzwungene Bildschirmhöhe */
+  padding: 40px 20px; /* Angemessener, sauberer Abstand */
+  border-bottom: 1px solid #ebdccb;
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .buecher-sektion h2 {
   font-family: serif;
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: #3b2314;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   border-left: 5px solid #5c3a21;
   padding-left: 15px;
 }
 
-/* Optional: Sorgen dafür, dass das Grid aufgeräumt bleibt */
 .buecher-sektion .buecher-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
