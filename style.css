@@ -2122,3 +2122,25 @@ footer .copyright {
   background: #fdfbf7;
   font-family: inherit;
 }
+.payment-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.checkout-summary-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkout-summary-box .btn-primary {
+  background-color: #5c3a21;
+  color: #ffffff;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+}
