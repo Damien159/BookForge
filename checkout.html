@@ -6,34 +6,141 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <header>
+      <div class="top-bar">
+        <div class="top-bar-left">
+          <a href="index.html">Buchhandlungen</a>
+          <a href="index.html">Veranstaltungen</a>
+        </div>
+        <div class="top-bar-center">
+          <span><strong>Kostenloser Versand</strong> ab EUR 20,00*</span>
+        </div>
+        <div class="top-bar-right">
+          <a href="#">Telefonische Buchberatung</a>
+        </div>
+      </div>
+
+      <div class="main-header">
+        <a href="index.html" class="logo">BookForge</a>
+        <nav class="user-navigation">
+          <ul>
+            <li>
+              <a href="profil.html">
+                <img src="svg/Profil.svg" alt="Konto" class="header-svg-icon" />
+                <span>Mein Konto</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
     <main class="checkout-page-container">
       <h1 class="checkout-title">Kasse & Bestellung abschließen</h1>
       <form id="checkout-form" class="checkout-form-grid">
         <section class="checkout-card">
           <h3>1. Lieferadresse</h3>
           <div class="form-row">
-            <div class="form-group"><label>Vorname</label><input type="text" id="shipping-firstname" required /></div>
-            <div class="form-group"><label>Nachname</label><input type="text" id="shipping-lastname" required /></div>
+            <div class="form-group">
+              <label>Vorname</label
+              ><input type="text" id="shipping-firstname" required />
+            </div>
+            <div class="form-group">
+              <label>Nachname</label
+              ><input type="text" id="shipping-lastname" required />
+            </div>
           </div>
-          <div class="form-group"><label>Straße & Hausnummer</label><input type="text" id="shipping-street" required /></div>
+          <div class="form-group">
+            <label>Straße & Hausnummer</label
+            ><input type="text" id="shipping-street" required />
+          </div>
           <div class="form-row-small">
-            <div class="form-group"><label>PLZ</label><input type="text" id="shipping-zip" required /></div>
-            <div class="form-group"><label>Stadt</label><input type="text" id="shipping-city" required /></div>
+            <div class="form-group">
+              <label>PLZ</label><input type="text" id="shipping-zip" required />
+            </div>
+            <div class="form-group">
+              <label>Stadt</label
+              ><input type="text" id="shipping-city" required />
+            </div>
           </div>
         </section>
         <section class="checkout-card">
           <h3>2. Zahlungsart</h3>
           <div class="payment-options">
-            <label><input type="radio" name="payment-method" value="PayPal" checked /> PayPal</label>
-            <label><input type="radio" name="payment-method" value="Kreditkarte" /> Kreditkarte</label>
+            <label
+              ><input
+                type="radio"
+                name="payment-method"
+                value="PayPal"
+                checked
+              />
+              PayPal</label
+            >
+            <label
+              ><input type="radio" name="payment-method" value="Kreditkarte" />
+              Kreditkarte</label
+            >
           </div>
         </section>
         <section class="checkout-card checkout-summary-box">
-          <div><span>Gesamtbetrag: </span><strong id="checkout-total-price">0,00 €</strong></div>
-          <button type="submit" class="btn-primary">Kostenpflichtig bestellen</button>
+          <div>
+            <span>Gesamtbetrag: </span
+            ><strong id="checkout-total-price">0,00 €</strong>
+          </div>
+          <button type="submit" class="btn-primary">
+            Kostenpflichtig bestellen
+          </button>
         </section>
       </form>
     </main>
+    <footer>
+      <div class="footer-container">
+        <div class="footer-links">
+          <h4>Services & Hilfe</h4>
+          <ul>
+            <li><a href="#">Kontakt & FAQ</a></li>
+            <li><a href="#">Versand & Lieferzeiten</a></li>
+            <li><a href="#">Rücksendung & Umtausch</a></li>
+            <li><a href="#">Gutscheine einlösen</a></li>
+            <li><a href="#">Filialfinder</a></li>
+          </ul>
+        </div>
+        <!-- Über BookForge -->
+        <div class="footer-links">
+          <h4>Über BookForge</h4>
+          <ul>
+            <li><a href="#">Über uns</a></li>
+            <li><a href="#">Karriere & Jobs</a></li>
+            <li><a href="#">Nachhaltigkeit</a></li>
+            <li><a href="#">Presse</a></li>
+          </ul>
+        </div>
+        <!-- Rechtliches & Sonstiges -->
+        <div class="footer-links">
+          <h4>Rechtliches</h4>
+          <ul>
+            <li><a href="#">Datenschutz</a></li>
+            <li><a href="#">Impressum</a></li>
+            <li><a href="#">AGB</a></li>
+            <li><a href="#">Cookie-Einstellungen</a></li>
+          </ul>
+        </div>
+        <!-- Social Media & Zahlungsarten -->
+        <div class="footer-links">
+          <h4>Folge uns</h4>
+          <ul class="social-links">
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">TikTok</a></li>
+            <li><a href="#">YouTube</a></li>
+          </ul>
+          <h4 class="sub-heading">Zahlungsarten</h4>
+          <p class="payment-methods">
+            Visa • Mastercard • PayPal • Klarna • BillPay
+          </p>
+        </div>
+      </div>
+
+      <p class="copyright">&copy; 2026 BookForge. Alle Rechte vorbehalten.</p>
+    </footer>
     <script src="app.js"></script>
   </body>
 </html>
