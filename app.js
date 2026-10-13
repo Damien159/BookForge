@@ -1018,3 +1018,21 @@ function initDropdownNavigation() {
     });
   });
 }
+/*checkout page*/
+function initCheckoutPage() {
+  const checkoutForm = document.getElementById("checkout-form");
+  const totalPriceEl = document.getElementById("checkout-total-price");
+  if (!checkoutForm) return;
+
+  let cart = [];
+  try {
+    cart = JSON.parse(localStorage.getItem("bookforge_cart")) || [];
+  } catch (e) {
+    cart = [];
+  }
+
+  const total = cart.reduce((sum, item) => sum + (parseFloat(item.price || 14.99) * (item.quantity || 1)), 0);
+  if (totalPriceEl) {
+    totalPriceEl.textContent = total.toFixed(2).replace(".", ",") + " €";
+  }
+}
