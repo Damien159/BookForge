@@ -2071,3 +2071,54 @@ footer .copyright {
   flex-direction: column;
   gap: 25px;
 }
+.checkout-card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 8px;
+  border: 1px solid #ebdccb;
+}
+
+.checkout-card h3 {
+  color: #3b2314;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.form-row-small {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 15px;
+}
+
+.form-group:first-child {
+  margin-top: 0;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #3b2314;
+  font-size: 0.9rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d1c2b4;
+  border-radius: 6px;
+  background: #fdfbf7;
+  font-family: inherit;
+}
