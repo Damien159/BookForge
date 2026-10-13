@@ -9,6 +9,18 @@
     <main class="checkout-page-container">
       <h1 class="checkout-title">Kasse & Bestellung abschließen</h1>
       <form id="checkout-form" class="checkout-form-grid">
+        <section class="checkout-card">
+          <h3>1. Lieferadresse</h3>
+          <div class="form-row">
+            <div class="form-group"><label>Vorname</label><input type="text" id="shipping-firstname" required /></div>
+            <div class="form-group"><label>Nachname</label><input type="text" id="shipping-lastname" required /></div>
+          </div>
+          <div class="form-group"><label>Straße & Hausnummer</label><input type="text" id="shipping-street" required /></div>
+          <div class="form-row-small">
+            <div class="form-group"><label>PLZ</label><input type="text" id="shipping-zip" required /></div>
+            <div class="form-group"><label>Stadt</label><input type="text" id="shipping-city" required /></div>
+          </div>
+        </section>
       </form>
     </main>
     <script src="app.js"></script>
