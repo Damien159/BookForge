@@ -3,17 +3,17 @@
 // ==========================================
 
 function getCurrentUser() {
-  return localStorage.getItem('bookforge_logged_in_user') || null;
+  return localStorage.getItem("bookforge_logged_in_user") || null;
 }
 
 function getCartKey() {
   const user = getCurrentUser();
-  return user ? `bookforge_cart_${user}` : 'bookforge_cart_guest';
+  return user ? `bookforge_cart_${user}` : "bookforge_cart_guest";
 }
 
 function getWishlistKey() {
   const user = getCurrentUser();
-  return user ? `bookforge_wishlist_${user}` : 'bookforge_wishlist_guest';
+  return user ? `bookforge_wishlist_${user}` : "bookforge_wishlist_guest";
 }
 
 function getCart() {
@@ -35,17 +35,17 @@ function getWishlist() {
 function initAuth() {
   updateUserInterface();
 
-  const showRegBtn = document.getElementById('show-register-btn');
-  const showLoginBtn = document.getElementById('show-login-btn');
-  const loginForm = document.getElementById('login-form');
-  const regForm = document.getElementById('register-form');
+  const showRegBtn = document.getElementById("show-register-btn");
+  const showLoginBtn = document.getElementById("show-login-btn");
+  const loginForm = document.getElementById("login-form");
+  const regForm = document.getElementById("register-form");
 
   if (showRegBtn) {
     showRegBtn.onclick = function (e) {
       e.preventDefault();
       e.stopPropagation();
-      if (loginForm) loginForm.style.display = 'none';
-      if (regForm) regForm.style.display = 'flex';
+      if (loginForm) loginForm.style.display = "none";
+      if (regForm) regForm.style.display = "flex";
     };
   }
 
@@ -53,8 +53,8 @@ function initAuth() {
     showLoginBtn.onclick = function (e) {
       e.preventDefault();
       e.stopPropagation();
-      if (regForm) regForm.style.display = 'none';
-      if (loginForm) loginForm.style.display = 'flex';
+      if (regForm) regForm.style.display = "none";
+      if (loginForm) loginForm.style.display = "flex";
     };
   }
 
@@ -62,9 +62,9 @@ function initAuth() {
     regForm.onsubmit = function (e) {
       e.preventDefault();
 
-      const usernameInput = document.getElementById('reg-username');
-      const emailInput = document.getElementById('reg-email');
-      const passwordInput = document.getElementById('reg-password');
+      const usernameInput = document.getElementById("reg-username");
+      const emailInput = document.getElementById("reg-email");
+      const passwordInput = document.getElementById("reg-password");
 
       if (!usernameInput || !emailInput || !passwordInput) return;
 
@@ -74,27 +74,29 @@ function initAuth() {
 
       let users = [];
       try {
-        users = JSON.parse(localStorage.getItem('bookforge_users')) || [];
+        users = JSON.parse(localStorage.getItem("bookforge_users")) || [];
       } catch (err) {
         users = [];
       }
 
       const userExists = users.some(
-        u => u.username.toLowerCase() === username.toLowerCase() || u.email.toLowerCase() === email.toLowerCase()
+        (u) =>
+          u.username.toLowerCase() === username.toLowerCase() ||
+          u.email.toLowerCase() === email.toLowerCase(),
       );
 
       if (userExists) {
-        alert('Benutzername oder E-Mail ist bereits vergeben!');
+        alert("Benutzername oder E-Mail ist bereits vergeben!");
         return;
       }
 
       users.push({ username, email, password });
-      localStorage.setItem('bookforge_users', JSON.stringify(users));
+      localStorage.setItem("bookforge_users", JSON.stringify(users));
 
-      alert('Konto erfolgreich erstellt! Du kannst dich jetzt anmelden.');
+      alert("Konto erfolgreich erstellt! Du kannst dich jetzt anmelden.");
       regForm.reset();
-      regForm.style.display = 'none';
-      if (loginForm) loginForm.style.display = 'flex';
+      regForm.style.display = "none";
+      if (loginForm) loginForm.style.display = "flex";
     };
   }
 
@@ -102,101 +104,106 @@ function initAuth() {
     loginForm.onsubmit = function (e) {
       e.preventDefault();
 
-      const userInput = document.getElementById('login-username').value.trim();
-      const password = document.getElementById('login-password').value;
+      const userInput = document.getElementById("login-username").value.trim();
+      const password = document.getElementById("login-password").value;
 
       let users = [];
       try {
-        users = JSON.parse(localStorage.getItem('bookforge_users')) || [];
+        users = JSON.parse(localStorage.getItem("bookforge_users")) || [];
       } catch (err) {
         users = [];
       }
 
       const user = users.find(
-        u => (u.username.toLowerCase() === userInput.toLowerCase() || u.email.toLowerCase() === userInput.toLowerCase()) && u.password === password
+        (u) =>
+          (u.username.toLowerCase() === userInput.toLowerCase() ||
+            u.email.toLowerCase() === userInput.toLowerCase()) &&
+          u.password === password,
       );
 
       if (!user) {
-        alert('Ungültige Anmeldedaten!');
+        alert("Ungültige Anmeldedaten!");
         return;
       }
 
       mergeGuestDataToUser(user.username);
-      localStorage.setItem('bookforge_logged_in_user', user.username);
+      localStorage.setItem("bookforge_logged_in_user", user.username);
 
       loginForm.reset();
       updateUserInterface();
       updateAllUI();
-      if (typeof renderCartPage === 'function') renderCartPage();
-      if (typeof renderWishlistPage === 'function') renderWishlistPage();
+      if (typeof renderCartPage === "function") renderCartPage();
+      if (typeof renderWishlistPage === "function") renderWishlistPage();
     };
   }
 
-  const logoutBtn = document.getElementById('logout-btn');
+  const logoutBtn = document.getElementById("logout-btn");
   if (logoutBtn) {
     logoutBtn.onclick = function () {
-      localStorage.removeItem('bookforge_logged_in_user');
+      localStorage.removeItem("bookforge_logged_in_user");
       updateUserInterface();
       updateAllUI();
-      if (typeof renderCartPage === 'function') renderCartPage();
-      if (typeof renderWishlistPage === 'function') renderWishlistPage();
+      if (typeof renderCartPage === "function") renderCartPage();
+      if (typeof renderWishlistPage === "function") renderWishlistPage();
     };
   }
 }
 
 function mergeGuestDataToUser(username) {
-  const guestCart = JSON.parse(localStorage.getItem('bookforge_cart_guest')) || [];
-  const guestWishlist = JSON.parse(localStorage.getItem('bookforge_wishlist_guest')) || [];
+  const guestCart =
+    JSON.parse(localStorage.getItem("bookforge_cart_guest")) || [];
+  const guestWishlist =
+    JSON.parse(localStorage.getItem("bookforge_wishlist_guest")) || [];
 
   if (guestCart.length > 0) {
     const userCartKey = `bookforge_cart_${username}`;
     let userCart = JSON.parse(localStorage.getItem(userCartKey)) || [];
 
-    guestCart.forEach(gItem => {
-      const idx = userCart.findIndex(uItem => uItem.title === gItem.title);
+    guestCart.forEach((gItem) => {
+      const idx = userCart.findIndex((uItem) => uItem.title === gItem.title);
       if (idx > -1) {
-        userCart[idx].quantity = (userCart[idx].quantity || 1) + (gItem.quantity || 1);
+        userCart[idx].quantity =
+          (userCart[idx].quantity || 1) + (gItem.quantity || 1);
       } else {
         userCart.push(gItem);
       }
     });
 
     localStorage.setItem(userCartKey, JSON.stringify(userCart));
-    localStorage.removeItem('bookforge_cart_guest');
+    localStorage.removeItem("bookforge_cart_guest");
   }
 
   if (guestWishlist.length > 0) {
     const userWishlistKey = `bookforge_wishlist_${username}`;
     let userWishlist = JSON.parse(localStorage.getItem(userWishlistKey)) || [];
 
-    guestWishlist.forEach(item => {
+    guestWishlist.forEach((item) => {
       if (!userWishlist.includes(item)) userWishlist.push(item);
     });
 
     localStorage.setItem(userWishlistKey, JSON.stringify(userWishlist));
-    localStorage.removeItem('bookforge_wishlist_guest');
+    localStorage.removeItem("bookforge_wishlist_guest");
   }
 }
 
 function updateUserInterface() {
   const currentUser = getCurrentUser();
-  const authForms = document.getElementById('auth-forms');
-  const userInfoBox = document.getElementById('user-info-box');
-  const profileNavText = document.getElementById('profile-nav-text');
-  const userDisplayName = document.getElementById('user-display-name');
+  const authForms = document.getElementById("auth-forms");
+  const userInfoBox = document.getElementById("user-info-box");
+  const profileNavText = document.getElementById("profile-nav-text");
+  const userDisplayName = document.getElementById("user-display-name");
 
   if (currentUser) {
-    if (authForms) authForms.style.display = 'none';
-    if (userInfoBox) userInfoBox.style.display = 'block';
+    if (authForms) authForms.style.display = "none";
+    if (userInfoBox) userInfoBox.style.display = "block";
     if (profileNavText) profileNavText.textContent = currentUser;
     if (userDisplayName) userDisplayName.textContent = currentUser;
   } else {
-    if (authForms) authForms.style.display = 'block';
-    if (userInfoBox) userInfoBox.style.display = 'none';
-    if (profileNavText) profileNavText.textContent = 'Mein Konto';
+    if (authForms) authForms.style.display = "block";
+    if (userInfoBox) userInfoBox.style.display = "none";
+    if (profileNavText) profileNavText.textContent = "Mein Konto";
   }
 }
-
 
 // ==========================================
 // 2. OPENLIBRARY API & BÜCHER RENDERN
@@ -212,7 +219,7 @@ async function fetchAndRenderBooks(section, customQuery = null) {
 
   try {
     const response = await fetch(
-      `https://openlibrary.org/search.json?q=${encodeURIComponent(query)}&limit=8`
+      `https://openlibrary.org/search.json?q=${encodeURIComponent(query)}&limit=8`,
     );
     const data = await response.json();
 
@@ -225,7 +232,9 @@ async function fetchAndRenderBooks(section, customQuery = null) {
 
     data.docs.forEach((book) => {
       const title = book.title || "Unbekannter Titel";
-      const author = book.author_name ? book.author_name[0] : "Unbekannter Autor";
+      const author = book.author_name
+        ? book.author_name[0]
+        : "Unbekannter Autor";
       const cover = book.cover_i
         ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
         : "https://via.placeholder.com/180x220?text=Kein+Cover";
@@ -333,7 +342,7 @@ async function initDetailPage() {
 
   try {
     const response = await fetch(
-      `https://openlibrary.org/works/${workKey}.json`
+      `https://openlibrary.org/works/${workKey}.json`,
     );
     if (!response.ok) throw new Error("Buch nicht gefunden");
     const bookData = await response.json();
@@ -380,7 +389,6 @@ async function initDetailPage() {
   }
 }
 
-
 // ==========================================
 // 3. WARENKORB & MERKLISTEN UI-UPDATES
 // ==========================================
@@ -394,7 +402,9 @@ function updateCartUI() {
   const cart = getCart();
 
   const totalCount = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
-  const counterEl = document.getElementById("cart-counter") || document.getElementById("cart-count");
+  const counterEl =
+    document.getElementById("cart-counter") ||
+    document.getElementById("cart-count");
   if (counterEl) {
     counterEl.textContent = totalCount;
     counterEl.style.display = totalCount > 0 ? "inline-block" : "none";
@@ -402,7 +412,7 @@ function updateCartUI() {
 
   const totalPrice = cart.reduce(
     (sum, item) => sum + item.price * (item.quantity || 1),
-    0
+    0,
   );
   const priceEl = document.getElementById("cart-total");
   if (priceEl) {
@@ -415,7 +425,9 @@ function updateCartUI() {
 
 function updateWishlistUI() {
   const wishlist = getWishlist();
-  const counterEl = document.getElementById("wishlist-counter") || document.getElementById("wishlist-count");
+  const counterEl =
+    document.getElementById("wishlist-counter") ||
+    document.getElementById("wishlist-count");
   if (counterEl) {
     counterEl.textContent = wishlist.length;
     counterEl.style.display = wishlist.length > 0 ? "inline-block" : "none";
@@ -433,12 +445,13 @@ function updateWishlistUI() {
 
 function getBookData(element) {
   const card = element.closest(
-    ".buecher-card, .product-detail-container, .book-card-link"
+    ".buecher-card, .product-detail-container, .book-card-link",
   );
   if (!card) return null;
 
   const titleEl = card.querySelector("h3, .detail-title, h2");
-  const title = element.dataset.id || (titleEl ? titleEl.textContent.trim() : null);
+  const title =
+    element.dataset.id || (titleEl ? titleEl.textContent.trim() : null);
 
   const priceEl = card.querySelector(".price, .detail-price, p.price");
   let price = 0;
@@ -509,7 +522,6 @@ function setupGlobalClickEvents() {
     }
   });
 }
-
 
 // ==========================================
 // 4. SEITEN-RENDERING (WARENKORB & MERKLISTE)
@@ -643,7 +655,6 @@ function removeFromWishlistPage(title) {
   renderWishlistPage();
 }
 
-
 // ==========================================
 // 5. ZENTRALER STARTUP-LISTENER
 // ==========================================
@@ -707,7 +718,7 @@ window.addEventListener("storage", () => {
 function initProfilePage() {
   const notLoggedInBox = document.getElementById("profile-not-logged-in");
   const loggedInBox = document.getElementById("profile-logged-in");
-  
+
   // Wenn wir nicht auf der Profilseite sind, abbrechen
   if (!notLoggedInBox || !loggedInBox) return;
 
@@ -731,12 +742,14 @@ function initProfilePage() {
     users = [];
   }
 
-  const userAccount = users.find(u => u.username.toLowerCase() === currentUser.toLowerCase());
+  const userAccount = users.find(
+    (u) => u.username.toLowerCase() === currentUser.toLowerCase(),
+  );
 
   if (userAccount) {
     const usernameInput = document.getElementById("profile-username");
     const emailInput = document.getElementById("profile-email");
-    
+
     if (usernameInput) usernameInput.value = userAccount.username;
     if (emailInput) emailInput.value = userAccount.email || "";
   }
@@ -750,7 +763,9 @@ function initProfilePage() {
       const newEmail = document.getElementById("profile-email").value.trim();
       const newPassword = document.getElementById("profile-password").value;
 
-      const userIndex = users.findIndex(u => u.username.toLowerCase() === currentUser.toLowerCase());
+      const userIndex = users.findIndex(
+        (u) => u.username.toLowerCase() === currentUser.toLowerCase(),
+      );
       if (userIndex > -1) {
         users[userIndex].email = newEmail;
         if (newPassword) {
@@ -790,7 +805,8 @@ function renderOrderHistory(username) {
   }
 
   if (!orders || orders.length === 0) {
-    historyList.innerHTML = "<p>Du hast bisher noch keine Bestellungen aufgegeben.</p>";
+    historyList.innerHTML =
+      "<p>Du hast bisher noch keine Bestellungen aufgegeben.</p>";
     return;
   }
 
@@ -803,10 +819,10 @@ function renderOrderHistory(username) {
           <span>${order.date}</span>
         </div>
         <ul class="order-items-list">
-          ${order.items.map(item => `<li>${item.title} (${item.quantity}x) -${(item.price * item.quantity).toFixed(2).replace('.', ',')} €</li>`).join('')}
+          ${order.items.map((item) => `<li>${item.title} (${item.quantity}x) -${(item.price * item.quantity).toFixed(2).replace(".", ",")} €</li>`).join("")}
         </ul>
         <div class="order-total">
-          Gesamtsumme: ${order.total.toFixed(2).replace('.', ',')} €
+          Gesamtsumme: ${order.total.toFixed(2).replace(".", ",")} €
         </div>
       </div>
     `;
@@ -879,7 +895,7 @@ function initReviews(workKey) {
         username: currentUser,
         rating: ratingVal,
         comment: commentVal,
-        date: new Date().toLocaleDateString("de-DE")
+        date: new Date().toLocaleDateString("de-DE"),
       };
 
       reviews.unshift(newReview);
@@ -917,10 +933,13 @@ function renderReviews(workKey) {
   if (reviews.length > 0) {
     const totalSum = reviews.reduce((sum, r) => sum + r.rating, 0);
     const avg = (totalSum / reviews.length).toFixed(1);
-    
+
     if (avgRatingEl) avgRatingEl.textContent = avg;
-    if (totalCountEl) totalCountEl.textContent = `(${reviews.length} ${reviews.length === 1 ? 'Bewertung' : 'Bewertungen'})`;
-    if (avgStarsEl) avgStarsEl.textContent = "★".repeat(Math.round(avg)) + "☆".repeat(5 - Math.round(avg));
+    if (totalCountEl)
+      totalCountEl.textContent = `(${reviews.length} ${reviews.length === 1 ? "Bewertung" : "Bewertungen"})`;
+    if (avgStarsEl)
+      avgStarsEl.textContent =
+        "★".repeat(Math.round(avg)) + "☆".repeat(5 - Math.round(avg));
   } else {
     if (avgRatingEl) avgRatingEl.textContent = "0.0";
     if (totalCountEl) totalCountEl.textContent = "(0 Bewertungen)";
@@ -929,7 +948,8 @@ function renderReviews(workKey) {
 
   // Liste rendern
   if (reviews.length === 0) {
-    reviewsList.innerHTML = "<p>Noch keine Bewertungen vorhanden. Sei der Erste!</p>";
+    reviewsList.innerHTML =
+      "<p>Noch keine Bewertungen vorhanden. Sei der Erste!</p>";
     return;
   }
 
@@ -978,7 +998,7 @@ function initCategoryCardsFilter() {
         if (heading) {
           heading.textContent = `Kategorie: ${categoryName}`;
         }
-        
+
         // Bücher von der API mit dem neuen Suchbegriff laden
         fetchAndRenderBooks(mainSection, query);
       }
@@ -1001,10 +1021,10 @@ function initDropdownNavigation() {
       // Wenn es ein interner Anker/Filter ist
       if (targetId && targetId.startsWith("#")) {
         const targetSection = document.querySelector(targetId);
-        
+
         if (targetSection) {
           e.preventDefault();
-          
+
           // Sektion sanft ansteuern
           targetSection.scrollIntoView({ behavior: "smooth" });
 
@@ -1031,8 +1051,56 @@ function initCheckoutPage() {
     cart = [];
   }
 
-  const total = cart.reduce((sum, item) => sum + (parseFloat(item.price || 14.99) * (item.quantity || 1)), 0);
+  const total = cart.reduce(
+    (sum, item) => sum + parseFloat(item.price || 14.99) * (item.quantity || 1),
+    0,
+  );
   if (totalPriceEl) {
     totalPriceEl.textContent = total.toFixed(2).replace(".", ",") + " €";
   }
 }
+checkoutForm.onsubmit = function (e) {
+  e.preventDefault();
+
+  let cart = [];
+  try {
+    cart = JSON.parse(localStorage.getItem("bookforge_cart")) || [];
+  } catch (err) {
+    cart = [];
+  }
+
+  if (cart.length === 0) {
+    alert("Dein Warenkorb ist leer!");
+    window.location.href = "index.html";
+    return;
+  }
+
+  const currentUser = getCurrentUser() || "Gast-Nutzer";
+  const ordersKey = `bookforge_orders_${currentUser}`;
+
+  let orders = [];
+  try {
+    orders = JSON.parse(localStorage.getItem(ordersKey)) || [];
+  } catch (err) {
+    orders = [];
+  }
+
+  const total = cart.reduce(
+    (sum, item) => sum + parseFloat(item.price || 14.99) * (item.quantity || 1),
+    0,
+  );
+  const newOrder = {
+    id: "BF-" + Math.floor(100000 + Math.random() * 900000),
+    date: new Date().toLocaleDateString("de-DE"),
+    items: cart,
+    total: total.toFixed(2).replace(".", ",") + " €",
+    status: "Wird bearbeitet",
+  };
+
+  orders.unshift(newOrder);
+  localStorage.setItem(ordersKey, JSON.stringify(orders));
+  localStorage.removeItem("bookforge_cart");
+
+  alert("Vielen Dank für deine Bestellung! Sie wurde erfolgreich aufgegeben.");
+  window.location.href = "profil.html";
+};
