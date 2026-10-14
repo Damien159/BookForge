@@ -585,7 +585,7 @@ function renderCartPage() {
         <span>Gesamtsumme</span>
         <span>${totalSum.toFixed(2).replace(".", ",")} €</span>
       </div>
-      <button class="checkout-btn">Zur Kasse gehen</button>
+      <a href="checkout.html" class="checkout-btn">Zur Kasse gehen</a>
     </div>`;
 
   cartContent.innerHTML = itemsHTML + summaryHTML;

@@ -1171,6 +1171,7 @@ footer .copyright {
 }
 
 .checkout-btn {
+  display: block;
   width: 100%;
   margin-top: 20px;
   padding: 14px;
@@ -1180,6 +1181,8 @@ footer .copyright {
   color: #ffffff;
   font-size: 1rem;
   font-weight: 700;
+  text-align: center;
+  text-decoration: none;
   transition: background-color 0.2s ease;
 }
 
