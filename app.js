@@ -1022,23 +1022,24 @@ function initDropdownNavigation() {
     link.addEventListener("click", (e) => {
       const filterQuery = link.getAttribute("data-filter");
       const targetId = link.getAttribute("href");
+      const targetSection =
+        targetId && targetId.startsWith("#")
+          ? document.querySelector(targetId)
+          : null;
+      const catalogSection =
+        targetSection || document.querySelector(".buecher-sektion");
 
-      // Wenn es ein interner Anker/Filter ist
-      if (targetId && targetId.startsWith("#")) {
-        const targetSection = document.querySelector(targetId);
-
-        if (targetSection) {
-          e.preventDefault();
-
-          // Sektion sanft ansteuern
-          targetSection.scrollIntoView({ behavior: "smooth" });
-
-          // Falls für die Sektion noch keine Bücher geladen wurden, jetzt nachholen
-          const grid = targetSection.querySelector(".buecher-grid");
-          if (grid && grid.children.length === 0 && filterQuery) {
-            fetchAndRenderBooks(targetSection, filterQuery);
-          }
+      if (filterQuery && catalogSection) {
+        e.preventDefault();
+        catalogSection.scrollIntoView({ behavior: "smooth" });
+        const heading = catalogSection.querySelector("h2");
+        if (heading) {
+          heading.textContent = `Kategorie: ${link.textContent.trim()}`;
         }
+        fetchAndRenderBooks(catalogSection, filterQuery);
+      } else if (targetSection) {
+        e.preventDefault();
+        targetSection.scrollIntoView({ behavior: "smooth" });
       }
     });
   });
