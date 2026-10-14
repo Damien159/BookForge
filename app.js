@@ -399,7 +399,17 @@ function updateAllUI() {
 }
 
 function updateCartUI() {
-  const cart = getCart();
+  let cart = [];
+  try {
+    cart = JSON.parse(localStorage.getItem(getCartKey())) || [];
+  } catch (e) {
+    cart = [];
+  }
+
+  const total = cart.reduce(
+    (sum, item) => sum + parseFloat(item.price || 14.99) * (item.quantity || 1),
+    0,
+  );
 
   const totalCount = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
   const counterEl =
