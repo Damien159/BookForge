@@ -671,6 +671,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderCartPage();
   renderWishlistPage();
   initProfilePage();
+  initCheckoutPage();
 
   // Kategorie-Karten als Filter aktivieren
   initCategoryCardsFilter();
