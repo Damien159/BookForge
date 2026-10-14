@@ -1087,13 +1087,13 @@ function initCheckoutPage() {
       id: "BF-" + Math.floor(100000 + Math.random() * 900000),
       date: new Date().toLocaleDateString("de-DE"),
       items: orderCart,
-      total: orderTotal.toFixed(2).replace(".", ",") + " €",
+      total: orderTotal,
       status: "Wird bearbeitet",
     };
 
     orders.unshift(newOrder);
     localStorage.setItem(ordersKey, JSON.stringify(orders));
-    localStorage.removeItem("bookforge_cart");
+    localStorage.removeItem(getCartKey());
 
     alert(
       "Vielen Dank für deine Bestellung! Sie wurde erfolgreich aufgegeben.",
