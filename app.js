@@ -679,6 +679,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const isDetailPage = document.getElementById("detail-title") !== null;
   if (isDetailPage) {
     initDetailPage();
+    const workKey = new URLSearchParams(window.location.search).get("key");
+    initReviews(workKey);
   } else {
     initBannerAutoSlider();
 
