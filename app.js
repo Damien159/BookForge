@@ -670,6 +670,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Seiten-spezifische Views rendern
   renderCartPage();
   renderWishlistPage();
+  initProfilePage();
 
   // Kategorie-Karten als Filter aktivieren
   initCategoryCardsFilter();
