@@ -1047,12 +1047,7 @@ function initCheckoutPage() {
   const totalPriceEl = document.getElementById("checkout-total-price");
   if (!checkoutForm) return;
 
-  let cart = [];
-  try {
-    cart = JSON.parse(localStorage.getItem("bookforge_cart")) || [];
-  } catch (e) {
-    cart = [];
-  }
+  const cart = getCart();
 
   const total = cart.reduce(
     (sum, item) => sum + parseFloat(item.price || 14.99) * (item.quantity || 1),
