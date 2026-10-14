@@ -1044,17 +1044,16 @@ function initDropdownNavigation() {
     });
   });
 }
+
 /*checkout page*/
 function initCheckoutPage() {
   const checkoutForm = document.getElementById("checkout-form");
   const totalPriceEl = document.getElementById("checkout-total-price");
   if (!checkoutForm) return;
+
   checkoutForm.onsubmit = function (e) {
     e.preventDefault();
-  }
-  
-
-  const cart = getCart();
+  };
 
   const total = cart.reduce(
     (sum, item) => sum + parseFloat(item.price || 14.99) * (item.quantity || 1),
@@ -1106,6 +1105,5 @@ function initCheckoutPage() {
       "Vielen Dank für deine Bestellung! Sie wurde erfolgreich aufgegeben.",
     );
     window.location.href = "profil.html";
-    
   };
 }
