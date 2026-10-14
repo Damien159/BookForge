@@ -1056,49 +1056,48 @@ function initCheckoutPage() {
   if (totalPriceEl) {
     totalPriceEl.textContent = total.toFixed(2).replace(".", ",") + " €";
   }
-}
-checkoutForm.onsubmit = function (e) {
-  e.preventDefault();
 
-  let cart = [];
-  try {
-    cart = JSON.parse(localStorage.getItem("bookforge_cart")) || [];
-  } catch (err) {
-    cart = [];
-  }
+  checkoutForm.onsubmit = function (e) {
+    e.preventDefault();
 
-  if (cart.length === 0) {
-    alert("Dein Warenkorb ist leer!");
-    window.location.href = "index.html";
-    return;
-  }
+    const orderCart = getCart();
 
-  const currentUser = getCurrentUser() || "Gast-Nutzer";
-  const ordersKey = `bookforge_orders_${currentUser}`;
+    if (orderCart.length === 0) {
+      alert("Dein Warenkorb ist leer!");
+      window.location.href = "index.html";
+      return;
+    }
 
-  let orders = [];
-  try {
-    orders = JSON.parse(localStorage.getItem(ordersKey)) || [];
-  } catch (err) {
-    orders = [];
-  }
+    const currentUser = getCurrentUser() || "Gast-Nutzer";
+    const ordersKey = `bookforge_orders_${currentUser}`;
 
-  const total = cart.reduce(
-    (sum, item) => sum + parseFloat(item.price || 14.99) * (item.quantity || 1),
-    0,
-  );
-  const newOrder = {
-    id: "BF-" + Math.floor(100000 + Math.random() * 900000),
-    date: new Date().toLocaleDateString("de-DE"),
-    items: cart,
-    total: total.toFixed(2).replace(".", ",") + " €",
-    status: "Wird bearbeitet",
+    let orders = [];
+    try {
+      orders = JSON.parse(localStorage.getItem(ordersKey)) || [];
+    } catch (err) {
+      orders = [];
+    }
+
+    const orderTotal = orderCart.reduce(
+      (sum, item) =>
+        sum + parseFloat(item.price || 14.99) * (item.quantity || 1),
+      0,
+    );
+    const newOrder = {
+      id: "BF-" + Math.floor(100000 + Math.random() * 900000),
+      date: new Date().toLocaleDateString("de-DE"),
+      items: orderCart,
+      total: orderTotal.toFixed(2).replace(".", ",") + " €",
+      status: "Wird bearbeitet",
+    };
+
+    orders.unshift(newOrder);
+    localStorage.setItem(ordersKey, JSON.stringify(orders));
+    localStorage.removeItem("bookforge_cart");
+
+    alert(
+      "Vielen Dank für deine Bestellung! Sie wurde erfolgreich aufgegeben.",
+    );
+    window.location.href = "profil.html";
   };
-
-  orders.unshift(newOrder);
-  localStorage.setItem(ordersKey, JSON.stringify(orders));
-  localStorage.removeItem("bookforge_cart");
-
-  alert("Vielen Dank für deine Bestellung! Sie wurde erfolgreich aufgegeben.");
-  window.location.href = "profil.html";
-};
+}
