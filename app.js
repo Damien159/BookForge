@@ -675,6 +675,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Kategorie-Karten als Filter aktivieren
   initCategoryCardsFilter();
+  initDropdownNavigation();
 
   // Startseiten-Module
   const isDetailPage = document.getElementById("detail-title") !== null;
