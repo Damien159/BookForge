@@ -807,6 +807,14 @@ function initProfilePage() {
   renderOrderHistory(currentUser);
 }
 
+function formatOrderTotal(total) {
+  const value =
+    typeof total === "number"
+      ? total
+      : parseFloat(String(total).replace(",", ".")) || 0;
+  return value.toFixed(2).replace(".", ",");
+}
+
 function renderOrderHistory(username) {
   const historyList = document.getElementById("order-history-list");
   if (!historyList) return;
