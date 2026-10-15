@@ -1061,12 +1061,12 @@ function initCheckoutPage() {
   const totalPriceEl = document.getElementById("checkout-total-price");
   if (!checkoutForm) return;
 
-    const cart = getCart();
+  const cart = getCart();
   const total = cart.reduce(
     (sum, item) => sum + parseFloat(item.price || 14.99) * (item.quantity || 1),
     0,
   );
- if (totalPriceEl) {
+  if (totalPriceEl) {
     totalPriceEl.textContent = total.toFixed(2).replace(".", ",") + " €";
   }
 
@@ -1096,7 +1096,8 @@ function initCheckoutPage() {
     }
 
     const calculatedTotal = currentCart.reduce(
-      (sum, item) => sum + parseFloat(item.price || 14.99) * (item.quantity || 1),
+      (sum, item) =>
+        sum + parseFloat(item.price || 14.99) * (item.quantity || 1),
       0,
     );
 
@@ -1104,15 +1105,17 @@ function initCheckoutPage() {
       id: "BF-" + Math.floor(100000 + Math.random() * 900000),
       date: new Date().toLocaleDateString("de-DE"),
       items: currentCart,
-      total: calculatedTotal.toFixed(2).replace(".", ",") + " €",
-      status: "Wird bearbeitet"
+      total: calculatedTotal,
+      status: "Wird bearbeitet",
     };
 
     orders.unshift(newOrder);
     localStorage.setItem(ordersKey, JSON.stringify(orders));
     localStorage.removeItem(getCartKey());
 
-    alert("Vielen Dank für deine Bestellung! Sie wurde erfolgreich aufgegeben.");
+    alert(
+      "Vielen Dank für deine Bestellung! Sie wurde erfolgreich aufgegeben.",
+    );
     window.location.href = "profil.html";
   };
 }
