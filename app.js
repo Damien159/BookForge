@@ -802,7 +802,7 @@ function initProfilePage() {
   // Profil-Update Event
   const updateForm = document.getElementById("profile-update-form");
   if (updateForm) {
-    updateForm.onsubmit = function (e) {
+    updateForm.onsubmit = async function (e) {
       e.preventDefault();
 
       const newEmail = document.getElementById("profile-email").value.trim();
@@ -814,7 +814,10 @@ function initProfilePage() {
       if (userIndex > -1) {
         users[userIndex].email = newEmail;
         if (newPassword) {
-          users[userIndex].password = newPassword;
+          users[userIndex].password = await hashPassword(
+            users[userIndex].username,
+            newPassword,
+          );
         }
 
         localStorage.setItem("bookforge_users", JSON.stringify(users));
