@@ -137,7 +137,7 @@ function initAuth() {
         users = [];
       }
 
-           const user = users.find(
+      const user = users.find(
         (u) =>
           u.username.toLowerCase() === userInput.toLowerCase() ||
           u.email.toLowerCase() === userInput.toLowerCase(),
@@ -182,14 +182,12 @@ function initAuth() {
 }
 
 function mergeGuestDataToUser(username) {
-  const guestCart =
-    JSON.parse(localStorage.getItem("bookforge_cart_guest")) || [];
-  const guestWishlist =
-    JSON.parse(localStorage.getItem("bookforge_wishlist_guest")) || [];
+  const guestCart = readJSON("bookforge_cart_guest");
+  const guestWishlist = readJSON("bookforge_wishlist_guest");
 
   if (guestCart.length > 0) {
     const userCartKey = `bookforge_cart_${username}`;
-    let userCart = JSON.parse(localStorage.getItem(userCartKey)) || [];
+    let userCart = readJSON(userCartKey);
 
     guestCart.forEach((gItem) => {
       const idx = userCart.findIndex((uItem) => uItem.title === gItem.title);
