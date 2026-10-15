@@ -205,7 +205,7 @@ function mergeGuestDataToUser(username) {
 
   if (guestWishlist.length > 0) {
     const userWishlistKey = `bookforge_wishlist_${username}`;
-    let userWishlist = JSON.parse(localStorage.getItem(userWishlistKey)) || [];
+    let userWishlist = readJSON(userWishlistKey);
 
     guestWishlist.forEach((item) => {
       if (!userWishlist.includes(item)) userWishlist.push(item);
