@@ -594,7 +594,7 @@ function renderCartPage() {
       <div class="cart-item">
         <div class="cart-item-info">
           <div>
-            <h3 class="cart-item-title">${item.title}</h3>
+            <h3 class="cart-item-title">${escapeHtml(item.title)}</h3>
             <div class="cart-item-price">${item.price.toFixed(2).replace(".", ",")} €</div>
           </div>
         </div>
@@ -875,7 +875,7 @@ function renderOrderHistory(username) {
           <span>${order.date}</span>
         </div>
         <ul class="order-items-list">
-          ${order.items.map((item) => `<li>${item.title} (${item.quantity}x) - ${(item.price * (item.quantity || 1)).toFixed(2).replace(".", ",")} €</li>`).join("")}
+          ${order.items.map((item) => `<li>${escapeHtml(item.title)} (${item.quantity}x) - ${(item.price * (item.quantity || 1)).toFixed(2).replace(".", ",")} €</li>`).join("")}
         </ul>
         <div class="order-total">
         Gesamtsumme: ${formatOrderTotal(order.total)} €
@@ -1015,11 +1015,11 @@ function renderReviews(workKey) {
     html += `
       <div class="review-card">
         <div class="review-header">
-          <span class="review-user">${r.username}</span>
+         <span class="review-user">${escapeHtml(r.username)}</span>
           <span class="review-date">${r.date}</span>
         </div>
         <div class="review-stars">${starStr}</div>
-        <p class="review-comment">${r.comment}</p>
+        <p class="review-comment">${escapeHtml(r.comment)}</p>
       </div>
     `;
   });
