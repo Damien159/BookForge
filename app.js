@@ -2,6 +2,34 @@
 // 1. BENUTZER-VERWALTUNG & USER-STORAGE LOGIK
 // ==========================================
 
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function readJSON(key, fallback = []) {
+  try {
+    const raw = localStorage.getItem(key);
+    return raw ? JSON.parse(raw) : fallback;
+  } catch (e) {
+    return fallback;
+  }
+}
+
+async function hashPassword(username, password) {
+  const data = new TextEncoder().encode(
+    `${username.toLowerCase()}:${password}`,
+  );
+  const digest = await crypto.subtle.digest("SHA-256", data);
+  return Array.from(new Uint8Array(digest))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
+}
+
 function getCurrentUser() {
   return localStorage.getItem("bookforge_logged_in_user") || null;
 }
