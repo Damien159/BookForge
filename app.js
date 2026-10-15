@@ -845,7 +845,7 @@ function renderOrderHistory(username) {
           ${order.items.map((item) => `<li>${item.title} (${item.quantity}x) - ${(item.price * (item.quantity || 1)).toFixed(2).replace(".", ",")} €</li>`).join("")}
         </ul>
         <div class="order-total">
-          Gesamtsumme: ${order.total.toFixed(2).replace(".", ",")} €
+        Gesamtsumme: ${formatOrderTotal(order.total)} €
         </div>
       </div>
     `;
