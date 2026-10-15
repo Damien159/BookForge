@@ -78,7 +78,7 @@ function initAuth() {
   }
 
   if (regForm) {
-    regForm.onsubmit = function (e) {
+    regForm.onsubmit = async function (e) {
       e.preventDefault();
 
       const usernameInput = document.getElementById("reg-username");
@@ -109,7 +109,11 @@ function initAuth() {
         return;
       }
 
-      users.push({ username, email, password });
+            users.push({
+        username,
+        email,
+        password: await hashPassword(username, password),
+      });
       localStorage.setItem("bookforge_users", JSON.stringify(users));
 
       alert("Konto erfolgreich erstellt! Du kannst dich jetzt anmelden.");
