@@ -43,21 +43,12 @@ function getWishlistKey() {
   const user = getCurrentUser();
   return user ? `bookforge_wishlist_${user}` : "bookforge_wishlist_guest";
 }
-
 function getCart() {
-  try {
-    return JSON.parse(localStorage.getItem(getCartKey())) || [];
-  } catch (e) {
-    return [];
-  }
+  return readJSON(getCartKey());
 }
 
 function getWishlist() {
-  try {
-    return JSON.parse(localStorage.getItem(getWishlistKey())) || [];
-  } catch (e) {
-    return [];
-  }
+  return readJSON(getWishlistKey());
 }
 
 function initAuth() {
