@@ -109,7 +109,7 @@ function initAuth() {
         return;
       }
 
-            users.push({
+      users.push({
         username,
         email,
         password: await hashPassword(username, password),
@@ -124,7 +124,7 @@ function initAuth() {
   }
 
   if (loginForm) {
-    loginForm.onsubmit = function (e) {
+    loginForm.onsubmit = async function (e) {
       e.preventDefault();
 
       const userInput = document.getElementById("login-username").value.trim();
@@ -137,16 +137,25 @@ function initAuth() {
         users = [];
       }
 
-      const user = users.find(
+           const user = users.find(
         (u) =>
-          (u.username.toLowerCase() === userInput.toLowerCase() ||
-            u.email.toLowerCase() === userInput.toLowerCase()) &&
-          u.password === password,
+          u.username.toLowerCase() === userInput.toLowerCase() ||
+          u.email.toLowerCase() === userInput.toLowerCase(),
       );
 
-      if (!user) {
+      const hash = user ? await hashPassword(user.username, password) : null;
+      // user.password === password: alte Konten mit Klartext-Passwort
+      const valid =
+        user && (user.password === hash || user.password === password);
+
+      if (!valid) {
         alert("Ungültige Anmeldedaten!");
         return;
+      }
+
+      if (user.password === password) {
+        user.password = hash;
+        localStorage.setItem("bookforge_users", JSON.stringify(users));
       }
 
       mergeGuestDataToUser(user.username);
