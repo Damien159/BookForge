@@ -2070,25 +2070,23 @@ footer .copyright {
   margin-top: 15px;
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+.checkout-card .form-group {
   margin-top: 15px;
 }
 
-.form-group:first-child {
+.checkout-card .form-group:first-child,
+.form-row .form-group,
+.form-row-small .form-group {
   margin-top: 0;
 }
 
-.form-group label {
+.checkout-card .form-group label {
   font-weight: 600;
   color: #3b2314;
   font-size: 0.9rem;
 }
 
-.form-group input {
-  width: 100%;
+.checkout-card .form-group input {
   padding: 10px;
   border: 1px solid #d1c2b4;
   border-radius: 6px;
