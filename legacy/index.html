@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>BookForge</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="top-bar">
+        <div class="top-bar-left">
+          <a href="#">Buchhandlungen</a>
+          <a href="#">Veranstaltungen</a>
+        </div>
+        <div class="top-bar-center">
+          <span><strong>Kostenloser Versand</strong> ab EUR 20,00*</span>
+        </div>
+        <div class="top-bar-right">
+          <a href="#">Telefonische Buchberatung</a>
+        </div>
+      </div>
+
+      <div class="main-header">
+        <a href="/" class="logo">BookForge</a>
+
+        <div class="search-container">
+          <select class="category-select">
+            <option>Alle Produkte</option>
+            <option>Bücher</option>
+            <option>E-Books</option>
+            <option>Spiele</option>
+          </select>
+          <input type="text" placeholder="Titel, Autor, ISBN..." />
+          <button type="submit" class="search-button">suchen</button>
+        </div>
+
+        <nav class="user-navigation">
+          <ul>
+            <li>
+              <a href="merkliste.html">
+                <img
+                  src="svg/Heart.svg"
+                  alt="Merkliste"
+                  class="header-svg-icon"
+                />
+                <span
+                  >Merkliste
+                  <span id="wishlist-counter" class="nav-counter">0</span></span
+                >
+              </a>
+            </li>
+            <li>
+              <a href="warenkorb.html">
+                <img
+                  src="svg/Buy-Cart.svg"
+                  alt="Warenkorb"
+                  class="header-svg-icon"
+                />
+                <span>
+                  Warenkorb
+                  <span id="cart-counter" class="nav-counter">0</span>
+                  <span id="cart-total" class="nav-price">0,00 €</span>
+                </span>
+              </a>
+            </li>
+            <li class="profile-nav-item">
+              <a href="profil.html" id="profile-link">
+                <img
+                  src="svg/Profil.svg"
+                  alt="Mein Konto"
+                  class="header-svg-icon"
+                />
+                <span id="profile-nav-text">Mein Konto</span>
+              </a>
+
+              <!-- Hover-Dropdown Formular -->
+              <div class="profile-dropdown" id="profile-dropdown">
+                <!-- 1. FORMULARE FÜR ANMELDUNG & REGISTRIERUNG -->
+                <div id="auth-forms">
+                  <!-- LOGIN FORMULAR -->
+                  <form id="login-form" class="auth-form">
+                    <h4>Anmelden</h4>
+                    <input
+                      type="text"
+                      id="login-username"
+                      placeholder="Benutzername oder E-Mail"
+                      required
+                    />
+                    <input
+                      type="password"
+                      id="login-password"
+                      placeholder="Passwort"
+                      required
+                    />
+                    <button type="submit" class="auth-btn">Einloggen</button>
+                    <p class="auth-toggle-text">
+                      Noch kein Konto?
+                      <a href="#" id="show-register-btn">Jetzt registrieren</a>
+                    </p>
+                  </form>
+
+                  <!-- REGISTRIERUNGS FORMULAR (initial ausgeblendet) -->
+                  <form
+                    id="register-form"
+                    class="auth-form"
+                    style="display: none"
+                  >
+                    <h4>Registrieren</h4>
+                    <input
+                      type="text"
+                      id="reg-username"
+                      placeholder="Benutzername"
+                      required
+                    />
+                    <input
+                      type="email"
+                      id="reg-email"
+                      placeholder="E-Mail"
+                      required
+                    />
+                    <input
+                      type="password"
+                      id="reg-password"
+                      placeholder="Passwort"
+                      required
+                    />
+                    <button type="submit" class="auth-btn">
+                      Konto erstellen
+                    </button>
+                    <p class="auth-toggle-text">
+                      Bereits ein Konto?
+                      <a href="#" id="show-login-btn">Anmelden</a>
+                    </p>
+                  </form>
+                </div>
+
+                <!-- 2. COCKPIT FÜR EINGELOGGTE USER (initial ausgeblendet) -->
+                <div id="user-info-box" style="display: none">
+                  <p class="user-welcome">
+                    Hallo, <strong id="user-display-name">User</strong>!
+                  </p>
+                  <ul class="user-menu-list">
+                    <li><a href="merkliste.html">Meine Merkliste</a></li>
+                    <li><a href="warenkorb.html">Mein Warenkorb</a></li>
+                  </ul>
+                  <button id="logout-btn" class="auth-btn logout">
+                    Abmelden
+                  </button>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <nav class="dropdown-navigation">
+        <ul class="nav-link">
+          <li class="dropdown">
+            <a href="#">Bücher</a>
+            <div class="dropdown-content">
+              <a href="#romane" data-filter="romance">Romane</a>
+              <a href="#krimis" data-filter="thriller">Krimis</a>
+              <a href="#fantasy" data-filter="fantasy">Fantasy</a>
+              <a href="#science-fiction" data-filter="science fiction"
+                >Science-Fiction</a
+              >
+              <a href="#sachbuecher" data-filter="sachbuch">Sachbücher</a>
+              <a href="#kinderbuecher" data-filter="kinderbuch">Kinderbücher</a>
+            </div>
+          </li>
+
+          <li class="dropdown">
+            <a href="#">Spiele</a>
+            <div class="dropdown-content">
+              <a href="#brettspiele" data-filter="brettspiel">Brettspiele</a>
+              <a href="#kartenspiele" data-filter="kartenspiel">Kartenspiele</a>
+              <a href="#rollenspiele" data-filter="rollenspiel">Rollenspiele</a>
+            </div>
+          </li>
+
+          <li class="dropdown">
+            <a href="#">Schulbuch</a>
+            <div class="dropdown-content">
+              <a href="#mathematik" data-filter="mathematik">Mathematik</a>
+              <a href="#deutsch" data-filter="deutsch schulbuch">Deutsch</a>
+              <a href="#englisch" data-filter="englisch schulbuch">Englisch</a>
+            </div>
+          </li>
+
+          <li class="dropdown">
+            <a href="#">Hörbücher</a>
+            <div class="dropdown-content">
+              <a href="#hoerbuecher" data-filter="audiobook"
+                >Hörbücher entdecken</a
+              >
+            </div>
+          </li>
+
+          <li class="dropdown">
+            <a href="#">E-Books</a>
+            <div class="dropdown-content">
+              <a href="#ebooks" data-filter="ebook">E-Books entdecken</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Homepage -->
+      <section>
+        <div class="homepage">
+          <button class="slider-arrow prev">&larr;</button>
+
+          <div class="img">
+            <img src="img/Homescreen.jpg" alt="Homescreen" />
+            <img src="img/Homescreen2.jpg" alt="Homescreen2" />
+            <img src="img/Homescreen3.jpg" alt="Homescreen3" />
+          </div>
+
+          <button class="slider-arrow next">&rarr;</button>
+        </div>
+
+        <div class="categories">
+          <a href="#" class="category-card" data-query="bestseller">
+            <span>Bestseller</span>
+          </a>
+          <a href="#" class="category-card" data-query="new books">
+            <span>Neuheiten</span>
+          </a>
+          <a href="#" class="category-card sale" data-query="sale">
+            <span>SALE</span>
+          </a>
+          <a href="#" class="category-card" data-query="spiegel bestseller">
+            <span>Spiegel-Bestseller</span>
+          </a>
+          <a href="#" class="category-card" data-query="romance">
+            <span>Romane</span>
+          </a>
+          <a href="#" class="category-card" data-query="thriller">
+            <span>Krimis</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Unsere Bücher -->
+      <section id="katalog" class="buecher-sektion" data-query="unsere-buecher">
+        <h2>Unsere Bücher</h2>
+        <div class="buecher-grid"></div>
+      </section>
+      <!-- Bestseller -->
+      <section id="bestseller" class="buecher-sektion" data-query="bestseller">
+        <h2>Bestseller</h2>
+        <div class="buecher-grid"></div>
+      </section>
+
+      <!-- Fantasy -->
+      <section id="fantasy" class="buecher-sektion" data-query="fantasy">
+        <h2>Fantasy</h2>
+        <div class="buecher-grid"></div>
+      </section>
+
+      <!-- Thriller -->
+      <section id="krimis" class="buecher-sektion" data-query="thriller">
+        <h2>Thriller</h2>
+        <div class="buecher-grid"></div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-links">
+          <h4>Services & Hilfe</h4>
+          <ul>
+            <li><a href="#">Kontakt & FAQ</a></li>
+            <li><a href="#">Versand & Lieferzeiten</a></li>
+            <li><a href="#">Rücksendung & Umtausch</a></li>
+            <li><a href="#">Gutscheine einlösen</a></li>
+            <li><a href="#">Filialfinder</a></li>
+          </ul>
+        </div>
+        <!-- Über BookForge -->
+        <div class="footer-links">
+          <h4>Über BookForge</h4>
+          <ul>
+            <li><a href="#">Über uns</a></li>
+            <li><a href="#">Karriere & Jobs</a></li>
+            <li><a href="#">Nachhaltigkeit</a></li>
+            <li><a href="#">Presse</a></li>
+          </ul>
+        </div>
+        <!-- Rechtliches & Sonstiges -->
+        <div class="footer-links">
+          <h4>Rechtliches</h4>
+          <ul>
+            <li><a href="#">Datenschutz</a></li>
+            <li><a href="#">Impressum</a></li>
+            <li><a href="#">AGB</a></li>
+            <li><a href="#">Cookie-Einstellungen</a></li>
+          </ul>
+        </div>
+        <!-- Social Media & Zahlungsarten -->
+        <div class="footer-links">
+          <h4>Folge uns</h4>
+          <ul class="social-links">
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">TikTok</a></li>
+            <li><a href="#">YouTube</a></li>
+          </ul>
+          <h4 class="sub-heading">Zahlungsarten</h4>
+          <p class="payment-methods">
+            Visa • Mastercard • PayPal • Klarna • BillPay
+          </p>
+        </div>
+      </div>
+
+      <p class="copyright">&copy; 2026 BookForge. Alle Rechte vorbehalten.</p>
+    </footer>
+    <script src="app.js"></script>
+  </body>
+</html>
