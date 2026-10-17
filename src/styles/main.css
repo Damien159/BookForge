@@ -2114,3 +2114,14 @@ footer .copyright {
   font-weight: bold;
   font-size: 1rem;
 }
+.auth-error {
+  margin: 0;
+  color: var(--danger);
+  font-size: 0.85rem;
+}
+
+.auth-notice {
+  margin: 0;
+  color: var(--success);
+  font-size: 0.85rem;
+}
