@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { useWishlist } from "../context/WishlistContext";
@@ -10,10 +10,15 @@ export default function BookCard({ book }) {
   const [added, setAdded] = useState(false);
   const liked = has(book.key);
 
+    useEffect(() => {
+    if (!added) return;
+    const timer = setTimeout(() => setAdded(false), 800);
+    return () => clearTimeout(timer);
+  }, [added]);
+
   function handleAdd() {
     addItem(book);
     setAdded(true);
-    setTimeout(() => setAdded(false), 800);
   }
 
   return (
