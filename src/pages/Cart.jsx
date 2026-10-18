@@ -3,7 +3,7 @@ import { useCart } from "../context/CartContext";
 import { formatPrice } from "../lib/price";
 
 export default function Cart() {
-  const { items, changeQuantity, removeItem } = useCart();
+  const { items, total, changeQuantity, removeItem } = useCart();
 
   return (
     <main className="cart-page-container">
@@ -64,8 +64,27 @@ export default function Cart() {
                   </button>
                 </div>
               </div>
-            ))}
+                        ))}
           </div>
+
+          <aside className="cart-summary">
+            <h3>Zusammenfassung</h3>
+            <div className="summary-row">
+              <span>Zwischensumme</span>
+              <span>{formatPrice(total)}</span>
+            </div>
+            <div className="summary-row">
+              <span>Versandkosten</span>
+              <span>Kostenlos</span>
+            </div>
+            <div className="summary-row total">
+              <span>Gesamtsumme</span>
+              <span>{formatPrice(total)}</span>
+            </div>
+            <Link to="/checkout" className="checkout-btn">
+              Zur Kasse gehen
+            </Link>
+          </aside>
         </div>
       )}
     </main>
