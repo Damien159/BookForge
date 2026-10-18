@@ -10,7 +10,7 @@ export default function BookCard({ book }) {
   const [added, setAdded] = useState(false);
   const liked = has(book.key);
 
-    useEffect(() => {
+  useEffect(() => {
     if (!added) return;
     const timer = setTimeout(() => setAdded(false), 800);
     return () => clearTimeout(timer);
@@ -27,7 +27,9 @@ export default function BookCard({ book }) {
         type="button"
         className={`fav-btn${liked ? " active" : ""}`}
         onClick={() => toggle(book)}
-        aria-label={liked ? "Von der Merkliste entfernen" : "Zur Merkliste hinzufügen"}
+        aria-label={
+          liked ? "Von der Merkliste entfernen" : "Zur Merkliste hinzufügen"
+        }
         aria-pressed={liked}
       >
         <img src="/svg/Heart.svg" alt="" className="svg-icon" />
