@@ -1,4 +1,10 @@
-import { createContext, useCallback, useContext, useMemo, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useMemo,
+  useState,
+} from "react";
 import { readJSON, writeJSON } from "../lib/storage";
 import { hashPassword } from "../lib/auth";
 
@@ -50,7 +56,10 @@ export function AuthProvider({ children }) {
         account.email.toLowerCase() === mail.toLowerCase(),
     );
     if (exists) {
-      return { ok: false, error: "Benutzername oder E-Mail ist bereits vergeben." };
+      return {
+        ok: false,
+        error: "Benutzername oder E-Mail ist bereits vergeben.",
+      };
     }
 
     users.push({
@@ -74,7 +83,9 @@ export function AuthProvider({ children }) {
     if (!account) return failed;
 
     const hash = await hashPassword(account.username, password);
-    const isLegacy = account.password === password; // altes Klartext-Konto
+    // Altes Klartext-Konto: gespeichertes Passwort ist kein SHA-256-Hash (64 Hex-Zeichen)
+    const isLegacy =
+      !/^[0-9a-f]{64}$/.test(account.password) && account.password === password;
     if (account.password !== hash && !isLegacy) return failed;
 
     if (isLegacy) {
