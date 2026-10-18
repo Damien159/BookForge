@@ -64,7 +64,7 @@ export default function Cart() {
                   </button>
                 </div>
               </div>
-                        ))}
+            ))}
           </div>
 
           <aside className="cart-summary">
