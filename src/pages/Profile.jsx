@@ -1,6 +1,7 @@
 import { useAuth } from "../context/AuthContext";
 import AuthForm from "../components/AuthForm";
 import AccountSettings from "../components/AccountSettings";
+import OrderHistory from "../components/OrderHistory";
 
 export default function Profile() {
   const { user } = useAuth();
@@ -13,7 +14,12 @@ export default function Profile() {
                 <>
           <section className="profile-section">
             <h3>Konto-Einstellungen</h3>
-            <AccountSettings />
+                        <AccountSettings />
+          </section>
+
+          <section className="profile-section">
+            <h3>Deine Bestellungen</h3>
+            <OrderHistory user={user} />
           </section>
         </>
       ) : (
