@@ -13,6 +13,7 @@ const EMPTY_ADDRESS = {
 export default function Checkout() {
   const { items } = useCart();
   const [address, setAddress] = useState(EMPTY_ADDRESS);
+  const [payment, setPayment] = useState("PayPal");
 
   function handleChange(event) {
     setAddress({ ...address, [event.target.name]: event.target.value });
@@ -105,6 +106,24 @@ export default function Checkout() {
                 required
               />
             </div>
+          </div>
+                </section>
+
+        <section className="checkout-card">
+          <h3>2. Zahlungsart</h3>
+          <div className="payment-options">
+            {["PayPal", "Kreditkarte"].map((method) => (
+              <label key={method}>
+                <input
+                  type="radio"
+                  name="payment"
+                  value={method}
+                  checked={payment === method}
+                  onChange={(event) => setPayment(event.target.value)}
+                />{" "}
+                {method}
+              </label>
+            ))}
           </div>
         </section>
       </form>
