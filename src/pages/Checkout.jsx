@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import { formatPrice, getShipping } from "../lib/price";
 
 const EMPTY_ADDRESS = {
   firstname: "",
@@ -11,7 +12,8 @@ const EMPTY_ADDRESS = {
 };
 
 export default function Checkout() {
-  const { items } = useCart();
+    const { items, total } = useCart();
+  const shipping = getShipping(total);
   const [address, setAddress] = useState(EMPTY_ADDRESS);
   const [payment, setPayment] = useState("PayPal");
 
@@ -125,6 +127,22 @@ export default function Checkout() {
               </label>
             ))}
           </div>
+                </section>
+
+        <section className="checkout-card checkout-summary-box">
+          <div>
+            <div>Zwischensumme: {formatPrice(total)}</div>
+            <div>
+              Versand: {shipping === 0 ? "Kostenlos" : formatPrice(shipping)}
+            </div>
+            <div>
+              <span>Gesamtbetrag: </span>
+              <strong>{formatPrice(total + shipping)}</strong>
+            </div>
+          </div>
+          <button type="submit" className="btn-primary">
+            Kostenpflichtig bestellen
+          </button>
         </section>
       </form>
     </main>
