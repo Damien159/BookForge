@@ -104,9 +104,37 @@ export function AuthProvider({ children }) {
     setUser(null);
   }, []);
 
+    const getEmail = useCallback(() => {
+    const account = readJSON(USERS_KEY).find((entry) => entry.username === user);
+    return account?.email ?? "";
+  }, [user]);
+
+  const updateAccount = useCallback(
+    async ({ email, newPassword }) => {
+      const users = readJSON(USERS_KEY);
+      const account = users.find((entry) => entry.username === user);
+      if (!account) return { ok: false, error: "Konto nicht gefunden." };
+
+      const mail = email.trim();
+      const taken = users.some(
+        (entry) =>
+          entry !== account && entry.email.toLowerCase() === mail.toLowerCase(),
+      );
+      if (taken) return { ok: false, error: "Diese E-Mail ist bereits vergeben." };
+
+      account.email = mail;
+      if (newPassword) {
+        account.password = await hashPassword(account.username, newPassword);
+      }
+      writeJSON(USERS_KEY, users);
+      return { ok: true };
+    },
+    [user],
+  );
+
   const value = useMemo(
-    () => ({ user, register, login, logout }),
-    [user, register, login, logout],
+    () => ({ user, register, login, logout, getEmail, updateAccount }),
+    [user, register, login, logout, getEmail, updateAccount],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
