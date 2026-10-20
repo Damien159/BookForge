@@ -1,4 +1,5 @@
 import { useReviews } from "../hooks/useReviews";
+import ReviewForm from "./ReviewForm";
 
 // Der Speicher ist von außen veränderbar, deshalb wird der Wert begrenzt
 const stars = (value) => {
@@ -7,7 +8,7 @@ const stars = (value) => {
 };
 
 export default function Reviews({ bookKey }) {
-  const { reviews, count, average } = useReviews(bookKey);
+  const { reviews, count, average, addReview } = useReviews(bookKey);
 
   return (
     <section className="reviews-section">
@@ -22,6 +23,8 @@ export default function Reviews({ bookKey }) {
           ({count} {count === 1 ? "Bewertung" : "Bewertungen"})
         </p>
       </div>
+
+      <ReviewForm onSubmit={addReview} />
 
       <div className="reviews-list">
         {count === 0 && <p>Noch keine Bewertungen vorhanden. Sei der Erste!</p>}
