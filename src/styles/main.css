@@ -2136,3 +2136,7 @@ footer .copyright {
   color: var(--primary);
   font-family: var(--font-heading);
 }
+.detail-actions .cart-btn.added {
+  border-color: var(--success);
+  background-color: var(--success);
+}
