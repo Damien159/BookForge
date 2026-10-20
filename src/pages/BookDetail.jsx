@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { useWishlist } from "../context/WishlistContext";
 import { useBook } from "../hooks/useBook";
+import Reviews from "../components/Reviews";
 import { formatPrice } from "../lib/price";
 
 export default function BookDetail() {
@@ -102,6 +103,8 @@ export default function BookDetail() {
         <h2>Beschreibung</h2>
         <p className="description-text">{book.description}</p>
       </section>
+
+      <Reviews key={book.key} bookKey={book.key} />
     </main>
   );
 }
