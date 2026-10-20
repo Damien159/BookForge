@@ -61,7 +61,7 @@ export default function BookDetail() {
 
           <div className="detail-price-box">
             <span className="detail-price">{formatPrice(book.price)}</span>
-                        <span className="stock-status">✓ Auf Lager</span>
+            <span className="stock-status">✓ Auf Lager</span>
           </div>
 
           <div className="detail-actions">
@@ -77,7 +77,11 @@ export default function BookDetail() {
               type="button"
               className={`fav-btn${liked ? " active" : ""}`}
               onClick={() => toggle(book)}
-              aria-label={liked ? "Von der Merkliste entfernen" : "Zur Merkliste hinzufügen"}
+              aria-label={
+                liked
+                  ? "Von der Merkliste entfernen"
+                  : "Zur Merkliste hinzufügen"
+              }
               aria-pressed={liked}
             >
               <img src="/svg/Heart.svg" alt="" className="svg-icon" />
@@ -85,6 +89,11 @@ export default function BookDetail() {
           </div>
         </div>
       </div>
+
+      <section className="product-description-section">
+        <h2>Beschreibung</h2>
+        <p className="description-text">{book.description}</p>
+      </section>
     </main>
   );
 }

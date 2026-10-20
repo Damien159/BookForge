@@ -2140,3 +2140,6 @@ footer .copyright {
   border-color: var(--success);
   background-color: var(--success);
 }
+.description-text {
+  white-space: pre-line;
+}
