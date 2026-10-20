@@ -23,9 +23,23 @@ export default function BookDetail() {
 
   useEffect(() => {
     if (!book) return;
+    const meta = document.querySelector('meta[name="description"]');
+    const previousDescription = meta?.getAttribute("content");
+
     document.title = `${book.title} | BookForge`;
+    meta?.setAttribute(
+      "content",
+      `${book.title} von ${book.author}. ${book.description}`
+        .replace(/\s+/g, " ")
+        .trim()
+        .slice(0, 155),
+    );
+
     return () => {
       document.title = "BookForge | Bücher online kaufen";
+      if (meta && previousDescription !== null) {
+        meta.setAttribute("content", previousDescription);
+      }
     };
   }, [book]);
 
