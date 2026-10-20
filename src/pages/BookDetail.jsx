@@ -20,6 +20,14 @@ export default function BookDetail() {
     return () => clearTimeout(timer);
   }, [added]);
 
+  useEffect(() => {
+    if (!book) return;
+    document.title = `${book.title} | BookForge`;
+    return () => {
+      document.title = "BookForge | Bücher online kaufen";
+    };
+  }, [book]);
+
   function handleAdd() {
     addItem(book);
     setAdded(true);
