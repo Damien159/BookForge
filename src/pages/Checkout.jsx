@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useDocumentTitle } from "../hooks/useDocumentTitle";
 import { useAuth } from "../context/AuthContext";
 import { useCart } from "../context/CartContext";
 import { addOrder, createOrderId } from "../lib/orders";
@@ -14,6 +15,7 @@ const EMPTY_ADDRESS = {
 };
 
 export default function Checkout() {
+    useDocumentTitle("Kasse");
   const { user } = useAuth();
   const { items, total, clear } = useCart();
   const shipping = getShipping(total);

@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
+import { useDocumentTitle } from "../hooks/useDocumentTitle";
 import { useCart } from "../context/CartContext";
 import { formatPrice } from "../lib/price";
 
 export default function Cart() {
+  useDocumentTitle("Warenkorb");
   const { items, total, changeQuantity, removeItem } = useCart();
 
   return (
