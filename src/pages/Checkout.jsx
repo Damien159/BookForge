@@ -15,7 +15,7 @@ const EMPTY_ADDRESS = {
 };
 
 export default function Checkout() {
-    useDocumentTitle("Kasse");
+  useDocumentTitle("Kasse");
   const { user } = useAuth();
   const { items, total, clear } = useCart();
   const shipping = getShipping(total);
