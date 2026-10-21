@@ -12,20 +12,20 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 
 export default function App() {
   return (
-        <Suspense fallback={<p style={{ padding: 40 }}>Seite wird geladen...</p>}>
-    <Routes>
-      <Route element={<CheckoutLayout />}>
-        <Route path="checkout" element={<Checkout />} />
-      </Route>
-      <Route element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="buch/:key" element={<BookDetail />} />
-        <Route path="warenkorb" element={<Cart />} />
-        <Route path="merkliste" element={<Wishlist />} />
-        <Route path="profil" element={<Profile />} />
-        <Route path="*" element={<NotFound />} />
-      </Route>
-        </Routes>
+    <Suspense fallback={<p style={{ padding: 40 }}>Seite wird geladen...</p>}>
+      <Routes>
+        <Route element={<CheckoutLayout />}>
+          <Route path="checkout" element={<Checkout />} />
+        </Route>
+        <Route element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="buch/:key" element={<BookDetail />} />
+          <Route path="warenkorb" element={<Cart />} />
+          <Route path="merkliste" element={<Wishlist />} />
+          <Route path="profil" element={<Profile />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
     </Suspense>
   );
 }
