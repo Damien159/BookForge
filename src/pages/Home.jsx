@@ -1,5 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 import BookSection from "../components/BookSection";
+import HeroSlider from "../components/HeroSlider";
 
 const SECTIONS = [
   { id: "katalog", title: "Unsere Bücher", query: "novel" },
@@ -14,6 +15,7 @@ export default function Home() {
 
   return (
     <main>
+      {!search && <HeroSlider />}
       {search ? (
         <BookSection
           key={search}
