@@ -9,7 +9,7 @@ import "./styles/main.css";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
-            <ScrollToTop />
+      <ScrollToTop />
       <AppProviders>
         <App />
       </AppProviders>
