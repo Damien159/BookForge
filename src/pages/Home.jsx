@@ -1,6 +1,9 @@
 import { useSearchParams } from "react-router-dom";
 import BookSection from "../components/BookSection";
 import HeroSlider from "../components/HeroSlider";
+import CategoryCards from "../components/CategoryCards";
+import { CATEGORIES } from "../data/categories";
+import { NAV_MENU } from "../data/navigation";
 
 const SECTIONS = [
   { id: "katalog", title: "Unsere Bücher", query: "novel" },
@@ -12,15 +15,23 @@ const SECTIONS = [
 export default function Home() {
   const [params] = useSearchParams();
   const search = params.get("q")?.trim();
+  const category = [
+    ...CATEGORIES,
+    ...NAV_MENU.flatMap((menu) => menu.items),
+  ].find((entry) => entry.query === search);
+  const title = category
+    ? `Kategorie: ${category.label}`
+    : `Suchergebnisse für: "${search}"`;
 
   return (
     <main>
       {!search && <HeroSlider />}
+      <CategoryCards active={search} />
       {search ? (
         <BookSection
           key={search}
           id="suche"
-          title={`Suchergebnisse für: "${search}"`}
+          title={title}
           query={search}
           eager
         />
