@@ -1,10 +1,12 @@
 import { useNavigate } from "react-router-dom";
+import { useDocumentTitle } from "../hooks/useDocumentTitle";
 import { useAuth } from "../context/AuthContext";
 import AuthForm from "../components/AuthForm";
 import AccountSettings from "../components/AccountSettings";
 import OrderHistory from "../components/OrderHistory";
 
 export default function Profile() {
+    useDocumentTitle("Mein Profil");
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 

@@ -4,6 +4,7 @@ import HeroSlider from "../components/HeroSlider";
 import CategoryCards from "../components/CategoryCards";
 import { CATEGORIES } from "../data/categories";
 import { NAV_MENU } from "../data/navigation";
+import { useDocumentTitle } from "../hooks/useDocumentTitle";
 
 const SECTIONS = [
   { id: "katalog", title: "Unsere Bücher", query: "novel" },
@@ -22,6 +23,7 @@ export default function Home() {
   const title = category
     ? `Kategorie: ${category.label}`
     : `Suchergebnisse für: "${search}"`;
+  useDocumentTitle(search ? title : null);
 
   return (
     <main>
