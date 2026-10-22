@@ -1,26 +1,39 @@
-import { useEffect, useState } from "react";
-import { fetchBook } from "../lib/openlibrary";
+import { useCallback, useEffect, useState } from "react";
+import { searchBooks } from "../lib/openlibrary";
 
-export function useBook(key) {
-  const [result, setResult] = useState({ key: null, book: null, error: false });
+// query = null: noch nicht laden (Lazy Loading)
+export function useBooks(query) {
+  const [attempt, setAttempt] = useState(0);
+  const [result, setResult] = useState({
+    query: null,
+    attempt: 0,
+    books: [],
+    error: false,
+  });
 
   useEffect(() => {
-    if (!key) return;
+    if (!query) return;
 
     const controller = new AbortController();
-    fetchBook(key, controller.signal)
-      .then((book) => setResult({ key, book, error: false }))
+    searchBooks(query, controller.signal)
+      .then((books) => setResult({ query, attempt, books, error: false }))
       .catch((error) => {
         if (error.name !== "AbortError") {
-          setResult({ key, book: null, error: true });
+          setResult({ query, attempt, books: [], error: true });
         }
       });
 
-    // Beim Wechsel des Buchs wird die alte Anfrage abgebrochen
+    // Beim Wechsel der Suche wird die alte Anfrage abgebrochen
     return () => controller.abort();
-  }, [key]);
+  }, [query, attempt]);
 
-  if (result.key !== key) return { status: "loading", book: null };
-  if (result.error) return { status: "error", book: null };
-  return { status: "ok", book: result.book };
+  const retry = useCallback(() => setAttempt((count) => count + 1), []);
+
+  let status = "idle";
+  if (query) {
+    if (result.query !== query || result.attempt !== attempt) status = "loading";
+    else status = result.error ? "error" : "ok";
+  }
+
+  return { status, books: status === "ok" ? result.books : [], retry };
 }
