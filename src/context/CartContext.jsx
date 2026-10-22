@@ -8,6 +8,7 @@ import {
 } from "react";
 import { readJSON, writeJSON } from "../lib/storage";
 import { useAuth } from "./AuthContext";
+import { MAX_QUANTITY } from "../lib/limits";
 
 const CartContext = createContext(null);
 
@@ -42,7 +43,7 @@ export function CartProvider({ children }) {
       save(
         exists
           ? items.map((item) =>
-              item.key === book.key ? { ...item, quantity: item.quantity + 1 } : item,
+              item.key === book.key ? { ...item, quantity: Math.min(MAX_QUANTITY, item.quantity + 1)} : item,
             )
           : [
               ...items,
@@ -65,7 +66,7 @@ export function CartProvider({ children }) {
       save(
         items
           .map((item) =>
-            item.key === key ? { ...item, quantity: item.quantity + delta } : item,
+            item.key === key ? { ...item, quantity: Math.min(MAX_QUANTITY, item.quantity + delta) } : item,
           )
           .filter((item) => item.quantity > 0),
       );

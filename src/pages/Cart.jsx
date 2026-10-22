@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useDocumentTitle } from "../hooks/useDocumentTitle";
 import { useCart } from "../context/CartContext";
+import { MAX_QUANTITY } from "../lib/limits";
 import { formatPrice } from "../lib/price";
 
 export default function Cart() {
@@ -50,6 +51,7 @@ export default function Cart() {
                       type="button"
                       className="quantity-btn"
                       onClick={() => changeQuantity(item.key, 1)}
+                      disabled={item.quantity >= MAX_QUANTITY}
                       aria-label="Menge erhöhen"
                     >
                       +
