@@ -10,3 +10,10 @@ export function getBookPrice(key) {
 export function formatPrice(value) {
   return Number(value).toFixed(2).replace(".", ",") + " €";
 }
+
+export const FREE_SHIPPING_FROM = 20;
+export const SHIPPING_COST = 3.9;
+
+export function getShipping(subtotal) {
+  return subtotal === 0 || subtotal >= FREE_SHIPPING_FROM ? 0 : SHIPPING_COST;
+}
