@@ -27,7 +27,7 @@ export default function BookSection({ id, title, query, eager = false }) {
     return () => observer.disconnect();
   }, [visible]);
 
-  const { status, books } = useBooks(visible ? query : null);
+  const { status, books, retry } = useBooks(visible ? query : null);
 
   return (
     <section id={id} className="buecher-sektion" ref={ref}>
@@ -37,7 +37,14 @@ export default function BookSection({ id, title, query, eager = false }) {
         style={{ minHeight: status === "idle" ? 320 : undefined }}
       >
         {status === "loading" && <p>Bücher werden geladen...</p>}
-        {status === "error" && <p>Fehler beim Laden der Buchdaten.</p>}
+        {status === "error" && (
+          <div role="alert">
+            <p>Die Bücher konnten nicht geladen werden.</p>
+            <button type="button" className="btn btn-primary" onClick={retry}>
+              Erneut versuchen
+            </button>
+          </div>
+        )}
         {status === "ok" && books.length === 0 && <p>Keine Bücher gefunden.</p>}
         {books.map((book) => (
           <BookCard key={book.key} book={book} />
