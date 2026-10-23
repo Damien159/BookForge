@@ -1,39 +1,48 @@
 :root {
-  --background: #f7f1e3;
-  --primary: #5c4033;
-  --secondary: #8b6f47;
-  --accent: #b85c38;
-  --text: #292522;
+  /* Farben */
+  --background: #f8f5ef;
+  --primary: #493326;
+  --secondary: #80664d;
+  --accent: #b65f43;
+  --text: #29231f;
   --surface: #ffffff;
-  --muted: #666666;
-  --success: #2e7d32;
-  --danger: #c9302c;
+  --muted: #786f68;
+  --success: #36734a;
+  --danger: #c6453d;
 
-  --border-color: rgba(139, 111, 71, 0.2);
-  --border-light: rgba(139, 111, 71, 0.15);
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+  /* Rahmen und Schatten */
+  --border-color: rgba(73, 51, 38, 0.14);
+  --border-light: rgba(73, 51, 38, 0.09);
+  --shadow-sm: 0 2px 8px rgba(45, 32, 23, 0.04);
+  --shadow-md: 0 8px 24px rgba(45, 32, 23, 0.07);
+  --shadow-lg: 0 16px 40px rgba(45, 32, 23, 0.12);
 
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 12px;
-  --radius-pill: 20px;
+  /* Abgerundete Ecken */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
 
+  /* Layout */
   --container-width: 1200px;
   --content-width: 1050px;
-
   --header-spacing: 180px;
-  --section-spacing: 40px;
+  --section-spacing: 48px;
 
+  /* Typografie */
   --font-heading: "Playfair Display", Georgia, serif;
   --font-body: "Source Sans 3", Arial, sans-serif;
 
+  /* Icons */
   --icon-filter: invert(24%) sepia(21%) saturate(1048%) hue-rotate(346deg)
     brightness(93%) contrast(89%);
 
   --icon-filter-accent: invert(36%) sepia(51%) saturate(1280%)
     hue-rotate(334deg) brightness(92%) contrast(88%);
+
+  /* Einheitliche Übergänge */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
 }
 
 /* =========================================================
