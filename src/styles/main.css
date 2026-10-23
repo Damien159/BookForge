@@ -2373,3 +2373,103 @@ footer .copyright {
   padding-top: 22px;
   border-top: 1px solid rgba(255, 255, 255, 0.18);
 }
+
+/* Finale responsive Designkorrekturen */
+
+@media (max-width: 900px) {
+  .main-header {
+    gap: 16px;
+    padding: 15px 20px;
+  }
+
+  .product-main-info {
+    gap: 28px;
+  }
+
+  .checkout-page-container {
+    margin-top: 180px;
+    padding: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .homepage .img img {
+    height: 280px;
+  }
+
+  .buecher-sektion {
+    padding: 30px 10px;
+  }
+
+  .buecher-grid,
+  .wishlist-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .buecher-card {
+    padding: 12px 8px;
+  }
+
+  .buecher-card img {
+    width: 100px;
+    height: 150px;
+  }
+
+  .product-main-info {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .product-info-container {
+    width: 100%;
+  }
+
+  .cart-item {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 16px;
+  }
+
+  .checkout-page-container {
+    margin-top: 240px;
+    padding: 18px 14px;
+    border-radius: var(--radius-md);
+  }
+
+  .checkout-card {
+    padding: 18px;
+  }
+
+  .form-row,
+  .form-row-small {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .reviews-section {
+    padding: 20px 14px;
+  }
+
+  .review-header {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 360px) {
+  .buecher-grid,
+  .wishlist-grid {
+    gap: 8px;
+  }
+
+  .buecher-card img {
+    width: 90px;
+    height: 135px;
+  }
+
+  .checkout-page-container {
+    padding: 14px 10px;
+  }
+}
