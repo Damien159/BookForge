@@ -155,14 +155,43 @@ header {
    4. HAUPTHEADER UND LOGO
    ========================================================= */
 
+
 .main-header {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  gap: 24px;
-  padding: 15px 40px;
+  gap: 28px;
+  padding: 18px 40px;
   background-color: var(--background);
 }
+
+.logo {
+  flex-shrink: 0;
+  color: var(--primary);
+  font-family: var(--font-heading);
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.logo:hover {
+  color: var(--accent);
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background);
+  box-shadow: 0 4px 20px rgba(45, 32, 23, 0.07);
+  z-index: 1000;
+}
+
 
 .logo {
   flex-shrink: 0;
@@ -176,6 +205,7 @@ header {
    5. SUCHLEISTE
    ========================================================= */
 
+
 .search-container {
   display: flex;
   align-items: center;
@@ -184,9 +214,19 @@ header {
   min-width: 0;
   overflow: hidden;
   background-color: var(--surface);
-  border: 1px solid var(--secondary);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm);
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
 }
+
+.search-container:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(182, 95, 67, 0.12);
+}
+
 
 .category-select {
   padding: 10px 15px;
