@@ -1868,13 +1868,16 @@ footer .copyright {
   padding: 0 20px;
 }
 
+
 .profile-section {
-  background: #ffffff;
-  border: 1px solid #dddddd;
-  padding: 25px;
-  border-radius: 8px;
-  margin-bottom: 30px;
+  padding: 28px;
+  margin-bottom: 28px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  background-color: var(--surface);
+  box-shadow: var(--shadow-sm);
 }
+
 
 .profile-box {
   background: #f8f9fa;
@@ -1931,12 +1934,22 @@ footer .copyright {
   gap: 15px;
 }
 
+
 .order-card {
-  border: 1px solid #eeeeee;
-  padding: 15px;
-  border-radius: 6px;
-  background-color: #fafafa;
+  padding: 20px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  background-color: #fcfaf6;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
 }
+
+.order-card:hover {
+  border-color: rgba(182, 95, 67, 0.3);
+  box-shadow: var(--shadow-sm);
+}
+
 
 .order-header {
   display: flex;
@@ -1989,15 +2002,17 @@ footer .copyright {
 
 /*BEWERTUNGSSYSTEM */
 
+
 .reviews-section {
   max-width: 100%;
   margin: 40px auto;
-  padding: 30px;
-  background: #fdfbf7; /* Passender warmer Hintergrund im Stil deiner Seite */
-  border: 1px solid #ebdccb;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  padding: 32px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  background-color: var(--background);
+  box-shadow: var(--shadow-sm);
 }
+
 
 .reviews-section h3 {
   font-family: serif;
@@ -2111,12 +2126,22 @@ footer .copyright {
   gap: 15px;
 }
 
+
 .review-card {
-  border: 1px solid #ebdccb;
-  padding: 20px;
-  border-radius: 8px;
-  background-color: #ffffff;
+  padding: 22px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  background-color: var(--surface);
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
 }
+
+.review-card:hover {
+  border-color: rgba(182, 95, 67, 0.25);
+  box-shadow: var(--shadow-sm);
+}
+
 
 .review-header {
   display: flex;
