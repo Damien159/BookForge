@@ -1146,17 +1146,24 @@ footer .copyright {
   min-width: 0;
 }
 
+
 .cart-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  padding: 18px 20px;
+  gap: 20px;
+  padding: 22px;
   border: 1px solid var(--border-light);
   border-radius: var(--radius-md);
   background-color: var(--surface);
   box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-fast);
 }
+
+.cart-item:hover {
+  box-shadow: var(--shadow-md);
+}
+
 
 .cart-item-info {
   display: flex;
@@ -1235,16 +1242,18 @@ footer .copyright {
    22. WARENKORB: ZUSAMMENFASSUNG
    ========================================================= */
 
+
 .cart-summary {
   flex: 0 0 320px;
   width: 320px;
   min-width: 0;
-  padding: 24px;
+  padding: 26px;
   border: 1px solid var(--border-light);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   background-color: var(--surface);
   box-shadow: var(--shadow-md);
 }
+
 
 .cart-summary h3 {
   margin: 0 0 20px;
@@ -2148,14 +2157,18 @@ footer .copyright {
   background-color: #f3eae1;
 }
 /*checkout  page*/
+
 .checkout-page-container {
+  width: 100%;
   max-width: 900px;
-  margin: 40px auto;
-  padding: 30px;
-  background: #fdfbf7;
-  border: 1px solid #ebdccb;
-  border-radius: 12px;
+  margin: 180px auto 60px;
+  padding: 32px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  background-color: var(--background);
+  box-shadow: var(--shadow-sm);
 }
+
 
 .checkout-title {
   font-family: serif;
