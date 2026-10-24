@@ -1875,9 +1875,11 @@ footer .copyright {
 }
 
 .profile-box {
-  background: #f8f9fa;
-  padding: 30px;
-  border-radius: 8px;
+  padding: 32px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  background-color: var(--surface);
+  box-shadow: var(--shadow-sm);
 }
 
 .center-box {
@@ -2208,9 +2210,10 @@ footer .copyright {
   gap: 25px;
 }
 .checkout-card {
-  background: #ffffff;
-  padding: 25px;
-  border-radius: 8px;
+  background: var(--surface);
+  padding: 28px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
   border: 1px solid var(--border-color);
 }
 
@@ -2511,4 +2514,74 @@ footer .copyright {
 
 .cart-item-title a:hover {
   color: var(--accent);
+}
+/* Einheitliche Eingabefelder mit sichtbarem Fokus */
+.form-group input,
+.auth-form input,
+.review-form textarea {
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background-color: var(--surface);
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.form-group input:focus,
+.auth-form input:focus,
+.review-form textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(182, 95, 67, 0.15);
+  outline: none;
+}
+
+/* Zahlungsarten als auswählbare Karten */
+.payment-options label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition:
+    border-color var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+.payment-options label:has(input:checked) {
+  border-color: var(--accent);
+  background-color: var(--surface-tint);
+}
+
+.payment-options input {
+  accent-color: var(--accent);
+}
+
+/* Sterne-Auswahl */
+.star-rating-input .star {
+  transition:
+    color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.star-rating-input .star:hover {
+  transform: scale(1.15);
+}
+
+.star-rating-input .star:focus-visible {
+  border-radius: 4px;
+  outline: 2px solid var(--accent);
+}
+
+/* Profil-Überschriften */
+.profile-container > h2 {
+  margin: 0 0 24px;
+  color: var(--primary);
+  font-size: 2rem;
+}
+
+.profile-section h3 {
+  margin-top: 0;
+  color: var(--primary);
 }
