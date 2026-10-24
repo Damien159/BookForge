@@ -26,6 +26,14 @@ export default function Cart() {
             {items.map((item) => (
               <div className="cart-item" key={item.key}>
                 <div className="cart-item-info">
+                  <img
+                    src={item.cover || "/img/no-cover.svg"}
+                    alt=""
+                    width="56"
+                    height="84"
+                    loading="lazy"
+                    className="cart-item-cover"
+                  />
                   <div>
                     <h3 className="cart-item-title">
                       <Link to={`/buch/${item.key}`}>{item.title}</Link>

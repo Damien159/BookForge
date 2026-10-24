@@ -937,6 +937,11 @@ footer .copyright {
   box-shadow: 0 14px 32px rgba(45, 32, 23, 0.15);
 }
 
+.product-cover-container {
+  flex: 0 0 280px;
+  width: 280px;
+}
+
 .product-info-container {
   display: flex;
   flex: 1;
@@ -980,9 +985,12 @@ footer .copyright {
 }
 
 .stock-status {
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  background-color: rgba(54, 115, 74, 0.1);
   color: var(--success);
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-size: 0.85rem;
+  font-weight: 600;
 }
 
 /* =========================================================
@@ -1214,6 +1222,8 @@ footer .copyright {
    ========================================================= */
 
 .cart-summary {
+  position: sticky;
+  top: 140px;
   flex: 0 0 320px;
   width: 320px;
   min-width: 0;
@@ -1281,9 +1291,17 @@ footer .copyright {
 
 .empty-message {
   grid-column: 1 / -1;
-  padding: 50px 0;
-  color: #777777;
+  padding: 56px 24px;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-lg);
+  background-color: var(--surface);
+  color: var(--muted);
   text-align: center;
+}
+
+.empty-message h2 {
+  margin-top: 0;
+  color: var(--primary);
 }
 
 .empty-message a {
@@ -1517,6 +1535,7 @@ footer .copyright {
   }
 
   .cart-summary {
+    position: static;
     flex: 1 1 auto;
   }
 }
@@ -2475,4 +2494,21 @@ footer .copyright {
 .buecher-card .card-footer .price {
   margin: 0;
   padding: 0;
+}
+.cart-item-cover {
+  flex-shrink: 0;
+  width: 56px;
+  height: 84px;
+  border-radius: 6px;
+  object-fit: cover;
+  box-shadow: var(--shadow-sm);
+}
+
+.cart-item-title a {
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.cart-item-title a:hover {
+  color: var(--accent);
 }
