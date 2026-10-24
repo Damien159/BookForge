@@ -635,14 +635,23 @@ main {
 }
 
 .buecher-card img {
-  width: 140px;
-  height: 210px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  aspect-ratio: 2 / 3;
   margin: 8px 0 16px;
   border-radius: var(--radius-sm);
-  object-fit: contain;
-  background-color: #f8f5ef;
-  box-shadow: 0 5px 14px rgba(45, 32, 23, 0.1);
+  object-fit: cover;
+  background-color: var(--surface-tint);
+  box-shadow: 0 6px 16px rgba(45, 32, 23, 0.14);
+  transition:
+    transform var(--transition-normal),
+    box-shadow var(--transition-normal);
+}
+
+.buecher-card:hover img {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(45, 32, 23, 0.2);
 }
 
 /*KOMPAKTE SEKTIONEN / KEIN LEERER RAUM*/
@@ -775,12 +784,6 @@ main {
    15. BUCHKARTEN: WARENKORB-BUTTON
    ========================================================= */
 
-.buecher-card .button-group {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-  margin-top: 10px;
-}
 
 .cart-btn {
   display: inline-flex;
@@ -2457,4 +2460,19 @@ footer .copyright {
   .slider-arrow:focus-visible {
     opacity: 1;
   }
+}
+.buecher-card .card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-light);
+}
+
+.buecher-card .card-footer .price {
+  margin: 0;
+  padding: 0;
 }

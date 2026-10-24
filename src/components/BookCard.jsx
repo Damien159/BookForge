@@ -48,8 +48,8 @@ export default function BookCard({ book }) {
         <p>{book.author}</p>
       </Link>
 
-      <p className="price">{formatPrice(book.price)}</p>
-      <div className="button-group">
+      <div className="card-footer">
+        <p className="price">{formatPrice(book.price)}</p>
         <button
           type="button"
           className={`cart-btn${added ? " added" : ""}`}
