@@ -857,11 +857,13 @@ main {
 }
 
 .footer-links h4 {
-  margin-bottom: 14px;
-  padding-bottom: 4px;
-  border-bottom: 2px solid var(--secondary);
-  color: var(--background);
-  font-size: 1rem;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  color: #f5e6d8;
+  font-size: 0.85rem;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
 }
 
 .footer-links .sub-heading {
@@ -879,15 +881,18 @@ main {
 }
 
 .footer-links a {
-  color: #e0e0e0;
-  font-size: 0.9rem;
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.92rem;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition:
+    color var(--transition-fast),
+    transform var(--transition-fast);
 }
 
 .footer-links a:hover {
-  color: var(--background);
-  text-decoration: underline;
+  color: #f0c5a8;
+  transform: translateX(3px);
 }
 
 .payment-methods {
@@ -2345,27 +2350,10 @@ textarea:focus-visible {
 }
 
 footer {
-  margin-top: auto;
-  padding: 56px 24px 24px;
-  background-color: var(--primary);
+  margin-top: 56px;
+  padding: 64px 24px 24px;
+  background: linear-gradient(180deg, var(--primary) 0%, #33231a 100%);
   color: #ffffff;
-}
-
-.footer-links a {
-  transition:
-    color var(--transition-fast),
-    opacity var(--transition-fast);
-}
-
-.footer-links a:hover {
-  color: #f0c5a8;
-  text-decoration: underline;
-}
-
-footer .copyright {
-  margin-top: 42px;
-  padding-top: 22px;
-  border-top: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 /* Finale responsive Designkorrekturen */
@@ -2584,4 +2572,24 @@ footer .copyright {
 .profile-section h3 {
   margin-top: 0;
   color: var(--primary);
+}
+/* Feinschliff */
+html {
+  scrollbar-gutter: stable;
+  scrollbar-color: var(--secondary) var(--background);
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+::selection {
+  background: rgba(182, 95, 67, 0.25);
 }
