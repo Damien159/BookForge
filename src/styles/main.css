@@ -1895,28 +1895,44 @@ footer .copyright {
 
 /* Buttons */
 .btn {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
   text-decoration: none;
-  display: inline-block;
+  cursor: pointer;
+}
+
+.btn:active {
+  transform: translateY(1px);
 }
 
 .btn-primary {
-  background-color: #333333;
+  background-color: var(--primary);
   color: #ffffff;
 }
 
+.btn-primary:hover {
+  background-color: var(--accent);
+}
+
 .btn-success {
-  background-color: #28a745;
+  background-color: var(--success);
   color: #ffffff;
 }
 
 .btn-danger {
-  background-color: #dc3545;
+  background-color: var(--danger);
   color: #ffffff;
+}
+
+.btn-success:hover,
+.btn-danger:hover {
+  filter: brightness(1.1);
 }
 
 .logout-wrapper {
@@ -2180,6 +2196,10 @@ footer .copyright {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.checkout-summary-box .btn-primary:hover {
+  background-color: var(--accent);
 }
 
 .checkout-summary-box .btn-primary {
