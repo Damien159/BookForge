@@ -660,8 +660,23 @@ main {
   font-size: 1.8rem;
   color: var(--heading);
   margin-bottom: 20px;
-  border-left: 5px solid var(--primary);
-  padding-left: 15px;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.buecher-sektion h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 56px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+.buecher-sektion:last-child {
+  border-bottom: 0;
 }
 
 .buecher-sektion .buecher-grid {
@@ -2425,5 +2440,21 @@ footer .copyright {
 
   .checkout-page-container {
     padding: 14px 10px;
+  }
+}
+/* Slider-Pfeile erscheinen nur beim Drüberfahren (Touch-Geräte zeigen sie immer) */
+@media (hover: hover) {
+  .slider-arrow {
+    opacity: 0;
+    transition:
+      opacity var(--transition-normal),
+      background-color var(--transition-fast),
+      color var(--transition-fast),
+      box-shadow var(--transition-fast);
+  }
+
+  .homepage:hover .slider-arrow,
+  .slider-arrow:focus-visible {
+    opacity: 1;
   }
 }
