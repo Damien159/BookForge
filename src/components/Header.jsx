@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { NAV_MENU } from "../data/navigation";
 import { useWishlist } from "../context/WishlistContext";
 import { useCart } from "../context/CartContext";
@@ -7,7 +7,16 @@ import { formatPrice } from "../lib/price";
 import ProfileMenu from "./ProfileMenu";
 
 export default function Header() {
-  const [query, setQuery] = useState("");
+  const [params] = useSearchParams();
+  const urlQuery = params.get("q") ?? "";
+  const [query, setQuery] = useState(urlQuery);
+  const [shownUrlQuery, setShownUrlQuery] = useState(urlQuery);
+
+  // Ändert sich die Adresse (Kachel, Menü, Zurück-Taste), folgt das Suchfeld
+  if (urlQuery !== shownUrlQuery) {
+    setShownUrlQuery(urlQuery);
+    setQuery(urlQuery);
+  }
   const navigate = useNavigate();
   const { count: wishlistCount } = useWishlist();
   const { count: cartCount, total: cartTotal } = useCart();
