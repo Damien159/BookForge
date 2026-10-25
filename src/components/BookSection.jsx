@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useBooks } from "../hooks/useBooks";
 import BookCard from "./BookCard";
 
-export default function BookSection({ id, title, query, eager = false }) {
+export default function BookSection({ id, title, query, limit = 8, eager = false }) {
   const ref = useRef(null);
   // Ohne IntersectionObserver wird sofort geladen
   const [visible, setVisible] = useState(
@@ -27,7 +27,7 @@ export default function BookSection({ id, title, query, eager = false }) {
     return () => observer.disconnect();
   }, [visible]);
 
-  const { status, books, retry } = useBooks(visible ? query : null);
+  const { status, books, retry } = useBooks(visible ? query : null, limit);
 
   return (
     <section id={id} className="buecher-sektion" ref={ref}>
