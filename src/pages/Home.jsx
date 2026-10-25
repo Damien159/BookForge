@@ -35,6 +35,7 @@ export default function Home() {
           id="suche"
           title={title}
           query={search}
+          limit={24}
           eager
         />
       ) : (
