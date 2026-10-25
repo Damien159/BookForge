@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 import { searchBooks } from "../lib/openlibrary";
 
 // query = null: noch nicht laden (Lazy Loading)
-export function useBooks(query) {
+export function useBooks(query, limit = 8) {
   const [result, setResult] = useState({ query: null, books: [], error: false });
 
   useEffect(() => {
     if (!query) return;
 
     const controller = new AbortController();
-    searchBooks(query, controller.signal)
+    searchBooks(query, controller.signal, limit)
       .then((books) => setResult({ query, books, error: false }))
       .catch((error) => {
         if (error.name !== "AbortError") {
