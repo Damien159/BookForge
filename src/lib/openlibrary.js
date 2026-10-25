@@ -23,8 +23,8 @@ function normalizeDoc(doc) {
   };
 }
 
-export async function searchBooks(query, signal) {
-  const cacheKey = `bookforge_cache_${query}`;
+export async function searchBooks(query, signal, limit = 8) {
+ const cacheKey = `bookforge_cache_${limit}_${query}`;
 
   try {
     const cached = JSON.parse(sessionStorage.getItem(cacheKey));
@@ -35,7 +35,7 @@ export async function searchBooks(query, signal) {
 
   const fields = "key,title,author_name,cover_i";
   const response = await fetch(
-    `${API}/search.json?q=${encodeURIComponent(query)}&limit=8&fields=${fields}`,
+    `${API}/search.json?q=${encodeURIComponent(query)}&limit=${limit}&fields=${fields}`,
     { signal },
   );
   if (!response.ok) throw new Error(`OpenLibrary: ${response.status}`);
