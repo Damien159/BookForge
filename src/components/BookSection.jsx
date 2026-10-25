@@ -36,7 +36,20 @@ export default function BookSection({ id, title, query, eager = false }) {
         className="buecher-grid"
         style={{ minHeight: status === "idle" ? 320 : undefined }}
       >
-        {status === "loading" && <p>Bücher werden geladen...</p>}
+        {status === "loading" && (
+          <>
+            <span className="visually-hidden" role="status">
+              Bücher werden geladen
+            </span>
+            {Array.from({ length: 8 }, (_, index) => (
+              <div className="buecher-card skeleton-card" key={index} aria-hidden="true">
+                <div className="skeleton skeleton-cover" />
+                <div className="skeleton skeleton-line" />
+                <div className="skeleton skeleton-line short" />
+              </div>
+            ))}
+          </>
+        )}
         {status === "error" && (
           <div role="alert">
             <p>Die Bücher konnten nicht geladen werden.</p>
