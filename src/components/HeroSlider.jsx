@@ -10,12 +10,14 @@ const SLIDES = [
 export default function HeroSlider() {
   const trackRef = useRef(null);
   const [resetCount, setResetCount] = useState(0);
+  const [paused, setPaused] = useState(false);
 
   const go = useCallback((direction) => {
     const track = trackRef.current;
     if (!track) return;
 
-    const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 10;
+    const atEnd =
+      track.scrollLeft + track.clientWidth >= track.scrollWidth - 10;
     const atStart = track.scrollLeft <= 10;
 
     if (direction > 0 && atEnd) {
@@ -23,18 +25,24 @@ export default function HeroSlider() {
     } else if (direction < 0 && atStart) {
       track.scrollTo({ left: track.scrollWidth, behavior: "smooth" });
     } else {
-      track.scrollBy({ left: direction * track.clientWidth, behavior: "smooth" });
+      track.scrollBy({
+        left: direction * track.clientWidth,
+        behavior: "smooth",
+      });
     }
   }, []);
 
   // Automatisch weiter, aber nicht im Hintergrund-Tab.
   // Ein Klick erhöht resetCount und startet den Timer neu.
   useEffect(() => {
+    if (paused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
     const timer = setInterval(() => {
       if (!document.hidden) go(1);
     }, 20000);
     return () => clearInterval(timer);
-  }, [go, resetCount]);
+  }, [go, resetCount, paused]);
 
   function handleClick(direction) {
     go(direction);
@@ -42,7 +50,16 @@ export default function HeroSlider() {
   }
 
   return (
-    <div className="homepage" role="region" aria-roledescription="Karussell" aria-label="Aktionen">
+    <div
+      className="homepage"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocus={() => setPaused(true)}
+      onBlur={() => setPaused(false)}
+      role="region"
+      aria-roledescription="Karussell"
+      aria-label="Aktionen"
+    >
       <button
         type="button"
         className="slider-arrow prev"
