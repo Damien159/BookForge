@@ -2659,3 +2659,39 @@ h3 {
 .skip-link:focus {
   top: 12px;
 }
+@media (max-width: 900px) {
+  .dropdown-navigation ul {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 10px 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .dropdown-navigation ul::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Die Gruppen lösen sich auf, die Links werden direkte Chips der Leiste */
+  .dropdown-navigation .dropdown,
+  .dropdown-navigation .dropdown-content,
+  .dropdown-navigation .dropdown:hover .dropdown-content,
+  .dropdown-navigation .dropdown:focus-within .dropdown-content {
+    display: contents;
+  }
+
+  .dropdown-navigation .dropdown > a {
+    display: none;
+  }
+
+  .dropdown-navigation .dropdown-content a {
+    flex-shrink: 0;
+    padding: 8px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-pill);
+    background-color: var(--surface);
+    font-size: 13px;
+    white-space: nowrap;
+  }
+}
