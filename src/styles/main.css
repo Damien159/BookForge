@@ -2695,3 +2695,14 @@ h3 {
     white-space: nowrap;
   }
 }
+@media (hover: none) {
+  .buecher-card:hover,
+  .category-card:hover,
+  .checkout-btn:hover {
+    transform: none;
+  }
+
+  .buecher-card:hover .book-card-link img {
+    transform: none;
+  }
+}
