@@ -454,13 +454,8 @@ main {
 
 .homepage {
   position: relative;
-  left: 50%;
-  width: 100vw;
-  max-width: none;
-  margin-top: 160px;
-  margin-right: -50vw;
+  width: 100%;
   margin-bottom: var(--section-spacing);
-  margin-left: -50vw;
   overflow: hidden;
 }
 
