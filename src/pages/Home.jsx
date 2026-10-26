@@ -16,10 +16,9 @@ const SECTIONS = [
 export default function Home() {
   const [params] = useSearchParams();
   const search = params.get("q")?.trim();
-  const category = [
-    ...CATEGORIES,
-    ...NAV_MENU.flatMap((menu) => menu.items),
-  ].find((entry) => entry.query === search);
+  const category = [...CATEGORIES, ...NAV_MENU.flatMap((menu) => menu.items)].find(
+    (entry) => entry.query === search,
+  );
   const title = category
     ? `Kategorie: ${category.label}`
     : `Suchergebnisse für: "${search}"`;
@@ -29,22 +28,22 @@ export default function Home() {
     <>
       {!search && <HeroSlider />}
       <main>
-      <CategoryCards active={search} />
-      {search ? (
-        <BookSection
-          key={search}
-          id="suche"
-          title={title}
-          query={search}
-          limit={24}
-          eager
-        />
-      ) : (
-        SECTIONS.map((section, index) => (
-          <BookSection key={section.id} {...section} eager={index === 0} />
-        ))
-      )}
-    </main>
+        <CategoryCards active={search} />
+        {search ? (
+          <BookSection
+            key={search}
+            id="suche"
+            title={title}
+            query={search}
+            limit={24}
+            eager
+          />
+        ) : (
+          SECTIONS.map((section, index) => (
+            <BookSection key={section.id} {...section} eager={index === 0} />
+          ))
+        )}
+      </main>
     </>
   );
 }
