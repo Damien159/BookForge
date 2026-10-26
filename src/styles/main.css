@@ -530,7 +530,7 @@ main {
   gap: 15px;
   max-width: var(--container-width);
   margin: 0 auto var(--section-spacing);
-  padding: 0 10px;
+  padding: 0;
 }
 
 .category-card {
@@ -653,7 +653,7 @@ main {
 
 .buecher-sektion {
   min-height: auto; /* Entfernt die erzwungene Bildschirmhöhe */
-  padding: 40px 20px; /* Angemessener, sauberer Abstand */
+  padding: 40px 0; /* Angemessener, sauberer Abstand */
   border-bottom: 1px solid var(--border-color);
   max-width: 1200px;
   margin: 0 auto;
@@ -778,7 +778,6 @@ main {
 /* =========================================================
    15. BUCHKARTEN: WARENKORB-BUTTON
    ========================================================= */
-
 
 .cart-btn {
   display: inline-flex;
@@ -2375,7 +2374,7 @@ footer {
   }
 
   .buecher-sektion {
-    padding: 30px 10px;
+    padding: 30px 0;
   }
 
   .buecher-grid,
