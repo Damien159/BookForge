@@ -180,8 +180,7 @@ button:disabled {
 }
 
 header {
-  position: sticky;
-  top: 0;
+  position: static;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -2740,5 +2739,12 @@ h3 {
     background-color: var(--surface);
     font-size: 13px;
     white-space: nowrap;
+  }
+}
+
+@media (min-width: 901px) and (min-height: 760px) {
+  header {
+    position: sticky;
+    top: 0;
   }
 }
