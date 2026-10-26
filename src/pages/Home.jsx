@@ -26,8 +26,9 @@ export default function Home() {
   useDocumentTitle(search ? title : null);
 
   return (
-    <main>
+    <>
       {!search && <HeroSlider />}
+      <main>
       <CategoryCards active={search} />
       {search ? (
         <BookSection
@@ -44,5 +45,6 @@ export default function Home() {
         ))
       )}
     </main>
+    </>
   );
 }
