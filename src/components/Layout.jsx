@@ -8,7 +8,11 @@ export default function Layout() {
       <a href="#main-content" className="skip-link">
         Zum Inhalt springen
       </a>
+      <a href="#main-content" className="skip-link">
+        Zum Inhalt springen
+      </a>
       <Header />
+      <div id="main-content" tabIndex={-1} />
       <div id="main-content" tabIndex={-1} />
       <Outlet />
       <Footer />
