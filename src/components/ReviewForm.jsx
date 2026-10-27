@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 
-export default function ReviewForm({ onSubmit }) {
+export default function ReviewForm({ onSubmit, alreadyReviewed = false }) {
   const { user } = useAuth();
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
@@ -24,7 +24,11 @@ export default function ReviewForm({ onSubmit }) {
     <div className="review-form-box">
       <h4>Bewertung schreiben</h4>
 
-      {!user ? (
+      {alreadyReviewed ? (
+        <div className="hint-box">
+          <p>Du hast dieses Buch bereits bewertet. Danke für dein Feedback!</p>
+        </div>
+      ) : !user ? (
         <div className="hint-box">
           <p>Bitte melde dich an, um eine Bewertung abzugeben.</p>
         </div>
