@@ -102,6 +102,12 @@ export default function Cart() {
               <span>Gesamtsumme</span>
               <span>{formatPrice(total)}</span>
             </div>
+            {total > 0 && total < FREE_SHIPPING_FROM && (
+              <p className="shipping-hint">
+                Noch {formatPrice(FREE_SHIPPING_FROM - total)} bis zum kostenlosen
+                Versand.
+              </p>
+            )}
             <Link to="/checkout" className="checkout-btn">
               Zur Kasse gehen
             </Link>

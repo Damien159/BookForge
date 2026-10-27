@@ -2775,3 +2775,11 @@ h3 {
 .clear-cart-btn:hover {
   color: var(--danger);
 }
+.shipping-hint {
+  margin: 16px 0 0;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  background-color: var(--surface-tint);
+  color: var(--primary);
+  font-size: 0.9rem;
+}
