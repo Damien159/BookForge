@@ -38,6 +38,9 @@ export default function HeroSlider() {
     if (paused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       return;
     }
+    if (paused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
     const timer = setInterval(() => {
       if (!document.hidden) go(1);
     }, 20000);
