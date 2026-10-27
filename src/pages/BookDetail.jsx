@@ -69,6 +69,10 @@ export default function BookDetail() {
 
   return (
     <main className="product-detail-container">
+      <Link to="/" className="back-link">
+        ← Zurück zu den Büchern
+      </Link>
+
       <div className="product-main-info">
         <div className="product-cover-container">
           <img
