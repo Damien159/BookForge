@@ -1,5 +1,6 @@
 import { useReviews } from "../hooks/useReviews";
 import ReviewForm from "./ReviewForm";
+import { useAuth } from "../context/AuthContext";
 
 // Der Speicher ist von außen veränderbar, deshalb wird der Wert begrenzt
 const stars = (value) => {
@@ -9,6 +10,9 @@ const stars = (value) => {
 
 export default function Reviews({ bookKey }) {
   const { reviews, count, average, addReview } = useReviews(bookKey);
+  const { user } = useAuth();
+  const alreadyReviewed =
+    Boolean(user) && reviews.some((review) => review.username === user);
 
   return (
     <section className="reviews-section">
@@ -24,7 +28,7 @@ export default function Reviews({ bookKey }) {
         </p>
       </div>
 
-      <ReviewForm onSubmit={addReview} />
+      <ReviewForm onSubmit={addReview} alreadyReviewed={alreadyReviewed} />
 
       <div className="reviews-list">
         {count === 0 && <p>Noch keine Bewertungen vorhanden. Sei der Erste!</p>}
