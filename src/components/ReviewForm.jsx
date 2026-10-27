@@ -64,13 +64,14 @@ export default function ReviewForm({ onSubmit, alreadyReviewed = false }) {
           </div>
 
           <div className="form-group">
-            <label htmlFor="review-text">Dein Kommentar:</label>
+            <label htmlFor="review-text">Dein Kommentar ({comment.length}/1000):</label>
             <textarea
               id="review-text"
               rows="4"
               placeholder="Wie hat dir das Buch gefallen?"
               value={comment}
               onChange={(event) => setComment(event.target.value)}
+              maxLength={1000}
               required
             />
           </div>
