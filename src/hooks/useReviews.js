@@ -7,6 +7,9 @@ export function useReviews(bookKey) {
 
   const addReview = useCallback(
     ({ username, rating, comment }) => {
+      const existing = readJSON(storageKey);
+      if (existing.some((review) => review.username === username)) return;
+
       const next = [
         {
           username,
@@ -14,7 +17,7 @@ export function useReviews(bookKey) {
           comment,
           date: new Date().toLocaleDateString("de-DE"),
         },
-        ...readJSON(storageKey),
+        ...existing,
       ];
       writeJSON(storageKey, next);
       setReviews(next);
