@@ -2762,3 +2762,16 @@ h3 {
 .skip-link:focus {
   top: 12px;
 }
+.clear-cart-btn {
+  align-self: flex-end;
+  padding: 4px 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-decoration: underline;
+}
+
+.clear-cart-btn:hover {
+  color: var(--danger);
+}

@@ -6,7 +6,7 @@ import { formatPrice } from "../lib/price";
 
 export default function Cart() {
   useDocumentTitle("Warenkorb");
-  const { items, total, changeQuantity, removeItem } = useCart();
+  const { items, total, changeQuantity, removeItem, clear } = useCart();
 
   return (
     <main className="cart-page-container">
@@ -23,6 +23,15 @@ export default function Cart() {
       ) : (
         <div className="cart-layout">
           <div className="cart-items-list">
+            <button
+              type="button"
+              className="clear-cart-btn"
+              onClick={() => {
+                if (window.confirm("Warenkorb wirklich leeren?")) clear();
+              }}
+            >
+              Warenkorb leeren
+            </button>
             {items.map((item) => (
               <div className="cart-item" key={item.key}>
                 <div className="cart-item-info">
