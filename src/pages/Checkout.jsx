@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useDocumentTitle } from "../hooks/useDocumentTitle";
 import { useAuth } from "../context/AuthContext";
 import { useCart } from "../context/CartContext";
-import { addOrder, createOrderId } from "../lib/orders";
+import { addOrder, createOrderId, getOrders } from "../lib/orders";
 import { formatPrice, getShipping } from "../lib/price";
 
 const EMPTY_ADDRESS = {
@@ -19,7 +19,10 @@ export default function Checkout() {
   const { user } = useAuth();
   const { items, total, clear } = useCart();
   const shipping = getShipping(total);
-  const [address, setAddress] = useState(EMPTY_ADDRESS);
+  const [address, setAddress] = useState(() => ({
+    ...EMPTY_ADDRESS,
+    ...getOrders(user)[0]?.address,
+  }));
   const [payment, setPayment] = useState("PayPal");
   const [placedOrder, setPlacedOrder] = useState(null);
 
