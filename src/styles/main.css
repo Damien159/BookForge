@@ -2816,3 +2816,9 @@ h3 {
 .link-btn:hover {
   color: var(--accent);
 }
+
+.order-meta {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+}

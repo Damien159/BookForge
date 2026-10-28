@@ -27,6 +27,12 @@ export default function OrderHistory({ user }) {
             ))}
           </ul>
 
+          <p className="order-meta">
+            {order.payment} · {order.status}
+            {order.address &&
+              ` · Lieferung an ${order.address.street}, ${order.address.zip} ${order.address.city}`}
+          </p>
+
           <div className="order-total">
             {order.shipping > 0 && (
               <div>Versand: {formatPrice(order.shipping)}</div>
