@@ -83,7 +83,15 @@ export default function BookDetail() {
         </div>
 
         <div className="product-info-container">
-          <span className="detail-author">{book.author}</span>
+          <span className="detail-author">
+            {book.author === "Unbekannter Autor" ? (
+              book.author
+            ) : (
+              <Link to={`/?q=${encodeURIComponent(book.author)}`} className="author-link">
+                {book.author}
+              </Link>
+            )}
+          </span>
           <h1 className="detail-title">{book.title}</h1>
 
           <div className="detail-price-box">
