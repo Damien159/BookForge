@@ -49,6 +49,8 @@ export default function Cart() {
                     </h3>
                     <div className="cart-item-price">
                       {formatPrice(item.price)}
+                      {item.quantity > 1 &&
+                        ` × ${item.quantity} = ${formatPrice(item.price * item.quantity)}`}
                     </div>
                   </div>
                 </div>
