@@ -79,6 +79,27 @@ export function CartProvider({ children }) {
     [items, save],
   );
 
+  const addItems = useCallback(
+    (books) => {
+      const missing = books.filter(
+        (book) => !items.some((item) => item.key === book.key),
+      );
+      if (missing.length === 0) return;
+      save([
+        ...items,
+        ...missing.map(({ key, title, author, cover, price }) => ({
+          key,
+          title,
+          author,
+          cover,
+          price,
+          quantity: 1,
+        })),
+      ]);
+    },
+    [items, save],
+  );
+
   const clear = useCallback(() => save([]), [save]);
 
   const value = useMemo(
@@ -88,10 +109,11 @@ export function CartProvider({ children }) {
       total: items.reduce((sum, item) => sum + item.price * item.quantity, 0),
       addItem,
       changeQuantity,
-      removeItem,
+            removeItem,
+      addItems,
       clear,
     }),
-    [items, addItem, changeQuantity, removeItem, clear],
+    [items, addItem, addItems, changeQuantity, removeItem, clear],
   );
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
