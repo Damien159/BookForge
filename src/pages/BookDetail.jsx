@@ -12,6 +12,7 @@ export default function BookDetail() {
   const { addItem } = useCart();
   const { has, toggle } = useWishlist();
   const [added, setAdded] = useState(false);
+  const [copied, setCopied] = useState(false);
   const liked = has(key);
 
   // Der Timer wird aufgeräumt, falls die Seite vorher verlassen wird
@@ -42,6 +43,21 @@ export default function BookDetail() {
       }
     };
   }, [book]);
+
+  useEffect(() => {
+    if (!copied) return;
+    const timer = setTimeout(() => setCopied(false), 1800);
+    return () => clearTimeout(timer);
+  }, [copied]);
+
+  async function handleCopy() {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      setCopied(true);
+    } catch {
+      // Zwischenablage nicht verfügbar: nichts passiert
+    }
+  }
 
   function handleAdd() {
     addItem(book);
@@ -123,6 +139,12 @@ export default function BookDetail() {
             </button>
           </div>
         </div>
+      </div>
+
+      <div className="share-row">
+        <button type="button" className="link-btn" onClick={handleCopy}>
+          {copied ? "✓ Link kopiert" : "Link kopieren"}
+        </button>
       </div>
 
       <section className="product-description-section">
