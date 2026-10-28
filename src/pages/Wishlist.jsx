@@ -1,15 +1,29 @@
 import { Link } from "react-router-dom";
 import BookCard from "../components/BookCard";
 import { useWishlist } from "../context/WishlistContext";
+import { useCart } from "../context/CartContext";
 import { useDocumentTitle } from "../hooks/useDocumentTitle";
 
 export default function Wishlist() {
   useDocumentTitle("Merkliste");
   const { books } = useWishlist();
+  const { addItems } = useCart();
 
   return (
     <main className="wishlist-page-container">
       <h1 className="wishlist-page-title">Deine Merkliste</h1>
+
+      {books.length > 0 && (
+        <div className="wishlist-actions">
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={() => addItems(books)}
+          >
+            Alle in den Warenkorb
+          </button>
+        </div>
+      )}
 
       {books.length === 0 ? (
         <div className="empty-message">
