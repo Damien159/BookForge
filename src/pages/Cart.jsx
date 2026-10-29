@@ -113,6 +113,9 @@ export default function Cart() {
             <Link to="/checkout" className="checkout-btn">
               Zur Kasse gehen
             </Link>
+          <Link to="/" className="continue-link">
+              ← Weiter einkaufen
+            </Link>
           </aside>
         </div>
       )}
