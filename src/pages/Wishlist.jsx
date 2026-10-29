@@ -11,8 +11,9 @@ export default function Wishlist() {
 
   return (
     <main className="wishlist-page-container">
-      <h1 className="wishlist-page-title">Deine Merkliste</h1>
-
+     <h1 className="wishlist-page-title">
+        Deine Merkliste{books.length > 0 && ` (${books.length})`}
+      </h1>
       {books.length > 0 && (
         <div className="wishlist-actions">
           <button
