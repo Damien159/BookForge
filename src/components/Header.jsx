@@ -59,6 +59,8 @@ export default function Header() {
           <input
             type="text"
             placeholder="Titel, Autor, ISBN..."
+            enterKeyHint="search"
+            autoComplete="off"
             aria-label="Suche"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
