@@ -10,7 +10,9 @@ export default function Cart() {
 
   return (
     <main className="cart-page-container">
-      <h1 className="cart-page-title">Dein Warenkorb</h1>
+      <h1 className="cart-page-title">
+        Dein Warenkorb{items.length > 0 && ` (${items.length})`}
+      </h1>
 
       {items.length === 0 ? (
         <div className="empty-message">
