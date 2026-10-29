@@ -29,7 +29,7 @@ export default function Footer() {
             <ul>
               {column.links.map((label) => (
                 <li key={label}>
-                  <a href="#">{label}</a>
+                  <a href="#" onClick={(event) => event.preventDefault()}>{label}</a>
                 </li>
               ))}
             </ul>
@@ -39,9 +39,9 @@ export default function Footer() {
         <div className="footer-links">
           <h4>Folge uns</h4>
           <ul className="social-links">
-            <li><a href="#">Instagram</a></li>
-            <li><a href="#">TikTok</a></li>
-            <li><a href="#">YouTube</a></li>
+            <li><a href="#" onClick={(event) => event.preventDefault()}>Instagram</a></li>
+            <li><a href="#" onClick={(event) => event.preventDefault()}>TikTok</a></li>
+            <li><a href="#" onClick={(event) => event.preventDefault()}>YouTube</a></li>
           </ul>
           <h4 className="sub-heading">Zahlungsarten</h4>
           <p className="payment-methods">
