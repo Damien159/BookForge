@@ -2822,3 +2822,16 @@ h3 {
   color: var(--muted);
   font-size: 0.88rem;
 }
+.continue-link {
+  display: block;
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-align: center;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.continue-link:hover {
+  color: var(--accent);
+}
