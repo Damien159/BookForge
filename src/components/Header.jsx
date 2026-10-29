@@ -31,8 +31,8 @@ export default function Header() {
     <header>
       <div className="top-bar">
         <div className="top-bar-left">
-          <a href="#">Buchhandlungen</a>
-          <a href="#">Veranstaltungen</a>
+          <a href="#" onClick={(event) => event.preventDefault()}>Buchhandlungen</a>
+          <a href="#" onClick={(event) => event.preventDefault()}>Veranstaltungen</a>
         </div>
         <div className="top-bar-center">
           <span>
@@ -40,7 +40,7 @@ export default function Header() {
           </span>
         </div>
         <div className="top-bar-right">
-          <a href="#">Telefonische Buchberatung</a>
+          <a href="#" onClick={(event) => event.preventDefault()}>Telefonische Buchberatung</a>
         </div>
       </div>
 
