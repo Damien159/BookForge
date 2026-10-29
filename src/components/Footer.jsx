@@ -50,7 +50,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <p className="copyright">&copy; 2026 BookForge. Alle Rechte vorbehalten.</p>
+      <p className="copyright">&copy; {new Date().getFullYear()} BookForge. Alle Rechte vorbehalten.</p>
     </footer>
   );
 }
