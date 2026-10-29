@@ -44,7 +44,7 @@ export default function BookCard({ book }) {
           loading="lazy"
           decoding="async"
         />
-        <h3>{book.title}</h3>
+        <h3 title={book.title}>{book.title}</h3>
         <p>{book.author}</p>
       </Link>
 
