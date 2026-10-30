@@ -50,7 +50,12 @@ export default function Footer() {
         </div>
       </div>
 
-      <p className="copyright">&copy; {new Date().getFullYear()} BookForge. Alle Rechte vorbehalten.</p>
+      <p className="copyright">&copy; {new Date().getFullYear()} BookForge. Alle Rechte vorbehalten. Buchdaten und Cover von{" "}
+        <a href="https://openlibrary.org" target="_blank" rel="noopener noreferrer">
+          Open Library
+        </a>
+        .
+      </p>
     </footer>
   );
 }
