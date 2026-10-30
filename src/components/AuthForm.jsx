@@ -9,6 +9,7 @@ export default function AuthForm() {
   const [form, setForm] = useState(EMPTY_FORM);
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   function handleChange(event) {
     setForm({ ...form, [event.target.name]: event.target.value });
@@ -64,7 +65,7 @@ export default function AuthForm() {
         />
       )}
       <input
-        type="password"
+        type={showPassword ? "text" : "password"}
         name="password"
         placeholder="Passwort"
         autoComplete={mode === "login" ? "current-password" : "new-password"}
@@ -83,6 +84,15 @@ export default function AuthForm() {
           {notice}
         </p>
       )}
+
+      <label className="show-password">
+        <input
+          type="checkbox"
+          checked={showPassword}
+          onChange={(event) => setShowPassword(event.target.checked)}
+        />
+        Passwort anzeigen
+      </label>
 
       <button type="submit" className="auth-btn">
         {mode === "login" ? "Einloggen" : "Konto erstellen"}
