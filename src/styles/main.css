@@ -2865,3 +2865,17 @@ footer .copyright a {
 footer .copyright a:hover {
   color: #f0c5a8;
 }
+.show-password {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.auth-form .show-password input {
+  width: auto;
+  padding: 0;
+  accent-color: var(--accent);
+}
