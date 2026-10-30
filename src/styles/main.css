@@ -2857,3 +2857,11 @@ h3 {
   background-color: var(--accent);
   color: #ffffff;
 }
+footer .copyright a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+footer .copyright a:hover {
+  color: #f0c5a8;
+}
