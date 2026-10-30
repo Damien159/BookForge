@@ -67,8 +67,9 @@ export default function AuthForm() {
       <input
         type={showPassword ? "text" : "password"}
         name="password"
-        placeholder="Passwort"
-        autoComplete={mode === "login" ? "current-password" : "new-password"}
+        placeholder="Passwort"autoComplete={mode === "login" ? "current-password" : "new-password"}
+        minLength={mode === "register" ? 8 : undefined}
+        
         value={form.password}
         onChange={handleChange}
         required
