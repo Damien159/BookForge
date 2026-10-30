@@ -30,8 +30,13 @@ export default function BookSection({ id, title, query, limit = 8, eager = false
   const { status, books, retry } = useBooks(visible ? query : null, limit);
 
   return (
-    <section id={id} className="buecher-sektion" ref={ref}>
-      <h2>{title}</h2>
+   <section
+      id={id}
+      className="buecher-sektion"
+      ref={ref}
+      aria-labelledby={`${id}-title`}
+    >
+      <h2 id={`${id}-title`}>{title}</h2>
       <div
         className="buecher-grid"
         style={{ minHeight: status === "idle" ? 320 : undefined }}
