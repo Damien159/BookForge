@@ -2911,3 +2911,12 @@ footer .copyright a:hover {
     box-shadow: none;
   }
 }
+.checkout-items {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--text);
+}
+
+.checkout-items li {
+  margin-bottom: 6px;
+}
