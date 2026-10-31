@@ -2879,3 +2879,35 @@ footer .copyright a:hover {
   padding: 0;
   accent-color: var(--accent);
 }
+@media print {
+  header,
+  footer,
+  .skip-link,
+  .back-to-top,
+  .slider-arrow,
+  .detail-actions,
+  .fav-btn,
+  .cart-btn,
+  .review-form-box {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff;
+    color: #000000;
+  }
+
+  main {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .buecher-card,
+  .cart-item,
+  .order-card,
+  .review-card {
+    break-inside: avoid;
+    box-shadow: none;
+  }
+}
