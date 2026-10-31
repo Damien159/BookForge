@@ -1,0 +1,17 @@
+{
+  "name": "BookForge",
+  "short_name": "BookForge",
+  "description": "Online-Buchshop mit Bestsellern, Fantasy und Krimis",
+  "lang": "de",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8f5ef",
+  "theme_color": "#493326",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
