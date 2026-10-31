@@ -96,12 +96,11 @@ export default function Checkout() {
     <main className="checkout-page-container">
       <h1 className="checkout-title">Kasse &amp; Bestellung abschließen</h1>
 
-     <form className="checkout-form-grid" onSubmit={handleSubmit}>
+      <form className="checkout-form-grid" onSubmit={handleSubmit}>
         {!user && (
           <p className="hint-box">
-            Du bestellst als Gast.{" "}
-            <Link to="/profil">Melde dich an</Link>, damit die Bestellung in
-            deinem Profil erscheint.
+            Du bestellst als Gast. <Link to="/profil">Melde dich an</Link>,
+            damit die Bestellung in deinem Profil erscheint.
           </p>
         )}
         <section className="checkout-card">
@@ -193,6 +192,18 @@ export default function Checkout() {
               </label>
             ))}
           </div>
+        </section>
+
+        <section className="checkout-card">
+          <h3>3. Deine Artikel</h3>
+          <ul className="checkout-items">
+            {items.map((item) => (
+              <li key={item.key}>
+                {item.title} ({item.quantity}x) –{" "}
+                {formatPrice(item.price * item.quantity)}
+              </li>
+            ))}
+          </ul>
         </section>
 
         <section className="checkout-card checkout-summary-box">
