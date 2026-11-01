@@ -2920,3 +2920,14 @@ footer .copyright a:hover {
 .checkout-items li {
   margin-bottom: 6px;
 }
+.reset-link {
+  display: inline-block;
+  margin: 0 0 8px;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.reset-link:hover {
+  color: var(--accent);
+}
