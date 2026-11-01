@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { useWishlist } from "../context/WishlistContext";
 import { formatPrice } from "../lib/price";
+import { NO_COVER } from "../lib/openlibrary";
 
 export default function BookCard({ book }) {
   const { addItem } = useCart();
@@ -39,6 +40,10 @@ export default function BookCard({ book }) {
         <img
           src={book.cover}
           alt={`Cover von ${book.title}`}
+          onError={(event) => {
+            event.currentTarget.onerror = null;
+            event.currentTarget.src = NO_COVER;
+          }}
           width="140"
           height="210"
           loading="lazy"
