@@ -1,4 +1,4 @@
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import BookSection from "../components/BookSection";
 import HeroSlider from "../components/HeroSlider";
 import CategoryCards from "../components/CategoryCards";
@@ -29,6 +29,11 @@ export default function Home() {
       {!search && <HeroSlider />}
       <main>
         <CategoryCards active={search} />
+        {search && (
+          <Link to="/" className="reset-link">
+            ← Zurück zur Übersicht
+          </Link>
+        )}
         {search ? (
           <BookSection
             key={search}
