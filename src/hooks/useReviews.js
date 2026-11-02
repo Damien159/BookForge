@@ -25,9 +25,20 @@ export function useReviews(bookKey) {
     [storageKey],
   );
 
+  const removeReview = useCallback(
+    (username) => {
+      const next = readJSON(storageKey).filter(
+        (review) => review.username !== username,
+      );
+      writeJSON(storageKey, next);
+      setReviews(next);
+    },
+    [storageKey],
+  );
+
   const count = reviews.length;
   const average =
     count > 0 ? reviews.reduce((sum, review) => sum + review.rating, 0) / count : 0;
 
-  return { reviews, count, average, addReview };
+  return { reviews, count, average, addReview, removeReview };
 }
