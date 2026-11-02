@@ -91,11 +91,7 @@ export default function BookDetail() {
 
       <div className="product-main-info">
         <div className="product-cover-container">
-          <img
-            id="detail-cover"
-            src={book.cover}
-            alt={`Cover von ${book.title}`}
-          />
+          <img id="detail-cover" src={book.cover} width="280" height="420" alt={`Cover von ${book.title}`} />
         </div>
 
         <div className="product-info-container">
