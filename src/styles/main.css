@@ -2965,3 +2965,10 @@ footer .copyright a:hover {
 .clear-list-btn:hover {
   color: var(--danger);
 }
+.profile-nav-item > a span {
+  display: block;
+  max-width: 110px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
