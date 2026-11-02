@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { NAV_MENU } from "../data/navigation";
 import { useWishlist } from "../context/WishlistContext";
@@ -18,6 +18,32 @@ export default function Header() {
     setQuery(urlQuery);
   }
   const navigate = useNavigate();
+  const searchRef = useRef(null);
+
+  // Taste "/" springt ins Suchfeld, außer man tippt gerade in ein Eingabefeld
+  useEffect(() => {
+    function handleKey(event) {
+      const target = event.target;
+      const typing =
+        target instanceof HTMLElement &&
+        (target.isContentEditable ||
+          ["INPUT", "TEXTAREA", "SELECT"].includes(target.tagName));
+
+      if (
+        event.key === "/" &&
+        !typing &&
+        !event.ctrlKey &&
+        !event.metaKey &&
+        !event.altKey
+      ) {
+        event.preventDefault();
+        searchRef.current?.focus();
+      }
+    }
+
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, []);
   const { count: wishlistCount } = useWishlist();
   const { count: cartCount, total: cartTotal } = useCart();
 
@@ -62,6 +88,8 @@ export default function Header() {
             enterKeyHint="search"
             autoComplete="off"
             aria-label="Suche"
+            ref={searchRef}
+            title="Tastenkürzel: /"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
           />
