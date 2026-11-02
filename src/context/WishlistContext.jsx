@@ -61,14 +61,16 @@ export function WishlistProvider({ children }) {
     [books, save],
   );
 
+    const clear = useCallback(() => save([]), [save]);
+
   const has = useCallback(
     (key) => books.some((entry) => entry.key === key),
     [books],
   );
 
   const value = useMemo(
-    () => ({ books, count: books.length, toggle, remove, has }),
-    [books, toggle, remove, has],
+    () => ({ books, count: books.length, toggle, remove, clear, has }),
+    [books, toggle, remove, clear, has],
   );
 
   return (
