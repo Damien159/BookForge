@@ -1,6 +1,6 @@
+import { useAuth } from "../context/AuthContext";
 import { useReviews } from "../hooks/useReviews";
 import ReviewForm from "./ReviewForm";
-import { useAuth } from "../context/AuthContext";
 
 // Der Speicher ist von außen veränderbar, deshalb wird der Wert begrenzt
 const stars = (value) => {
@@ -9,8 +9,9 @@ const stars = (value) => {
 };
 
 export default function Reviews({ bookKey }) {
-  const { reviews, count, average, addReview } = useReviews(bookKey);
   const { user } = useAuth();
+  const { reviews, count, average, addReview, removeReview } =
+    useReviews(bookKey);
   const alreadyReviewed =
     Boolean(user) && reviews.some((review) => review.username === user);
 
@@ -43,6 +44,19 @@ export default function Reviews({ bookKey }) {
             </div>
             <div className="review-stars">{stars(review.rating)}</div>
             <p className="review-comment">{review.comment}</p>
+            {user === review.username && (
+              <button
+                type="button"
+                className="review-delete"
+                onClick={() => {
+                  if (window.confirm("Deine Bewertung wirklich löschen?")) {
+                    removeReview(review.username);
+                  }
+                }}
+              >
+                Bewertung löschen
+              </button>
+            )}
           </div>
         ))}
       </div>
