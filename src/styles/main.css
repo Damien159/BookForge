@@ -2946,3 +2946,22 @@ footer .copyright a:hover {
 .review-delete:hover {
   color: var(--danger);
 }
+.wishlist-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.clear-list-btn {
+  padding: 4px 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-decoration: underline;
+  transition: color var(--transition-fast);
+}
+
+.clear-list-btn:hover {
+  color: var(--danger);
+}
