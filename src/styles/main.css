@@ -2862,6 +2862,7 @@ footer .copyright a {
   text-decoration: underline;
 }
 
+
 footer .copyright a:hover {
   color: #f0c5a8;
 }
@@ -2930,4 +2931,18 @@ footer .copyright a:hover {
 
 .reset-link:hover {
   color: var(--accent);
+}
+.review-delete {
+  margin-top: 10px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-decoration: underline;
+  transition: color var(--transition-fast);
+}
+
+.review-delete:hover {
+  color: var(--danger);
 }
