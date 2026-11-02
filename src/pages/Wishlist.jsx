@@ -6,7 +6,7 @@ import { useDocumentTitle } from "../hooks/useDocumentTitle";
 
 export default function Wishlist() {
   useDocumentTitle("Merkliste");
-  const { books } = useWishlist();
+  const { books, clear } = useWishlist();
   const { addItems } = useCart();
 
   return (
@@ -40,6 +40,19 @@ export default function Wishlist() {
           {books.map((book) => (
             <BookCard key={book.key} book={book} />
           ))}
+        </div>
+      )}
+    {books.length > 0 && (
+        <div className="wishlist-footer">
+          <button
+            type="button"
+            className="clear-list-btn"
+            onClick={() => {
+              if (window.confirm("Merkliste wirklich leeren?")) clear();
+            }}
+          >
+            Merkliste leeren
+          </button>
         </div>
       )}
     </main>
