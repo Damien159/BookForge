@@ -55,6 +55,9 @@ export default function Header() {
 
   return (
     <header>
+      <p className="visually-hidden" role="status" aria-live="polite">
+        Warenkorb: {cartCount} Artikel. Merkliste: {wishlistCount} Bücher.
+      </p>
       <div className="top-bar">
         <div className="top-bar-left">
           <a href="#" onClick={(event) => event.preventDefault()}>Buchhandlungen</a>
