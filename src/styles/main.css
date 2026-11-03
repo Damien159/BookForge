@@ -74,6 +74,12 @@
     background-color: rgba(30, 25, 21, 0.9);
   }
 }
+@media (prefers-contrast: more) {
+  :root {
+    --border-color: rgba(73, 51, 38, 0.5);
+    --border-light: rgba(73, 51, 38, 0.35);
+  }
+}
 
 /* =========================================================
    2. RESET UND GLOBALE EINSTELLUNGEN
