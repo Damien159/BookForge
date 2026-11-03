@@ -1,5 +1,5 @@
 :root {
-  color-scheme: light;
+  color-scheme: light dark;
 
   /* Farben */
   --background: #f8f5ef;
@@ -52,6 +52,27 @@
   --surface-tint: #f3e8df;
   --border-strong: rgba(73, 51, 38, 0.28);
   --star: #d9a05b;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #1e1915;
+    --surface: #2a231e;
+    --surface-soft: #251f1a;
+    --surface-tint: #3a2e26;
+    --surface-sand: #33291f;
+    --primary: #e8d5c4;
+    --heading: #f1e3d6;
+    --secondary: #b39a82;
+    --text: #efe7df;
+    --muted: #b0a59b;
+    --border-color: rgba(232, 213, 196, 0.18);
+    --border-light: rgba(232, 213, 196, 0.1);
+    --border-strong: rgba(232, 213, 196, 0.32);
+  }
+
+  header {
+    background-color: rgba(30, 25, 21, 0.9);
+  }
 }
 
 /* =========================================================
