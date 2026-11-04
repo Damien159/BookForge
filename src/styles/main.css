@@ -601,7 +601,7 @@ main {
 
 .category-card.active {
   border: 1px solid var(--accent);
-  background-color: #f3e8df;
+  background-color: var(--surface-tint);
   color: var(--primary);
 }
 
