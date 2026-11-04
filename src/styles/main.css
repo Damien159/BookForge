@@ -1573,7 +1573,7 @@ footer .copyright {
 
 @media (max-width: 600px) {
   html {
-    scroll-padding-top: 240px;
+    scroll-padding-top: 0;
   }
 
   .top-bar {
@@ -1745,7 +1745,7 @@ footer .copyright {
   .product-detail-container,
   .cart-page-container,
   .wishlist-page-container {
-    margin-top: 240px;
+    margin-top: 24px;
     padding-right: 16px;
     padding-left: 16px;
   }
@@ -2391,7 +2391,7 @@ footer {
   }
 
   .checkout-page-container {
-    margin-top: 180px;
+    margin-top: 24px;
     padding: 24px;
   }
 }
@@ -2437,7 +2437,7 @@ footer {
   }
 
   .checkout-page-container {
-    margin-top: 240px;
+    margin-top: 24px;
     padding: 18px 14px;
     border-radius: var(--radius-md);
   }
