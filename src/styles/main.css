@@ -1469,7 +1469,7 @@ footer .copyright {
 }
 
 .auth-btn:hover {
-  background-color: var(--primary);
+  background-color: var(--brand);
 }
 
 .auth-btn.logout {
