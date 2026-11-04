@@ -52,6 +52,11 @@
   --surface-tint: #f3e8df;
   --border-strong: rgba(73, 51, 38, 0.28);
   --star: #d9a05b;
+
+  /* Feste Markenfarben für Flächen mit weißer Schrift */
+  --brand: #493326;
+  --brand-deep: #33231a;
+  --topbar: #80664d;
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -68,6 +73,9 @@
     --border-color: rgba(232, 213, 196, 0.18);
     --border-light: rgba(232, 213, 196, 0.1);
     --border-strong: rgba(232, 213, 196, 0.32);
+    --brand: #6e4a34;
+    --brand-deep: #241a14;
+    --topbar: #4a3a2e;
   }
 
   header {
@@ -160,7 +168,7 @@ button:disabled {
   flex-wrap: wrap;
   gap: 8px 16px;
   padding: 6px 40px;
-  background-color: var(--secondary);
+  background-color: var(--topbar);
   color: #ffffff;
   font-size: 13px;
 }
@@ -1043,7 +1051,7 @@ footer .copyright {
   padding: 12px 28px;
   border: 1px solid var(--primary);
   border-radius: var(--radius-sm);
-  background-color: var(--primary);
+  background-color: var(--brand);
   color: #ffffff;
   font-size: 1rem;
   font-weight: 600;
@@ -2011,7 +2019,7 @@ footer .copyright {
 }
 
 .btn-primary {
-  background-color: var(--primary);
+  background-color: var(--brand);
   color: #ffffff;
 }
 
@@ -2141,7 +2149,7 @@ footer .copyright {
 
 /* Button im typischen BookForge-Braunton */
 .reviews-section .btn-primary {
-  background-color: var(--primary);
+  background-color: var(--brand);
   color: #ffffff;
   padding: 12px 20px;
   border: none;
@@ -2303,7 +2311,7 @@ footer .copyright {
 }
 
 .checkout-summary-box .btn-primary {
-  background-color: var(--primary);
+  background-color: var(--brand);
   color: #ffffff;
   padding: 14px 28px;
   border: none;
@@ -2880,7 +2888,6 @@ footer .copyright a {
   color: inherit;
   text-decoration: underline;
 }
-
 
 footer .copyright a:hover {
   color: #f0c5a8;
