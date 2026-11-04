@@ -2161,7 +2161,7 @@ footer .copyright {
 }
 
 .reviews-section .btn-primary:hover {
-  background-color: var(--heading);
+  background-color: var(--accent);
 }
 
 .reviews-list {
