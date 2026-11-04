@@ -266,7 +266,7 @@ header {
 }
 
 .category-select:hover {
-  background-color: #eee5d3;
+  background-color: var(--surface-tint);
 }
 
 .category-select:focus {
