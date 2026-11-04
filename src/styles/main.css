@@ -28,7 +28,7 @@
   /* Layout */
   --container-width: 1200px;
   --content-width: 1050px;
-  --header-spacing: 180px;
+  --header-spacing: 150px;
   --section-spacing: 48px;
 
   /* Typografie */
@@ -942,7 +942,7 @@ footer .copyright {
   flex: 1 0 auto;
   width: 100%;
   max-width: var(--content-width);
-  margin: 180px auto 60px;
+  margin: 40px auto 60px;
   padding: 0 20px;
 }
 
@@ -1125,7 +1125,7 @@ footer .copyright {
 .cart-page-container {
   width: 100%;
   max-width: var(--content-width);
-  margin: 180px auto 60px;
+  margin: 40px auto 60px;
   padding: 0 20px;
 }
 
@@ -1348,7 +1348,7 @@ footer .copyright {
 .wishlist-page-container {
   width: 100%;
   max-width: var(--content-width);
-  margin: 180px auto 60px;
+  margin: 40px auto 60px;
   padding: 0 20px;
 }
 
@@ -1888,7 +1888,7 @@ footer .copyright {
 
 .profile-container {
   max-width: 900px;
-  margin: 100px auto 40px auto; /* 60px Abstand nach oben */
+  margin: 40px auto;
   padding: 0 20px;
 }
 
@@ -2214,7 +2214,7 @@ footer .copyright {
 .checkout-page-container {
   width: 100%;
   max-width: 900px;
-  margin: 180px auto 60px;
+  margin: 40px auto 60px;
   padding: 32px;
   border: 1px solid var(--border-light);
   border-radius: var(--radius-lg);
