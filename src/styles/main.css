@@ -1082,7 +1082,7 @@ footer .copyright {
   padding: 0;
   border: 1px solid var(--secondary);
   border-radius: var(--radius-sm);
-  background-color: #f5f0eb;
+  background-color: var(--surface-soft);
   cursor: pointer;
 }
 
