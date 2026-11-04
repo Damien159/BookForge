@@ -1049,7 +1049,7 @@ footer .copyright {
   height: auto;
   min-height: 48px;
   padding: 12px 28px;
-  border: 1px solid var(--primary);
+  border: 1px solid var(--brand);
   border-radius: var(--radius-sm);
   background-color: var(--brand);
   color: #ffffff;
@@ -2382,7 +2382,7 @@ textarea:focus-visible {
 footer {
   margin-top: 56px;
   padding: 64px 24px 24px;
-  background: linear-gradient(180deg, var(--primary) 0%, #33231a 100%);
+  background: linear-gradient(180deg, var(--brand) 0%, var(--brand-deep) 100%);
   color: #ffffff;
 }
 
