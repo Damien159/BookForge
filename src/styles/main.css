@@ -56,7 +56,7 @@
   /* Feste Markenfarben für Flächen mit weißer Schrift */
   --brand: #493326;
   --brand-deep: #33231a;
-    --topbar: #80664d;
+  --topbar: #80664d;
   --header-bg: rgba(248, 245, 239, 0.9);
   --skeleton-a: #eee5d3;
   --skeleton-b: #f8f5ef;
@@ -224,7 +224,7 @@ header {
   width: 100%;
   display: flex;
   flex-direction: column;
-background-color: var(--header-bg);
+  background-color: var(--header-bg);
   -webkit-backdrop-filter: saturate(1.4) blur(14px);
   backdrop-filter: saturate(1.4) blur(14px);
   border-bottom: 1px solid var(--border-light);
@@ -533,9 +533,9 @@ main {
   width: 46px;
   height: 46px;
   transform: translateY(-50%);
-border: 1px solid var(--border-color);
+  border: 1px solid var(--border-color);
   border-radius: 50%;
-background-color: color-mix(in srgb, var(--surface) 94%, transparent);
+  background-color: color-mix(in srgb, var(--surface) 94%, transparent);
   color: var(--primary);
   box-shadow: var(--shadow-md);
   font-size: 20px;
@@ -2092,7 +2092,7 @@ footer .copyright {
 }
 
 #total-reviews-count {
- color: var(--muted);
+  color: var(--muted);
   font-size: 0.95rem;
 }
 
@@ -2649,7 +2649,12 @@ h3 {
 
 .skeleton {
   border-radius: var(--radius-sm);
-  background: linear-gradient(90deg, #eee5d3 25%, #f8f5ef 50%, #eee5d3 75%);
+  background: linear-gradient(
+    90deg,
+    var(--skeleton-a) 25%,
+    var(--skeleton-b) 50%,
+    var(--skeleton-a) 75%
+  );
   background-size: 200% 100%;
   animation: skeleton-shimmer 1.4s ease-in-out infinite;
 }
