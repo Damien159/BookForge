@@ -1991,7 +1991,7 @@ footer .copyright {
 .order-items-list {
   margin: 0;
   padding-left: 20px;
-  color: #555555;
+  color: var(--text);
 }
 
 .order-total {
