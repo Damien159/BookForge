@@ -56,7 +56,10 @@
   /* Feste Markenfarben für Flächen mit weißer Schrift */
   --brand: #493326;
   --brand-deep: #33231a;
-  --topbar: #80664d;
+    --topbar: #80664d;
+  --header-bg: rgba(248, 245, 239, 0.9);
+  --skeleton-a: #eee5d3;
+  --skeleton-b: #f8f5ef;
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -76,10 +79,10 @@
     --brand: #6e4a34;
     --brand-deep: #241a14;
     --topbar: #4a3a2e;
-  }
-
-  header {
-    background-color: rgba(30, 25, 21, 0.9);
+    --header-bg: rgba(30, 25, 21, 0.9);
+    --skeleton-a: #33291f;
+    --skeleton-b: #3d3126;
+    --icon-filter: brightness(0) invert(0.9);
   }
 }
 @media (prefers-contrast: more) {
@@ -221,7 +224,7 @@ header {
   width: 100%;
   display: flex;
   flex-direction: column;
-  background-color: rgba(248, 245, 239, 0.9);
+background-color: var(--header-bg);
   -webkit-backdrop-filter: saturate(1.4) blur(14px);
   backdrop-filter: saturate(1.4) blur(14px);
   border-bottom: 1px solid var(--border-light);
