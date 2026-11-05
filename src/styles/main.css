@@ -1970,7 +1970,7 @@ footer .copyright {
   padding: 20px;
   border: 1px solid var(--border-light);
   border-radius: var(--radius-md);
-  background-color: #fcfaf6;
+  background-color: var(--surface-soft);
   transition:
     border-color var(--transition-fast),
     box-shadow var(--transition-fast);
