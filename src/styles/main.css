@@ -2089,12 +2089,12 @@ footer .copyright {
 }
 
 #total-reviews-count {
-  color: #6b5b52;
+ color: var(--muted);
   font-size: 0.95rem;
 }
 
 .review-form-box {
-  background: #ffffff;
+  background: var(--surface);
   padding: 25px;
   border-radius: 8px;
   border: 1px solid var(--border-color);
@@ -2197,7 +2197,7 @@ footer .copyright {
 }
 
 .review-date {
-  color: #8c7a6b;
+  color: var(--muted);
   font-size: 0.85rem;
 }
 
@@ -2208,7 +2208,7 @@ footer .copyright {
 }
 
 .review-comment {
-  color: #4a3f35;
+  color: var(--text);
   line-height: 1.5;
 }
 
