@@ -1943,18 +1943,18 @@ footer .copyright {
 .form-group input {
   width: 100%;
   padding: 8px;
-  border: 1px solid #cccccd;
+  border: 1px solid var(--border-strong);
   border-radius: 4px;
 }
 
 .input-disabled {
-  background-color: #eeeeee;
-  border-color: #cccccd;
+  background-color: var(--surface-tint);
+  border-color: var(--border-strong);
   cursor: not-allowed;
 }
 
 .hint-text {
-  color: #666666;
+  color: var(--muted);
   font-size: 0.85rem;
 }
 
