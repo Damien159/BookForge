@@ -699,7 +699,7 @@ main {
 }
 
 .buecher-sektion h2 {
-  font-family: serif;
+  font-family: var(--font-heading);
   font-size: 1.8rem;
   color: var(--heading);
   margin-bottom: 20px;
@@ -2062,7 +2062,7 @@ footer .copyright {
 }
 
 .reviews-section h3 {
-  font-family: serif;
+  font-family: var(--font-heading);
   color: var(--heading);
   font-size: 1.6rem;
   margin-bottom: 20px;
@@ -2234,7 +2234,7 @@ footer .copyright {
 }
 
 .checkout-title {
-  font-family: serif;
+  font-family: var(--font-heading);
   color: var(--heading);
   margin-bottom: 30px;
   border-bottom: 2px solid var(--border-color);
