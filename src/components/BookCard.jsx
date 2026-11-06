@@ -6,7 +6,8 @@ import { formatPrice } from "../lib/price";
 import { NO_COVER } from "../lib/openlibrary";
 
 export default function BookCard({ book }) {
-  const { addItem } = useCart();
+  const { addItem, items } = useCart();
+  const inCart = items.some((item) => item.key === book.key);
   const { has, toggle } = useWishlist();
   const [added, setAdded] = useState(false);
   const liked = has(book.key);
