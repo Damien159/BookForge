@@ -58,7 +58,7 @@ export default function BookCard({ book }) {
         <p className="price">{formatPrice(book.price)}</p>
         <button
           type="button"
-          className={`cart-btn${added ? " added" : ""}`}
+         className={`cart-btn${added ? " added" : ""}${inCart ? " in-cart" : ""}`}
           onClick={handleAdd}
           aria-label="In den Warenkorb"
         >
