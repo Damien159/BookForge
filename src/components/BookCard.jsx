@@ -60,7 +60,8 @@ export default function BookCard({ book }) {
           type="button"
          className={`cart-btn${added ? " added" : ""}${inCart ? " in-cart" : ""}`}
           onClick={handleAdd}
-          aria-label="In den Warenkorb"
+          aria-label={inCart ? "Noch einmal in den Warenkorb" : "In den Warenkorb"}
+          title={inCart ? "Bereits im Warenkorb" : "In den Warenkorb"}
         >
           <img src="/svg/Buy-Cart.svg" alt="" className="svg-icon" />
         </button>
