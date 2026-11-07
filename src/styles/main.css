@@ -687,7 +687,7 @@ main {
   box-shadow: 0 12px 24px rgba(45, 32, 23, 0.2);
 }
 
-/*KOMPAKTE SEKTIONEN / KEIN LEERER RAUM*/
+/* KOMPAKTE SEKTIONEN */
 
 .buecher-sektion {
   min-height: auto; /* Entfernt die erzwungene Bildschirmhöhe */
@@ -1894,7 +1894,7 @@ footer .copyright {
     transition-duration: 0.01ms;
   }
 }
-/* 11PROFIL-SEITEN STYLES*/
+/* PROFIL-SEITEN */
 
 .profile-container {
   max-width: 900px;
@@ -2048,7 +2048,7 @@ footer .copyright {
   margin-top: 30px;
 }
 
-/*BEWERTUNGSSYSTEM */
+/* BEWERTUNGSSYSTEM */
 
 .reviews-section {
   max-width: 100%;
