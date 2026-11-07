@@ -2751,7 +2751,7 @@ h3 {
   z-index: 2000;
   padding: 10px 16px;
   border-radius: var(--radius-sm);
-  background: var(--primary);
+    background: var(--brand);
   color: #ffffff;
 }
 
