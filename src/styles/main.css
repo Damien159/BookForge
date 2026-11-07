@@ -2144,11 +2144,6 @@ footer .copyright {
   resize: vertical;
 }
 
-.review-form textarea:focus {
-  outline: none;
-  border-color: var(--heading);
-}
-
 /* Button im typischen BookForge-Braunton */
 .reviews-section .btn-primary {
   background-color: var(--brand);
