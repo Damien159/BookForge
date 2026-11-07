@@ -1318,8 +1318,8 @@ footer .copyright {
 }
 
 .checkout-btn:hover {
-  transform: translateY(-1px);
-  background-color: var(--primary);
+   transform: translateY(-1px);
+  background-color: var(--brand);
   box-shadow: var(--shadow-md);
 }
 
