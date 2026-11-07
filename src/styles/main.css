@@ -1246,7 +1246,7 @@ footer .copyright {
   padding: 4px;
   border: 0;
   background: transparent;
-  color: #999999;
+  color: var(--muted);
   font-size: 1.2rem;
   transition: color 0.2s ease;
 }
