@@ -1111,20 +1111,20 @@ footer .copyright {
 
 .product-description-section {
   padding-top: 30px;
-  border-top: 1px solid #e5dfd8;
+ border-top: 1px solid var(--border-color); 
   text-align: left;
 }
 
 .product-description-section h2 {
   margin-bottom: 12px;
-  color: #222222;
+ color: var(--heading);
   font-family: var(--font-heading);
   font-size: 1.4rem;
 }
 
 .description-text {
   max-width: 850px;
-  color: #444444;
+  color: var(--text);
   font-size: 1rem;
   line-height: 1.7;
 }
