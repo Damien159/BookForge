@@ -1386,7 +1386,7 @@ footer .copyright {
   height: 28px;
   border: 1px solid var(--secondary);
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: color-mix(in srgb, var(--surface) 90%, transparent);
   color: var(--accent);
   font-weight: 700;
   cursor: pointer;
