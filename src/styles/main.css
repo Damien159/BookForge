@@ -1126,6 +1126,7 @@ footer .copyright {
   color: var(--text);
   font-size: 1rem;
   line-height: 1.7;
+  white-space: pre-line;
 }
 
 /* =========================================================
@@ -2342,9 +2343,6 @@ footer .copyright {
 .detail-actions .cart-btn.added {
   border-color: var(--success);
   background-color: var(--success);
-}
-.description-text {
-  white-space: pre-line;
 }
 
 /* Einheitliche Button- und Interaktionszustände */
