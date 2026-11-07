@@ -1232,7 +1232,7 @@ footer .copyright {
 }
 
 .quantity-btn:hover {
-  background-color: rgba(139, 111, 71, 0.2);
+  background-color: var(--surface-tint);
 }
 
 .quantity-value {
