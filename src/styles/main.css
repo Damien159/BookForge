@@ -2107,7 +2107,7 @@ footer .copyright {
 .review-form-box {
   background: var(--surface);
   padding: 25px;
-  border-radius: 8px;
+border-radius: var(--radius-sm);
   border: 1px solid var(--border-color);
   margin-bottom: 30px;
 }
