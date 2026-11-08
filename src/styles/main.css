@@ -84,10 +84,16 @@
     --icon-filter: brightness(0) invert(0.9);
   }
 }
-@media (prefers-contrast: more) {
+@media (prefers-contrast: more) and (prefers-color-scheme: light) {
   :root {
     --border-color: rgba(73, 51, 38, 0.5);
     --border-light: rgba(73, 51, 38, 0.35);
+  }
+}
+@media (prefers-contrast: more) and (prefers-color-scheme: dark) {
+  :root {
+    --border-color: rgba(232, 213, 196, 0.55);
+    --border-light: rgba(232, 213, 196, 0.4);
   }
 }
 
