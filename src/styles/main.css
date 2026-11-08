@@ -1950,12 +1950,9 @@ footer .copyright {
 .form-group label {
   font-weight: bold;
 }
-
 .form-group input {
   width: 100%;
   padding: 8px;
-  border: 1px solid var(--border-strong);
-  border-radius: 4px;
 }
 
 .input-disabled {
