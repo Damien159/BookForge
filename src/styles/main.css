@@ -2390,17 +2390,7 @@ footer {
 }
 
 /* Finale responsive Designkorrekturen */
-
 @media (max-width: 900px) {
-  .main-header {
-    gap: 16px;
-    padding: 15px 20px;
-  }
-
-  .product-main-info {
-    gap: 28px;
-  }
-
   .checkout-page-container {
     margin-top: 24px;
     padding: 24px;
