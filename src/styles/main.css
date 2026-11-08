@@ -145,6 +145,7 @@ textarea {
 button,
 select {
   cursor: pointer;
+  touch-action: manipulation;
 }
 
 a {
