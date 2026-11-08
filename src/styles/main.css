@@ -111,6 +111,8 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--header-spacing);
   overflow-x: clip;
+  scrollbar-gutter: stable;
+  scrollbar-color: var(--secondary) var(--background);
 }
 
 body {
@@ -2573,10 +2575,7 @@ footer {
   color: var(--primary);
 }
 /* Feinschliff */
-html {
-  scrollbar-gutter: stable;
-  scrollbar-color: var(--secondary) var(--background);
-}
+
 
 body {
   -webkit-font-smoothing: antialiased;
