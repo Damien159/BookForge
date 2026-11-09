@@ -2701,8 +2701,8 @@ h3 {
   justify-content: flex-end;
   margin-bottom: 16px;
 }
-
-.link-btn {
+.link-btn,
+.clear-list-btn {
   padding: 4px 0;
   border: 0;
   background: none;
@@ -2848,16 +2848,6 @@ footer .copyright a:hover {
   display: flex;
   justify-content: center;
   margin-top: 32px;
-}
-
-.clear-list-btn {
-  padding: 4px 0;
-  border: 0;
-  background: none;
-  color: var(--muted);
-  font-size: 0.9rem;
-  text-decoration: underline;
-  transition: color var(--transition-fast);
 }
 
 .clear-list-btn:hover {
