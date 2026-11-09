@@ -1695,12 +1695,6 @@ footer .copyright {
     padding: 12px 8px;
   }
 
-  .buecher-card img {
-    width: 110px;
-    height: 165px;
-    object-fit: cover;
-  }
-
   .buecher-card h3 {
     font-size: 0.95rem;
   }
