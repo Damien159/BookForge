@@ -1644,21 +1644,7 @@ footer .copyright {
     padding: 0 12px;
   }
 
-  .dropdown-navigation ul {
-    justify-content: flex-start;
-    flex-wrap: nowrap;
-    gap: 18px;
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
 
-  .dropdown-navigation ul::-webkit-scrollbar {
-    display: none;
-  }
-
-  .dropdown {
-    flex-shrink: 0;
-  }
 
   .dropdown > a {
     padding: 10px 0;
