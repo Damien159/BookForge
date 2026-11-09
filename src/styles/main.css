@@ -1650,10 +1650,7 @@ footer .copyright {
     margin-bottom: 24px;
   }
 
-  .homepage .img img {
-    height: 300px;
-    object-fit: cover;
-  }
+
 
   .slider-arrow {
     width: 36px;
