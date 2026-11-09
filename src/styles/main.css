@@ -2094,9 +2094,6 @@ border-radius: var(--radius-sm);
 .review-form textarea {
   width: 100%;
   padding: 12px;
-  border: 1px solid var(--border-strong);
-  border-radius: 6px;
-  background-color: var(--surface-soft);
   font-family: inherit;
   resize: vertical;
 }
