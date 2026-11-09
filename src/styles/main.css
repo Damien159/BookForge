@@ -1645,18 +1645,6 @@ footer .copyright {
   }
 
 
-
-  .dropdown > a {
-    padding: 10px 0;
-    font-size: 13px;
-  }
-
-  .dropdown-content {
-    position: absolute;
-    left: 0;
-    min-width: 180px;
-  }
-
   .homepage {
     margin-top: 0;
     margin-bottom: 24px;
