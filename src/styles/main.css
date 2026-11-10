@@ -2231,8 +2231,6 @@ footer .copyright {
 }
 
 .checkout-summary-box .btn-primary {
-  background-color: var(--brand);
-  color: #ffffff;
   padding: 14px 28px;
   border: none;
   border-radius: 6px;
