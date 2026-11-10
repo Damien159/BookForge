@@ -698,7 +698,6 @@ main {
 }
 
 .buecher-sektion h2 {
-  font-family: var(--font-heading);
   font-size: 1.8rem;
   color: var(--heading);
   margin-bottom: 20px;
@@ -788,7 +787,6 @@ main {
   margin: 0 0 8px;
   overflow: hidden;
   color: var(--primary);
-  font-family: var(--font-heading);
   font-size: 1.05rem;
   font-weight: 700;
   line-height: 1.3;
@@ -2000,7 +1998,6 @@ footer .copyright {
 }
 
 .reviews-section h3 {
-  font-family: var(--font-heading);
   color: var(--heading);
   font-size: 1.6rem;
   margin-bottom: 20px;
