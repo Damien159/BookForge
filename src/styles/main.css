@@ -2079,8 +2079,6 @@ footer .copyright {
 
 /* Button im typischen BookForge-Braunton */
 .reviews-section .btn-primary {
-  background-color: var(--brand);
-  color: #ffffff;
   padding: 12px 20px;
   border: none;
   border-radius: 6px;
