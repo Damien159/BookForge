@@ -1766,11 +1766,7 @@ footer .copyright {
     font-size: 1.7rem;
   }
 
-  .cart-item {
-    align-items: flex-start;
-    flex-wrap: wrap;
-    padding: 14px;
-  }
+
 
   .cart-item-info {
     gap: 12px;
