@@ -2090,10 +2090,6 @@ footer .copyright {
   align-self: flex-start;
 }
 
-.reviews-section .btn-primary:hover {
-  background-color: var(--accent);
-}
-
 .reviews-list {
   display: flex;
   flex-direction: column;
@@ -2234,10 +2230,6 @@ footer .copyright {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.checkout-summary-box .btn-primary:hover {
-  background-color: var(--accent);
 }
 
 .checkout-summary-box .btn-primary {
