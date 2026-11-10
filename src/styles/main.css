@@ -154,8 +154,6 @@ a {
   color: inherit;
 }
 
-
-
 button:disabled {
   cursor: not-allowed;
   opacity: 0.6;
@@ -202,7 +200,6 @@ button:disabled {
 .logo {
   flex-shrink: 0;
   color: var(--primary);
-  font-family: var(--font-heading);
   font-size: 30px;
   font-weight: 700;
   letter-spacing: -0.8px;
@@ -1113,13 +1110,13 @@ footer .copyright {
 
 .product-description-section {
   padding-top: 30px;
- border-top: 1px solid var(--border-color); 
+  border-top: 1px solid var(--border-color);
   text-align: left;
 }
 
 .product-description-section h2 {
   margin-bottom: 12px;
- color: var(--heading);
+  color: var(--heading);
   font-family: var(--font-heading);
   font-size: 1.4rem;
 }
@@ -1321,7 +1318,7 @@ footer .copyright {
 }
 
 .checkout-btn:hover {
-   transform: translateY(-1px);
+  transform: translateY(-1px);
   background-color: var(--brand);
   box-shadow: var(--shadow-md);
 }
@@ -1638,13 +1635,10 @@ footer .copyright {
     padding: 0 12px;
   }
 
-
   .homepage {
     margin-top: 0;
     margin-bottom: 24px;
   }
-
-
 
   .slider-arrow {
     width: 36px;
@@ -1761,8 +1755,6 @@ footer .copyright {
   .wishlist-page-title {
     font-size: 1.7rem;
   }
-
-
 
   .cart-item-info {
     gap: 12px;
@@ -2045,7 +2037,7 @@ footer .copyright {
 .review-form-box {
   background: var(--surface);
   padding: 25px;
-border-radius: var(--radius-sm);
+  border-radius: var(--radius-sm);
   border: 1px solid var(--border-color);
   margin-bottom: 30px;
 }
@@ -2506,7 +2498,6 @@ footer {
 }
 /* Feinschliff */
 
-
 body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -2646,7 +2637,7 @@ h3 {
   z-index: 2000;
   padding: 10px 16px;
   border-radius: var(--radius-sm);
-    background: var(--brand);
+  background: var(--brand);
   color: #ffffff;
 }
 
