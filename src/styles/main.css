@@ -1258,7 +1258,7 @@ footer .copyright {
 
 .cart-summary {
   position: sticky;
-  top: 140px;
+  top: var(--header-spacing);
   flex: 0 0 320px;
   width: 320px;
   min-width: 0;
