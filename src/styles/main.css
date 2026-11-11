@@ -2626,6 +2626,7 @@ h3 {
   position: absolute;
   top: -100px;
   left: 12px;
+  transition: top var(--transition-fast);
   z-index: 2000;
   padding: 10px 16px;
   border-radius: var(--radius-sm);
