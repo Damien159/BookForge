@@ -2012,6 +2012,7 @@ footer .copyright {
 
 .rating-overview {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 20px;
   margin-bottom: 25px;
