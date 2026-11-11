@@ -2083,7 +2083,7 @@ footer .copyright {
 .reviews-section .btn-primary {
   padding: 12px 20px;
   border: none;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
   font-weight: bold;
   transition: background-color 0.2s;
@@ -2141,7 +2141,7 @@ footer .copyright {
 .hint-box {
   padding: 15px;
   background: var(--surface-tint);
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   color: var(--primary);
   border-left: 4px solid var(--primary);
 }
@@ -2216,7 +2216,7 @@ footer .copyright {
 .checkout-card .form-group input {
   padding: 10px;
   border: 1px solid var(--border-strong);
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   background: var(--surface-soft);
   font-family: inherit;
 }
@@ -2235,7 +2235,7 @@ footer .copyright {
 .checkout-summary-box .btn-primary {
   padding: 14px 28px;
   border: none;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
   font-weight: bold;
   font-size: 1rem;
@@ -2400,7 +2400,7 @@ footer {
   flex-shrink: 0;
   width: 56px;
   height: 84px;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   object-fit: cover;
   box-shadow: var(--shadow-sm);
 }
