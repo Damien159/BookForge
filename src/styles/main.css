@@ -2230,6 +2230,8 @@ footer .copyright {
 
 .checkout-summary-box {
   display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
   justify-content: space-between;
   align-items: center;
 }
