@@ -1470,11 +1470,11 @@ footer .copyright {
 
 .auth-btn.logout {
   margin-top: 15px;
-  background-color: #d9534f;
+  background-color: var(--danger);
 }
 
 .auth-btn.logout:hover {
-  background-color: var(--danger);
+  filter: brightness(1.1);
 }
 
 .auth-toggle-text {
