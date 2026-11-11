@@ -1232,7 +1232,8 @@ footer .copyright {
 }
 
 .quantity-value {
-  min-width: 36px;
+    min-width: 36px;
+  font-variant-numeric: tabular-nums;
   padding: 6px 12px;
   font-weight: 600;
   text-align: center;
@@ -1283,6 +1284,7 @@ footer .copyright {
   margin-bottom: 12px;
   color: var(--text);
   font-size: 0.95rem;
+  font-variant-numeric: tabular-nums;
 }
 
 .summary-row.total {
