@@ -1925,6 +1925,8 @@ footer .copyright {
 
 .order-header {
   display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
   justify-content: space-between;
   font-weight: bold;
   margin-bottom: 8px;
