@@ -327,7 +327,7 @@ header {
   font-size: 13px;
   font-weight: 600;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color var(--transition-fast);
 }
 
 .user-navigation a:hover {
@@ -403,7 +403,7 @@ header {
   font-size: 15px;
   font-weight: 600;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color var(--transition-fast);
 }
 
 .dropdown > a::after {
@@ -1243,7 +1243,7 @@ footer .copyright {
   background: transparent;
   color: var(--muted);
   font-size: 1.2rem;
-  transition: color 0.2s ease;
+  transition: color var(--transition-fast);
 }
 
 .remove-btn:hover {
@@ -1510,7 +1510,7 @@ footer .copyright {
   color: var(--primary);
   font-size: 0.95rem;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color var(--transition-fast);
 }
 
 .user-menu-list a:hover {
