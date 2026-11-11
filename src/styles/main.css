@@ -1844,7 +1844,8 @@ footer .copyright {
   padding: 0 20px;
 }
 
-.profile-section {
+.profile-section,
+.profile-box {
   padding: 28px;
   margin-bottom: 28px;
   border: 1px solid var(--border-light);
@@ -1855,10 +1856,7 @@ footer .copyright {
 
 .profile-box {
   padding: 32px;
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-lg);
-  background-color: var(--surface);
-  box-shadow: var(--shadow-sm);
+  margin-bottom: 0;
 }
 
 .center-box {
