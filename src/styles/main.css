@@ -597,7 +597,7 @@ main {
 
 .category-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(182, 95, 67, 0.35);
+  border-color: color-mix(in srgb, var(--accent) 35%, transparent);
   box-shadow: var(--shadow-md);
 }
 
@@ -663,7 +663,7 @@ main {
 
 .buecher-card:hover {
   transform: translateY(-5px);
-  border-color: rgba(182, 95, 67, 0.25);
+  border-color: color-mix(in srgb, var(--accent) 25%, transparent);
   box-shadow: var(--shadow-lg);
 }
 
@@ -1912,7 +1912,7 @@ footer .copyright {
 }
 
 .order-card:hover {
-  border-color: rgba(182, 95, 67, 0.3);
+  border-color: color-mix(in srgb, var(--accent) 30%, transparent);
   box-shadow: var(--shadow-sm);
 }
 
@@ -2103,7 +2103,7 @@ footer .copyright {
 }
 
 .review-card:hover {
-  border-color: rgba(182, 95, 67, 0.25);
+  border-color: color-mix(in srgb, var(--accent) 25%, transparent);
   box-shadow: var(--shadow-sm);
 }
 
