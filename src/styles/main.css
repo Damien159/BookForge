@@ -2092,7 +2092,6 @@ footer .copyright {
   border-radius: var(--radius-sm);
   cursor: pointer;
   font-weight: bold;
-  transition: background-color 0.2s;
   align-self: flex-start;
 }
 
