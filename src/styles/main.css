@@ -743,8 +743,7 @@ main {
   border: 1px solid var(--secondary);
   border-radius: 50%;
   background-color: color-mix(in srgb, var(--background) 85%, transparent);
-  backdrop-filter: blur(4px);
-  cursor: pointer;
+backdrop-filter: blur(4px);
   transition:
     transform var(--transition-fast),
     background-color var(--transition-fast);
@@ -825,7 +824,6 @@ main {
   border-radius: 50%;
   background-color: var(--background);
   color: var(--primary);
-  cursor: pointer;
   transition:
     background-color var(--transition-fast),
     transform var(--transition-fast),
@@ -1081,7 +1079,6 @@ footer .copyright {
   border: 1px solid var(--secondary);
   border-radius: var(--radius-sm);
   background-color: var(--surface-soft);
-  cursor: pointer;
 }
 
 .detail-actions .fav-btn.active {
@@ -1388,7 +1385,6 @@ footer .copyright {
   background-color: color-mix(in srgb, var(--surface) 90%, transparent);
   color: var(--accent);
   font-weight: 700;
-  cursor: pointer;
 }
 
 /* =========================================================
@@ -1464,7 +1460,6 @@ footer .copyright {
   background-color: var(--accent);
   color: #ffffff;
   font-weight: 700;
-  cursor: pointer;
   transition: background-color var(--transition-fast);
 }
 
