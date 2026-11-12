@@ -343,8 +343,8 @@ header {
   object-fit: contain;
   filter: var(--icon-filter);
   transition:
-    filter 0.2s ease,
-    transform 0.2s ease;
+    filter var(--transition-fast),
+    transform var(--transition-fast);
 }
 
 .user-navigation a:hover .header-svg-icon {
@@ -746,8 +746,8 @@ main {
   backdrop-filter: blur(4px);
   cursor: pointer;
   transition:
-    transform 0.2s ease,
-    background-color 0.2s ease;
+    transform var(--transition-fast),
+    background-color var(--transition-fast);
 }
 
 .fav-btn:hover {
@@ -827,9 +827,9 @@ main {
   color: var(--primary);
   cursor: pointer;
   transition:
-    background-color 0.2s ease,
-    transform 0.2s ease,
-    border-color 0.2s ease;
+    background-color var(--transition-fast),
+    transform var(--transition-fast),
+    border-color var(--transition-fast);
 }
 
 .cart-btn:hover {
@@ -854,7 +854,7 @@ main {
   max-height: 22px;
   object-fit: contain;
   filter: var(--icon-filter);
-  transition: filter 0.2s ease;
+  transition: filter var(--transition-fast);
 }
 
 .cart-btn:hover img,
