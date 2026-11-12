@@ -2079,7 +2079,7 @@ footer .copyright {
 /* Button im typischen BookForge-Braunton */
 .reviews-section .btn-primary {
   padding: 12px 20px;
-  border: none;
+  border: 0;
   border-radius: var(--radius-sm);
   cursor: pointer;
   font-weight: bold;
@@ -2233,7 +2233,7 @@ footer .copyright {
 
 .checkout-summary-box .btn-primary {
   padding: 14px 28px;
-  border: none;
+  border: 0;
   border-radius: var(--radius-sm);
   cursor: pointer;
   font-weight: bold;
