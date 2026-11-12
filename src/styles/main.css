@@ -690,10 +690,9 @@ main {
 /* KOMPAKTE SEKTIONEN */
 
 .buecher-sektion {
-  min-height: auto; /* Entfernt die erzwungene Bildschirmhöhe */
-  padding: 40px 0; /* Angemessener, sauberer Abstand */
+  padding: 40px 0;
   border-bottom: 1px solid var(--border-color);
-  max-width: 1200px;
+  max-width: var(--container-width);
   margin: 0 auto;
 }
 
