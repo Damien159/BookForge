@@ -719,6 +719,7 @@ main {
 .buecher-sektion:last-child {
   border-bottom: 0;
 }
+
 .buecher-sektion .buecher-grid {
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
@@ -1884,6 +1885,7 @@ footer .copyright {
 .form-group label {
   font-weight: bold;
 }
+
 .form-group input {
   width: 100%;
   padding: 8px;
@@ -2174,6 +2176,7 @@ footer .copyright {
   flex-direction: column;
   gap: 25px;
 }
+
 .checkout-card {
   background: var(--surface);
   padding: 28px;
@@ -2223,6 +2226,7 @@ footer .copyright {
   border-radius: var(--radius-sm);
   background: var(--surface-soft);
 }
+
 .payment-options {
   display: flex;
   flex-direction: column;
@@ -2677,6 +2681,7 @@ h3 {
   justify-content: flex-end;
   margin-bottom: 16px;
 }
+
 .link-btn,
 .clear-list-btn {
   padding: 4px 0;
