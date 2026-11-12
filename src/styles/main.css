@@ -1110,7 +1110,6 @@ footer .copyright {
 .product-description-section h2 {
   margin-bottom: 12px;
   color: var(--heading);
-  font-family: var(--font-heading);
   font-size: 1.4rem;
 }
 
@@ -1272,7 +1271,6 @@ footer .copyright {
   padding-bottom: 10px;
   border-bottom: 1px solid var(--border-color);
   color: var(--primary);
-  font-family: var(--font-heading);
 }
 
 .summary-row {
@@ -1429,7 +1427,6 @@ footer .copyright {
   padding-bottom: 8px;
   border-bottom: 1px solid var(--border-light);
   color: var(--primary);
-  font-family: var(--font-heading);
   font-size: 1.1rem;
 }
 
@@ -2263,8 +2260,8 @@ footer .copyright {
 .profile-box .auth-form h4 {
   margin: 0 0 5px;
   color: var(--primary);
-  font-family: var(--font-heading);
 }
+
 .detail-actions .cart-btn.added {
   border-color: var(--success);
   background-color: var(--success);
