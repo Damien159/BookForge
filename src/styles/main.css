@@ -2072,7 +2072,6 @@ footer .copyright {
 .review-form textarea {
   width: 100%;
   padding: 12px;
-  font-family: inherit;
   resize: vertical;
 }
 
