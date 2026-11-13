@@ -60,6 +60,7 @@
   --header-bg: rgba(248, 245, 239, 0.9);
   --skeleton-a: #eee5d3;
   --skeleton-b: #f8f5ef;
+  --footer-hover: #f0c5a8;
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -916,7 +917,7 @@ backdrop-filter: blur(4px);
 }
 
 .footer-links a:hover {
-  color: #f0c5a8;
+color: var(--footer-hover);
   transform: translateX(3px);
 }
 
