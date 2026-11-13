@@ -2414,7 +2414,7 @@ footer {
 .auth-form input:focus,
 .review-form textarea:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(182, 95, 67, 0.15);
+box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 15%, transparent);
   outline: none;
 }
 
