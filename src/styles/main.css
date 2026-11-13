@@ -2080,7 +2080,6 @@ footer .copyright {
   padding: 12px 20px;
   border: 0;
   border-radius: var(--radius-sm);
-  cursor: pointer;
   font-weight: bold;
   align-self: flex-start;
 }
