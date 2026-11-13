@@ -2482,7 +2482,7 @@ h3 {
 }
 
 ::selection {
-  background: rgba(182, 95, 67, 0.25);
+ background: color-mix(in srgb, var(--accent) 25%, transparent);
 }
 .fav-btn img,
 .cart-btn img {
