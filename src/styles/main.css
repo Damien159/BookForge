@@ -1875,7 +1875,7 @@ footer .copyright {
   padding: 8px;
 }
 
-.input-disabled {
+.form-group input.input-disabled {
   background-color: var(--surface-tint);
   border-color: var(--border-strong);
   cursor: not-allowed;
