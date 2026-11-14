@@ -1941,7 +1941,9 @@ footer .copyright {
   cursor: pointer;
 }
 
-.btn:active {
+.btn:active,
+.auth-btn:active,
+.search-button:active {
   transform: translateY(1px);
 }
 
