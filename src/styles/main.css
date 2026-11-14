@@ -410,9 +410,7 @@ header {
 .dropdown > a::after {
   content: "";
   position: absolute;
-  right: 0;
-  bottom: 6px;
-  left: 0;
+inset: auto 0 6px;
   height: 2px;
   background: var(--accent);
   transform: scaleX(0);
