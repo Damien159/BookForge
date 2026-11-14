@@ -2008,7 +2008,7 @@ footer .copyright {
 }
 
 .stars-display {
-  color: var(--star); /* Sanftes Gold/Braun passend zum Shop */
+  color: var(--star);
   font-size: 1.6rem;
   letter-spacing: 2px;
 }
@@ -2063,7 +2063,7 @@ footer .copyright {
   resize: vertical;
 }
 
-/* Button im typischen BookForge-Braunton */
+
 .reviews-section .btn-primary {
   padding: 12px 20px;
   border: 0;
