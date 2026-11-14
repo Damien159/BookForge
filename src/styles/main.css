@@ -518,7 +518,6 @@ main {
   max-width: 100%;
   height: clamp(340px, 43vw, 540px);
   object-fit: cover;
-  object-position: center;
   scroll-snap-align: start;
 }
 
