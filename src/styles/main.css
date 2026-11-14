@@ -1123,7 +1123,8 @@ footer .copyright {
    20. WARENKORB: SEITENLAYOUT
    ========================================================= */
 
-.cart-page-container {
+.cart-page-container,
+.wishlist-page-container {
   width: 100%;
   max-width: var(--content-width);
   margin: 40px auto 60px;
@@ -1347,12 +1348,6 @@ footer .copyright {
    24. MERKLISTE
    ========================================================= */
 
-.wishlist-page-container {
-  width: 100%;
-  max-width: var(--content-width);
-  margin: 40px auto 60px;
-  padding: 0 20px;
-}
 
 .wishlist-grid {
   display: grid;
