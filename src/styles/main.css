@@ -367,6 +367,7 @@ header {
 
 .nav-price {
   margin-left: 4px;
+  font-variant-numeric: tabular-nums;
   color: var(--accent);
   font-size: 12px;
   font-weight: 700;
@@ -1190,6 +1191,7 @@ footer .copyright {
 
 .cart-item-price {
   margin-top: 4px;
+  font-variant-numeric: tabular-nums;
   color: var(--accent);
   font-size: 1rem;
   font-weight: 700;
@@ -1921,6 +1923,7 @@ footer .copyright {
 
 .order-total {
   text-align: right;
+  font-variant-numeric: tabular-nums;
   font-weight: bold;
   margin-top: 8px;
 }
