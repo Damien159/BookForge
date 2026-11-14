@@ -503,6 +503,7 @@ main {
   width: 100%;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
   scroll-behavior: smooth;
   scrollbar-width: none;
 }
