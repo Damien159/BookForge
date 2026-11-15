@@ -1092,11 +1092,6 @@ footer .copyright {
   height: 22px;
 }
 
-.detail-actions .fav-btn.active img,
-.detail-actions .fav-btn.active .svg-icon {
-  filter: brightness(0) invert(1);
-}
-
 /* =========================================================
    19. PRODUKTDETAILSEITE: BESCHREIBUNG
    ========================================================= */
