@@ -2201,8 +2201,6 @@ footer .copyright {
 
 .checkout-card .form-group input {
   padding: 10px;
-  border: 1px solid var(--border-strong);
-  border-radius: var(--radius-sm);
   background: var(--surface-soft);
 }
 
