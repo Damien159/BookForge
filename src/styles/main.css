@@ -112,6 +112,7 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--header-spacing);
   overflow-x: clip;
+  accent-color: var(--accent);
   scrollbar-gutter: stable;
   scrollbar-color: var(--secondary) var(--background);
 }
@@ -2426,10 +2427,6 @@ box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 15%, transparent);
   background-color: var(--surface-tint);
 }
 
-.payment-options input {
-  accent-color: var(--accent);
-}
-
 /* Sterne-Auswahl */
 .star-rating-input .star {
   transition:
@@ -2721,7 +2718,6 @@ footer .copyright a:hover {
 .auth-form .show-password input {
   width: auto;
   padding: 0;
-  accent-color: var(--accent);
 }
 @media print {
   header,
