@@ -1131,7 +1131,8 @@ footer .copyright {
 }
 
 .cart-page-title,
-.wishlist-page-title {
+.wishlist-page-title,
+.checkout-title {
   margin-bottom: 30px;
   padding-bottom: 10px;
   border-bottom: 2px solid var(--border-color);
@@ -2142,14 +2143,9 @@ footer .copyright {
 }
 
 .checkout-title {
-  font-family: var(--font-heading);
   color: var(--heading);
-  margin-bottom: 30px;
-  border-bottom: 2px solid var(--border-color);
-  padding-bottom: 10px;
   font-size: 1.8rem;
 }
-
 .checkout-form-grid {
   display: flex;
   flex-direction: column;
