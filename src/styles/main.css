@@ -1406,9 +1406,9 @@ footer .copyright {
   visibility: hidden;
   transform: translateY(10px);
   transition:
-    opacity 0.25s ease,
-    transform 0.25s ease,
-    visibility 0.25s ease;
+    opacity var(--transition-normal),
+    transform var(--transition-normal),
+    visibility var(--transition-normal);
 }
 
 .profile-nav-item:hover .profile-dropdown,
