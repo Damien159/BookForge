@@ -18,6 +18,9 @@
   --shadow-sm: 0 2px 8px rgba(45, 32, 23, 0.04);
   --shadow-md: 0 8px 24px rgba(45, 32, 23, 0.07);
   --shadow-lg: 0 16px 40px rgba(45, 32, 23, 0.12);
+  --shadow-cover: 0 6px 16px rgba(45, 32, 23, 0.14);
+  --shadow-cover-hover: 0 12px 24px rgba(45, 32, 23, 0.2);
+  --shadow-cover-lg: 0 14px 32px rgba(45, 32, 23, 0.15);
 
   /* Abgerundete Ecken */
   --radius-sm: 8px;
@@ -254,7 +257,7 @@ header {
 
 .search-container:focus-within {
   border-color: var(--accent);
- box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 12%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 12%, transparent);
 }
 
 .category-select {
@@ -411,7 +414,7 @@ header {
 .dropdown > a::after {
   content: "";
   position: absolute;
-inset: auto 0 6px;
+  inset: auto 0 6px;
   height: 2px;
   background: var(--accent);
   transform: scaleX(0);
@@ -674,7 +677,7 @@ main {
   border-radius: var(--radius-sm);
   object-fit: cover;
   background-color: var(--surface-tint);
-  box-shadow: 0 6px 16px rgba(45, 32, 23, 0.14);
+  box-shadow: var(--shadow-cover);
   transition:
     transform var(--transition-normal),
     box-shadow var(--transition-normal);
@@ -682,7 +685,7 @@ main {
 
 .buecher-card:hover .book-card-link img {
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 12px 24px rgba(45, 32, 23, 0.2);
+  box-shadow: var(--shadow-cover-hover);
 }
 
 /* KOMPAKTE SEKTIONEN */
@@ -740,7 +743,7 @@ main {
   border: 1px solid var(--secondary);
   border-radius: 50%;
   background-color: color-mix(in srgb, var(--background) 85%, transparent);
-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
   transition:
     transform var(--transition-fast),
     background-color var(--transition-fast);
@@ -914,7 +917,7 @@ backdrop-filter: blur(4px);
 }
 
 .footer-links a:hover {
-color: var(--footer-hover);
+  color: var(--footer-hover);
   transform: translateX(3px);
 }
 
@@ -962,7 +965,7 @@ footer .copyright {
   max-width: 280px;
   height: auto;
   border-radius: var(--radius-md);
-  box-shadow: 0 14px 32px rgba(45, 32, 23, 0.15);
+  box-shadow: var(--shadow-cover-lg);
 }
 
 .product-cover-container {
@@ -1350,7 +1353,6 @@ footer .copyright {
    24. MERKLISTE
    ========================================================= */
 
-
 .wishlist-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -1436,8 +1438,6 @@ footer .copyright {
   padding: 10px 12px;
   font-size: 0.9rem;
 }
-
-
 
 .auth-btn {
   width: 100%;
@@ -2068,7 +2068,6 @@ footer .copyright {
   resize: vertical;
 }
 
-
 .reviews-section .btn-primary {
   padding: 12px 20px;
   border: 0;
@@ -2275,7 +2274,7 @@ a:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
- outline: 3px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  outline: 3px solid color-mix(in srgb, var(--accent) 55%, transparent);
   outline-offset: 3px;
 }
 
@@ -2303,7 +2302,7 @@ footer {
     padding: 30px 0;
   }
 
- .cart-item {
+  .cart-item {
     align-items: flex-start;
     flex-wrap: wrap;
     padding: 16px;
@@ -2335,7 +2334,6 @@ footer {
   }
 }
 @media (max-width: 360px) {
-
   .checkout-page-container {
     padding: 14px 10px;
   }
@@ -2404,7 +2402,7 @@ footer {
 .auth-form input:focus,
 .review-form textarea:focus {
   border-color: var(--accent);
-box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 15%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 15%, transparent);
   outline: none;
 }
 
@@ -2468,7 +2466,7 @@ h3 {
 }
 
 ::selection {
- background: color-mix(in srgb, var(--accent) 25%, transparent);
+  background: color-mix(in srgb, var(--accent) 25%, transparent);
 }
 .fav-btn img,
 .cart-btn img {
