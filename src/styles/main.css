@@ -2654,7 +2654,9 @@ h3 {
   transition: color var(--transition-fast);
 }
 
-.link-btn:hover {
+.link-btn:hover,
+.continue-link:hover,
+.reset-link:hover {
   color: var(--accent);
 }
 
@@ -2671,10 +2673,6 @@ h3 {
   text-align: center;
   text-decoration: none;
   transition: color var(--transition-fast);
-}
-
-.continue-link:hover {
-  color: var(--accent);
 }
 .back-to-top {
   position: fixed;
@@ -2767,9 +2765,6 @@ footer .copyright a:hover {
   transition: color var(--transition-fast);
 }
 
-.reset-link:hover {
-  color: var(--accent);
-}
 .review-delete {
   margin-top: 10px;
   padding: 0;
