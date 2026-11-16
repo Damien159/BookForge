@@ -1812,6 +1812,11 @@ footer .copyright {
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+    background: var(--skeleton-a);
+  }
+
   *,
   *::before,
   *::after {
