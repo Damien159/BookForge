@@ -2368,6 +2368,7 @@ footer {
 .buecher-card .card-footer .price {
   margin: 0;
   padding: 0;
+  font-variant-numeric: tabular-nums;
 }
 .cart-item-cover {
   flex-shrink: 0;
