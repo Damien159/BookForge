@@ -2741,6 +2741,11 @@ footer .copyright a:hover {
     color: #000000;
   }
 
+  .product-description-section a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+  }
+
   main {
     max-width: 100%;
     margin: 0;
