@@ -2536,11 +2536,11 @@ h3 {
     background-position: -200% 0;
   }
 }
-
 @media (hover: none) {
   .buecher-card:hover,
   .category-card:hover,
-  .checkout-btn:hover {
+  .checkout-btn:hover,
+  .fav-btn:hover {
     transform: none;
   }
 
