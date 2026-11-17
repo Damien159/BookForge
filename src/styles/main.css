@@ -836,7 +836,8 @@ main {
   background-color: var(--accent);
 }
 
-.svg-icon {
+.svg-icon,
+.header-svg-icon {
   display: inline-block;
   width: 22px;
   height: 22px;
