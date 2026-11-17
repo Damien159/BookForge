@@ -115,6 +115,8 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--header-spacing);
   overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   accent-color: var(--accent);
   scrollbar-gutter: stable;
   scrollbar-color: var(--secondary) var(--background);
