@@ -2067,6 +2067,7 @@ footer .copyright {
 
 .review-form textarea {
   width: 100%;
+  min-height: 96px;
   padding: 12px;
   resize: vertical;
 }
