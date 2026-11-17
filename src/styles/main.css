@@ -2128,6 +2128,7 @@ footer .copyright {
 .review-comment {
   color: var(--text);
   line-height: 1.5;
+  overflow-wrap: anywhere;
 }
 
 .hint-box {
