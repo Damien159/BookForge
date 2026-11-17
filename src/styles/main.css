@@ -803,6 +803,7 @@ main {
 
 .buecher-card p.price,
 .buecher-card p:nth-of-type(2) {
+  font-variant-numeric: tabular-nums;
   margin-top: auto;
   padding-top: 12px;
   color: var(--accent);
@@ -1012,6 +1013,7 @@ footer .copyright {
 }
 
 .detail-price {
+  font-variant-numeric: tabular-nums;
   color: var(--accent);
   font-size: 1.9rem;
   font-weight: 700;
