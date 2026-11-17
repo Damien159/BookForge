@@ -521,6 +521,7 @@ main {
   height: clamp(340px, 43vw, 540px);
   object-fit: cover;
   scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .slider-arrow {
