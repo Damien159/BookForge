@@ -286,7 +286,6 @@ header {
   min-width: 0;
   padding: 10px 15px;
   border: 0;
-  outline: none;
   background: transparent;
   color: var(--text);
   font-size: 14px;
