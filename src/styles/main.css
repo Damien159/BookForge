@@ -2024,6 +2024,7 @@ footer .copyright {
 }
 
 .stars-display {
+  white-space: nowrap;
   color: var(--star);
   font-size: 1.6rem;
   letter-spacing: 2px;
