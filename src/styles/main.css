@@ -2474,6 +2474,12 @@ h3 {
   text-wrap: balance;
 }
 
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+
 ::selection {
   background: color-mix(in srgb, var(--accent) 25%, transparent);
 }
