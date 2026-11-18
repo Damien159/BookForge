@@ -973,6 +973,7 @@ footer .copyright {
   max-width: 280px;
   height: auto;
   border-radius: var(--radius-md);
+  background-color: var(--surface-tint);
   box-shadow: var(--shadow-cover-lg);
 }
 
