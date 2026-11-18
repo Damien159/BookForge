@@ -2111,6 +2111,7 @@ footer .copyright {
 .review-header {
   display: flex;
   justify-content: space-between;
+  gap: 4px 12px;
   margin-bottom: 6px;
 }
 
