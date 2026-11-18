@@ -800,6 +800,7 @@ main {
   margin: 2px 0;
   color: var(--muted);
   font-size: 0.85rem;
+  overflow-wrap: anywhere;
 }
 
 .buecher-card p.price,
