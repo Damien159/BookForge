@@ -1241,7 +1241,7 @@ footer .copyright {
 }
 
 .remove-btn {
-  padding: 4px;
+  padding: 8px;
   border: 0;
   background: transparent;
   color: var(--muted);
