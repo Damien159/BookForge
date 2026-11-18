@@ -461,6 +461,7 @@ header {
 
 .dropdown-content a {
   padding: 9px 12px;
+  white-space: nowrap;
   border-radius: var(--radius-sm);
   color: var(--text);
   font-size: 14px;
