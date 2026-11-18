@@ -1325,6 +1325,11 @@ footer .copyright {
   box-shadow: var(--shadow-md);
 }
 
+.checkout-btn:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
 /* =========================================================
    23. LEERE ZUSTÄNDE
    ========================================================= */
