@@ -61,6 +61,7 @@
   --brand-deep: #33231a;
   --topbar: #80664d;
   --header-bg: rgba(248, 245, 239, 0.9);
+  --footer-text: rgba(255, 255, 255, 0.72);
   --skeleton-a: #eee5d3;
   --skeleton-b: #f8f5ef;
   --footer-hover: #f0c5a8;
@@ -930,7 +931,7 @@ main {
 
 .payment-methods {
   margin: 0;
-  color: rgba(255, 255, 255, 0.72);
+color: var(--footer-text);
   font-size: 0.85rem;
   line-height: 1.4;
 }
