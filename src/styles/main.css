@@ -193,6 +193,11 @@ button:disabled {
   text-decoration: underline;
 }
 
+.top-bar a:focus-visible,
+footer a:focus-visible {
+  outline-color: #ffffff;
+}
+
 /* =========================================================
    4. HAUPTHEADER UND LOGO
    ========================================================= */
