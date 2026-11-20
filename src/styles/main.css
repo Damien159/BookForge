@@ -2774,7 +2774,11 @@ footer .copyright a:hover {
   .detail-actions,
   .fav-btn,
   .cart-btn,
-  .review-form-box {
+  .review-form-box,
+  .clear-cart-btn,
+  .share-row,
+  .wishlist-actions,
+  .wishlist-footer {
     display: none !important;
   }
 
