@@ -884,6 +884,11 @@ main {
   color: #ffffff;
 }
 
+.fav-btn:active,
+.cart-btn:active {
+  transform: scale(0.94);
+}
+
 .cart-btn.added img,
 .cart-btn.added .svg-icon {
   filter: brightness(0) invert(1);
