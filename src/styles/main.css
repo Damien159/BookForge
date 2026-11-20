@@ -527,6 +527,8 @@ main {
 
 .homepage .img img {
   display: block;
+  user-select: none;
+  -webkit-user-drag: none;
   flex: 0 0 100%;
   width: 100%;
   min-width: 100%;
