@@ -1384,6 +1384,16 @@ footer .copyright {
   min-width: 0;
 }
 
+.wishlist-card .remove-wish-btn:hover {
+  background-color: var(--accent);
+  color: #ffffff;
+}
+
+.wishlist-card .remove-wish-btn:hover {
+  background-color: var(--accent);
+  color: #ffffff;
+}
+
 .wishlist-card .remove-wish-btn {
   position: absolute;
   top: 10px;
@@ -1394,6 +1404,9 @@ footer .copyright {
   justify-content: center;
   width: 28px;
   height: 28px;
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast);
   border: 1px solid var(--secondary);
   border-radius: 50%;
   background-color: color-mix(in srgb, var(--surface) 90%, transparent);
