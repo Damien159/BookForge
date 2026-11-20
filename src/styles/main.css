@@ -1042,6 +1042,7 @@ footer .copyright {
 
 .stock-status {
   padding: 4px 12px;
+  white-space: nowrap;
   border-radius: var(--radius-pill);
   background-color: color-mix(in srgb, var(--success) 12%, transparent);
   color: var(--success);
